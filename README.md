@@ -5,11 +5,11 @@
 
 <p align="center"> <img src="https://github.com/mpiotrak/docs/blob/adding_golang_notes/_screenshots/devsecops.png" alt="devsecops.piping"> </p>
 
-Following repository is the collection of notes I've been taking once decided to first become DevOps and later on (mighty) DevSecOps engineer:ninja:. The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis.
+Following repository is the collection of notes I've been taking once decided to first become DevOps and later on (mighty) DevSecOps engineer! :ninja: The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis.
 
-Schedule on what I'm now working on, or I plan to add will be placed in the RoadMap:point_up:
+Schedule on what I'm now working on, or I plan to add will be placed in the RoadMap :point_up:
 
-If only the information gathered here will help someone gain some useful knowledge, I will be more than happy to hear so!:heart:
+If only the information gathered here will help someone gain some useful knowledge, I will be more than happy to hear so! :heart:
 
 [^1]: Books I really enjoyed reading:
     - UNIX and Linux System Administration Handbook 5th Edition; Addison-Wesley Professional
