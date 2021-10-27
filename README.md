@@ -12,16 +12,16 @@ Schedule on what I'm now working on, or I plan to add will be placed in the Road
 If only the information gathered here will help someone gain some useful knowledge, I will be more than happy to hear so!:heart:
 
 [^1]: Books I really enjoyed reading:
-- UNIX and Linux System Administration Handbook 5th Edition; Addison-Wesley Professional
-- Linux Shell Scripting Cookbook - Third Edition: Do amazing things with the shell and automate tedious tasks 3rd Revised edition; Packt Publishing
-- Site Reliability Engineering: How Google Runs Production Systems 1st Edition; O'Reilly Media
+    - UNIX and Linux System Administration Handbook 5th Edition; Addison-Wesley Professional
+    - Linux Shell Scripting Cookbook - Third Edition: Do amazing things with the shell and automate tedious tasks 3rd Revised edition; Packt Publishing
+    - Site Reliability Engineering: How Google Runs Production Systems 1st Edition; O'Reilly Media
 [^2]: Sites that I subcribe to or browse for solution:
-- https://medium.com/
-- https://faun.pub/
-- https://dev.to/
-- https://stackoverflow.com/
-- https://www.cyberciti.biz/
-- https://itsfoss.com/
-- https://www.geeksforgeeks.org/
-- https://www.digitalocean.com/community/tutorials/
+    - https://medium.com/
+    - https://faun.pub/
+    - https://dev.to/
+    - https://stackoverflow.com/
+    - https://www.cyberciti.biz/
+    - https://itsfoss.com/
+    - https://www.geeksforgeeks.org/
+    - https://www.digitalocean.com/community/tutorials/
 [^3]: https://www.pluralsight.com/
