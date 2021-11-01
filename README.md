@@ -12,7 +12,7 @@ Schedule on what I'm working on now, or plan to add will be updated in the RoadM
 If only the information gathered here will help someone gain some useful knowledge, I will be more than happy to hear so! :heart:<br>
 Any suggestions or insights are more than welcome!
 
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=mpiotrak&show_icons=true&theme=github_dark&count_private=true)](https://github.com/mpiotrak/DevSecOps-fu)
+[![GitHub stats](https://github-readme-stats.vercel.app/api?username=mpiotrak&show_icons=true&theme=github_dark)](https://github.com/mpiotrak/DevSecOps-fu)
 
 
 [^1]: Books I really enjoyed reading:
