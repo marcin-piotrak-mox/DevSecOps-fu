@@ -1,18 +1,34 @@
 [![Road Map](https://img.shields.io/badge/ROAD-MAP-blue)](https://github.com/mpiotrak/DevSecOps-fu/projects/1)
 [![license](https://img.shields.io/github/license/mpiotrak/docs)](https://github.com/mpiotrak/DevSecOps-fu//blob/main/LICENSE)
 
-# DevSecOps-fu
+- [DevSecOps-fu](#paragraph1)
+  - [cheatsheets](#paragraph1.1)
+  - [vault](#paragraph1.2)
 
-<p align="center"> <img src="https://github.com/mpiotrak/docs/blob/adding_golang_notes/_screenshots/devsecops.png" alt="devsecops.piping"> </p>
+# DevSecOps-fu <a name="paragraph1"></a>
+
+<p align="center"> <img src="https://github.com/mpiotrak/docs/blob/adding_golang_notes/_screenshots/devsecops.png" alt="devsecops-fu"> </p>
 
 Following repository is the collection of notes I've been taking once decided to first become DevOps and later on (mighty) DevSecOps engineer! :ninja: The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis, so here we are :wink:
 
-Schedule on what I'm working on now, or plan to add will be updated in the RoadMap :point_up:
+Schedule on what I'm working on now, or plan to add will be updated in the [Road Map](https://img.shields.io/badge/ROAD-MAP-blue)](https://github.com/mpiotrak/DevSecOps-fu/projects/1) :point_up:
 
-If only the information gathered here will help someone gain some useful knowledge, I will be more than happy to hear so! :heart:<br>
+If only the information gathered here will help someone gain some useful knowledge or understand something better, I will be more than happy to hear so! :heart:
+
 Any suggestions or insights are more than welcome!
 
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=mpiotrak&show_icons=true&theme=github_dark)](https://github.com/mpiotrak/DevSecOps-fu)
+> I work on Macbook
+> English not my first language
+
+<!-- [![GitHub stats](https://github-readme-stats.vercel.app/api?username=mpiotrak&show_icons=true&theme=github_dark&count_private=true)](https://github.com/mpiotrak/DevSecOps-fu) -->
+
+
+### cheatsheets
+
+### vault
+
+Combined official Hashicorp documentation, course content from Pluralsight's certification path for Hashicorp Vault and my observations/insights (i.e "How-to" or "Commands" sections).
+
 
 
 [^1]: Books I really enjoyed reading:
