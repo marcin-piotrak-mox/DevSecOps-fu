@@ -7,11 +7,11 @@
 
 # Overview <a name="paragraph1"></a>
 
-<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/master/_screenshots/devsecops.png" alt="devsecops-fu"> </p>
+<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/main/_screenshots/devsecops.png" alt="devsecops-fu"> </p>
 
 Following repository is the collection of notes I've been taking since the day I decided to first become DevOps and later on (mighty) DevSecOps engineer! :ninja: The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis, so here we are :wink:
 
-Schedule on what I'm working on now, or plan to add will be updated in the [Road Map](https://img.shields.io/badge/ROAD-MAP-blue)](https://github.com/mpiotrak/DevSecOps-fu/projects/1) :point_up:
+Schedule on what I'm working on now, or plan to add will be updated in the [[Road Map](https://img.shields.io/badge/ROAD-MAP-blue)](https://github.com/mpiotrak/DevSecOps-fu/projects/1) :point_up:
 
 If only the information gathered here will help someone gain some useful knowledge or understand something better, I will be more than happy to hear so! :heart:
 
