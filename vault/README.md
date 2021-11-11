@@ -54,7 +54,7 @@ The key features of Vault are:
 
 # Architecture <a name="paragraph2"></a>
 
-<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/master/_screenshots/vault1.png" alt="vault1.png"> </p>
+<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/_screenshots/vault1.png" alt="vault1.png"> </p>
 
 There is a **clear separation** of components that are inside or outside of the security barrier - secure enclave where Vault does all of its work and holds all of its data in an unencrypted format (plain text kept in memory). Only the storage backend and the HTTP API are outside the barrier.
 
