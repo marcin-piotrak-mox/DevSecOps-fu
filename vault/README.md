@@ -112,7 +112,7 @@ When a Vault server is started, it starts in a sealed state. In this state, Vaul
 
 The data stored by Vault is encrypted and can only be decrypted with the** encryption key which is also stored with the data** (in the storage backend), but encrypted with another encryption key known as the master key. Therefore, to decrypt the data, Vault must decrypt the encryption key which requires the master key (stored in Vault's memory). Unsealing is the process of getting access to this master key. The master key is stored alongside all other Vault data, but is encrypted by yet another mechanism - the unseal key. Summing up - most Vault data is encrypted using the encryption key in the keyring; the keyring is encrypted by the master key; and the master key is encrypted by the unseal key.
 
-<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/master/_screenshots/vault2.png" alt="vault2.png"> </p>
+<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/main/_screenshots/vault2.png" alt="vault2.png"> </p>
 
 The default Vault config uses a Shamir seal. Instead of distributing the unseal key as a single key to an operator, Vault uses an algorithm known as Shamir's Secret Sharing to split the key into shards and avoid a risk that a single malicious actor can decrypt the entire Vault. A certain threshold of shards (defaults to 5, any 3 of which must be provided to reconstruct the master key) is required to reconstruct the unseal key, which is then used to decrypt the master key. Shards are added one at a time (in any order) until enough shards are present to reconstruct the key and decrypt the master key.
 
@@ -431,7 +431,7 @@ Policy characteristics:
 
 > :bulb: Policies can be distinguished into token and identity policies and updated at any time. Token policies are assigned when a token is issued and don't change unless a new token is issued (e.g. policies assigned to roles used by auth methods). Identity policies are updated on the fly (e.g. entity added to a goup with new set of policies;) and evaluated every time the user tries to use their token.
 
-<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/master/_screenshots/vault3.png" alt="vault3.png"> </p>
+<p align="center"> <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/main/_screenshots/vault3.png" alt="vault3.png"> </p>
 
 Types of capabilities (and associated HTTP verbs):
 - [x] create (POST/PUT)
