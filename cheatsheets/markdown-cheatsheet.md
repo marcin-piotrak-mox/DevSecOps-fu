@@ -130,11 +130,11 @@ Text or image alignments can be done using HTML tags.
 
 Image alignment:
 <p align="right">
-<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3"/>
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3">
 </p>
 
 Text alignment:
-<h5 align="center"> Centered text. </h5>
+<h5 align="center">Centered text.</h5>
 
 
 ## Lists
@@ -210,7 +210,9 @@ Reference-styled image:
 HTML-styled image:
 <a align="left"> <img width="25px" border="3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="Logo Title Text 3"> </a>
 
-> :bulb: Use HTML paragraph tags `<p` `</p>` to place image in new line.
+Mixed-style image:
+[<img align="left" alt="bash" width="26px" src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg">][bash]
+
 
 HTML options for image inserting:
 - href="link"
@@ -303,7 +305,7 @@ Here's a simple footnote,[^1] and here's a longer one.[^multiline_footnote]
 
     `{ my code }`
 
-    Antoher **paragraph**.
+    Another **paragraph**.
 
 
 ## Horizontal Rules

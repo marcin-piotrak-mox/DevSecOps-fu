@@ -3,7 +3,6 @@
   <h2 align="center">DevSecOps-fu</h2>
 </p>
 
-
 <p align="center">
   <a href="https://github.com/mpiotrak/DevSecOps-fu/projects/1">
     <img alt="roadmap" src="https://img.shields.io/badge/ROAD-MAP-blue" />
@@ -13,16 +12,16 @@
   </a>
 </p>
 
-
 <table align="center">
   <tr>
+    <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="80px;" height="85px;" alt="k8s"/><br /><b>Shell</b></a></td>
     <td align="center"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="85px;" alt="markdown"><br /><b>Markdown</b></a></td>
     <td align="center"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="80px;" height="85px;" alt="yaml"/><br /><b>YAML</b></a></td>
     <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" width="80px;" height="85px;" alt="vault"/><br /><b>Vault</b></a></td>
     <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80px;" height="85px;" alt="k8s"/><br /><b>Kubernetes</b></a></td>
+    <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" width="80px;" height="85px;" alt="k8s"/><br /><b>Helm</b></a></td>
   </tr>
 </table>
-
 
 
 # Table of contents
