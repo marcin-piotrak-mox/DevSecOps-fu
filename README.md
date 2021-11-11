@@ -3,6 +3,7 @@
   <h2 align="center">DevSecOps-fu</h2>
 </p>
 
+
 <p align="center">
   <a href="https://github.com/mpiotrak/DevSecOps-fu/projects/1">
     <img alt="roadmap" src="https://img.shields.io/badge/ROAD-MAP-blue" />
@@ -12,18 +13,16 @@
   </a>
 </p>
 
-<p align="center">Collection of notes from my journey to becoming (mighty) DevSecOps Engineer!</p>
 
-<center>
-<table>
+<table align="center">
   <tr>
-    <td align="center"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/util/preview.html?image=/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="85px;" alt="markdown"/><br /><b>Markdown</b></a></td>
-    <td align="center"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/util/preview.html?image=/logos/yaml/yaml-icon.svg" width="80px;" height="85px;" alt="yaml"/><br /><b>YAML</b></a></td>
-    <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/util/preview.html?image=/logos/vaultproject/vaultproject-icon.svg" width="80px;" height="85px;" alt="vault"/><br /><b>Vault</b></a></td>
-    <td align="center"><a href=""><img src="https://www.vectorlogo.zone/util/preview.html?image=/logos/kubernetes/kubernetes-icon.svg" width="80px;" height="85px;" alt="k8s"/><br /><b>Kubernetes</b></a></td>
+    <td align="center"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="85px;" alt="markdown"><br /><b>Markdown</b></a></td>
+    <td align="center"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="80px;" height="85px;" alt="yaml"/><br /><b>YAML</b></a></td>
+    <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" width="80px;" height="85px;" alt="vault"/><br /><b>Vault</b></a></td>
+    <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80px;" height="85px;" alt="k8s"/><br /><b>Kubernetes</b></a></td>
   </tr>
 </table>
-</center>
+
 
 
 # Table of contents
@@ -33,7 +32,7 @@
   - [vault](#paragraph1.2)
 
 
-# Overview <a name="paragraph1"</a>
+# Overview <a name="paragraph1"> </a>
 
 Following repository is the collection of notes I've been taking since the day I decided to first become DevOps and later on (mighty) DevSecOps engineer! :ninja: The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis, so here we are :wink:
 
