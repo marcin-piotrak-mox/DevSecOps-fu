@@ -25,7 +25,7 @@ Heading 1
 Heading 2
 --
 
-##### Heading IDs
+### Heading IDs
 
 ###### My Great Heading {#my-great-heading}
 
@@ -34,6 +34,8 @@ Heading 2
 Linking to Heading IDs:
 - [Link to my great heading](#my-great-heading)
 - <a href="#html-heading-id">Link to my great HTML-styled heading</a>
+- [Link to other website's heading](https://www.markdownguide.org/extended-syntax#heading-ids)
+
 
 ## Line Breaks
 
@@ -128,7 +130,7 @@ Text or image alignments can be done using HTML tags.
 
 Image alignment:
 <p align="right">
-<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="1"/>
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" boarder="1"/>
 </p>
 
 Text alignment:
@@ -159,7 +161,7 @@ Text alignment:
 + Or pluses
 
 
-##### Task lists:
+### Task lists:
 - [x] Write the press release
 - [ ] Update the website
 
@@ -191,7 +193,7 @@ Link referenced [elswhere].
 URLs (http://www.google.com) and URLs in angle brackets <http://www.google.com> (`<>`) will automatically get turned into links.
 
 [arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: https://pl.wikipedia.org/wiki/Markdown
+[1]: https://pl.wikipedia.org/wiki/Markdown "Markdown"
 [elswhere]: https://pl.wikipedia.org/wiki/Linux
 
 
@@ -297,7 +299,7 @@ Here's a simple footnote,[^1] and here's a longer one.[^multiline_footnote]
 [^1]: First footnote.
 [^multiline_footnote]: Footnote with multiple paragraphs and code.
 
-    Paragraphs need to be indented to be included in multiline. footnote.
+    Paragraphs need to be indented to be included in multiline footnote.
 
     `{ my code }`
 
