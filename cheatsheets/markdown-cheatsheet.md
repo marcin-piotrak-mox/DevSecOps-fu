@@ -208,11 +208,15 @@ Reference-styled image:
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
 HTML-styled image:
-<a align="left"> <img width="25px" border="3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="Logo Title Text 3"> </a>
+<a name="Logo Title Text 3"> <img align="center" width="25px" border="3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"> </a>
 
-Mixed-style image:
-[<img align="left" alt="bash" width="26px" src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg">][bash]
+HTML-styled image with reference:
+<a href="https://www.gnu.org/software/bash/"> <img align="center" alt="bash" width="26px" src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg"></a>
 
+HTML-styled image with markdown reference:
+[<img align="right" alt="bash" width="26px" src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg">][bash]
+
+[bash]: https://www.gnu.org/software/bash/
 
 HTML options for image inserting:
 - href="link"
