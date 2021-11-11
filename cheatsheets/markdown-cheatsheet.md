@@ -27,7 +27,7 @@ Heading 2
 
 ### Heading IDs
 
-###### My Great Heading {#my-great-heading}
+###### My Great Heading
 
 <h6 id="html-heading-id">My Great HTML-styled Heading</h3>
 
@@ -130,7 +130,7 @@ Text or image alignments can be done using HTML tags.
 
 Image alignment:
 <p align="right">
-<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" boarder="1"/>
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3"/>
 </p>
 
 Text alignment:
