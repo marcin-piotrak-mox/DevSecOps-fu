@@ -13,23 +13,27 @@ Source:
 ###### H6
 
 HTML-styled headers
-<h1>Heading 1</h1>
-<h2>Heading 2</h2>
+
+<h1>HTML-styled header H1</h1>
+<h3>HTML-styled header H3</h3>
 
 Alternatively styled headers (works only for H1 and H2, requires any number of `==` or `--` underneath header name)
+
 Heading 1
 ==
+
 Heading 2
 --
 
-Heading IDs
+##### Heading IDs
 
-###### My Great Heading {#heading-id}
+###### My Great Heading {#my-great-heading}
+
 <h6 id="html-heading-id">My Great HTML-styled Heading</h3>
 
 Linking to Heading IDs:
-- [My Great Heading](#heading-id)
-- <a href="#html-heading-id">My Great HTML-styled Heading</a>
+- [Link to my great heading](#my-great-heading)
+- <a href="#html-heading-id">Link to my great HTML-styled heading</a>
 
 ## Line Breaks
 
@@ -40,9 +44,9 @@ This line is separated from the one above by **two newlines**, so it will be a *
 This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 
-`&nbsp;` - 1 space
-`&ensp;` - 2 spaces
-`&emsp;` - 3 spaces
+`&nbsp;` - 1 space<br>
+`&ensp;` - 2 spaces<br>
+`&emsp;` - 3 spaces<br>
 
 `<br>` - HTML-styled line brake - equivalent to two newlines.
 
@@ -124,7 +128,7 @@ Text or image alignments can be done using HTML tags.
 
 Image alignment:
 <p align="right">
-<img src="https://cdn.jsdelivr.net/npm/simple-icons@5.18.0/icons/markdown.svg" width="50" height="50" border="1"/>
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="1"/>
 </p>
 
 Text alignment:
@@ -160,14 +164,14 @@ Text alignment:
 - [ ] Update the website
 
 
-##### Definition lists:
+<!-- ##### Definition lists:
 
 First Term
 : This is the definition of the first term.
 
 Second Term
 : This is one definition of the second term.
-: This is another definition of the second term.
+: This is another definition of the second term. -->
 
 
 ## Links
@@ -180,7 +184,7 @@ Second Term
 
 [Numbered reference-styled link][1]
 
-[Relative reference to a repository file](../blob/main/LICENSE)
+[Relative reference to a repository file](../LICENSE)
 
 Link referenced [elswhere].
 
@@ -292,8 +296,11 @@ Here's a simple footnote,[^1] and here's a longer one.[^multiline_footnote]
 
 [^1]: First footnote.
 [^multiline_footnote]: Footnote with multiple paragraphs and code.
-    Paragraphs need to be indented to be included in multiline footnote.
+
+    Paragraphs need to be indented to be included in multiline. footnote.
+
     `{ my code }`
+
     Antoher **paragraph**.
 
 
