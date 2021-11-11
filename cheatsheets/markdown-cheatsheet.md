@@ -81,7 +81,7 @@ Commented out text.
 
 @person_mentioning
 
-#mentioning_prs_or_issues
+#prs_or_issues_mentioning
 
 :exclamation: Exclamation sign. :question: Question sign. :warning: Warning sign.
 
@@ -208,7 +208,7 @@ Reference-styled image:
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
 HTML-styled image:
-<a align="left"> <img width="25px" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="Logo Title Text 3"> </a>
+<a align="left"> <img width="25px" border="3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" alt="Logo Title Text 3"> </a>
 
 > :bulb: Use HTML paragraph tags `<p` `</p>` to place image in new line.
 
