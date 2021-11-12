@@ -19,14 +19,14 @@
     </tr>
   <tbody>
     <tr>
-      <td align="center"><a href=""><img src="" alt="" width="90px;" height="90px;"><br /><b></b></a></td>
-      <td align="center"><a href=""><img src="" alt="" width="90px;" height="90px;"><br /><b></b></a></td>
+      <td></td>
+      <td></td>
       <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Shell Scripting" width="90px;" height="90px;"><br /><b>Shell Scripting</b></a></td>
       <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" alt="Go" width="90px;" height="90px;"><br /><b>Go</b></a></td>
       <td align="center"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" alt="YAML" width="90px;" height="90px;"><br /><b>YAML</b></a></td>
       <td align="center"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" alt="Markdown" width="90px;" height="90px;"><br /><b>Markdown</b></a></td>
-      <td align="center"><a href=""><img src="" alt="" width="90px;" height="90px;"><br /><b></b></a></td>
-      <td align="center"><a href=""><img src="" alt="" width="90px;" height="90px;"><br /><b></b></a></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th colspan="5">Tools</th>
