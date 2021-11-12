@@ -19,10 +19,10 @@ HTML-styled headers
 
 Alternatively styled headers (works only for H1 and H2, requires any number of `==` or `--` underneath header name)
 
-Heading 1
+Alternatively-styled Heading 1
 ==
 
-Heading 2
+Alternatively-styled Heading 2
 --
 
 ### Heading IDs
@@ -124,19 +124,6 @@ But let's throw in a <b>tag</b>.
 >>> #### This is second nested line marked as header. It can go on and on.
 
 
-## Alignments
-
-Text or image alignments can be done using HTML tags.
-
-Image alignment:
-<p align="right">
-<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3">
-</p>
-
-Text alignment:
-<h5 align="center">Centered text.</h5>
-
-
 ## Lists
 
 1. Ordered
@@ -208,21 +195,34 @@ Reference-styled image:
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
 HTML-styled image:
-<a name="Logo Title Text 3"> <img align="center" width="25px" border="3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"> </a>
+<a name="Logo Title Text 3"> <img align="center" width="25px" border="3" alt="Logo Title Text 3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"> </a>
 
 HTML-styled image with reference:
-<a href="https://www.gnu.org/software/bash/"> <img align="center" alt="bash" width="26px" src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg"></a>
+<a href="https://www.gnu.org/software/bash/"> <img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" alt="Logo Title Text 4" ></a>
 
 HTML-styled image with markdown reference:
-[<img align="right" alt="bash" width="26px" src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg">][bash]
+[<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="right" alt="bash" width="25px" alt="Logo Title Text 5">][markdown]
 
-[bash]: https://www.gnu.org/software/bash/
+[markdown]: https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0
 
 HTML options for image inserting:
 - href="link"
 - width="INT" or "INTpx"
 - height="INT" or "INTpx"
 - border="INT"
+
+
+## Alignments
+
+Text or image alignments can be done using HTML tags.
+
+Image alignment:
+<p align="right">
+<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3">
+</p>
+
+Text alignment:
+<h5 align="center">Centered text.</h5>
 
 
 ### Tables
