@@ -196,13 +196,15 @@ Reference-styled image:
 
 HTML-styled image:
 <a name="Logo Title Text 3"> <img align="center" width="25px" border="3" alt="Logo Title Text 3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"> </a>
+<!-- border tag not working in GitHub! -->
 
 HTML-styled image with reference:
-<a href="https://www.gnu.org/software/bash/"> <img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" alt="Logo Title Text 4" ></a>
+<a href="https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0"> <img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" alt="Logo Title Text 4" ></a>
+<!-- alt tex tag not working! -->
 
 HTML-styled image with markdown reference:
 [<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="right" alt="bash" width="25px" alt="Logo Title Text 5">][markdown]
-
+<!-- alt tex tag not working! -->
 [markdown]: https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0
 
 HTML options for image inserting:
