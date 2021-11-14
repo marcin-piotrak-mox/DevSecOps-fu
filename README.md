@@ -18,32 +18,37 @@
 <table>
   <tbody>
     <tr>
-      <th colspan="7">Languages</th>
+      <th colspan="8">Languages</th>
     </tr>
     <tr>
-      <td align="center" width="14%"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="92px;" height="92px;"><br /><b>Shell (in progress)</b></a></td>
-      <td align="center" width="14%"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" width="92px;" height="92px;"><br /><b>Go (in progress)</b></a></td>
-      <td align="center" width="14%"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="92px;" height="92px;"><br /><b>YAML</b></a></td>
-      <td align="center" width="14%"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="92px;" height="92px;"><br /><b>Markdown</b></a></td>
+      <td></td>
+      <td></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="80px;"><br /><b>Shell (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" width="80px;" height="80px;"><br /><b>Go (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="80px;" height="80px;"><br /><b>YAML</b></a></td>
+      <td align="center" width="12,5%"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="80px;"><br /><b>Markdown</b></a></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
-      <th colspan="7">Tools</th>
+      <th colspan="8">Tools</th>
     </tr>
     <tr>
-      <td align="center" width="14%"><a href=""><img src="https://www.vectorlogo.zone/logos/linux/linux-icon.svg" width="92px;" height="92px;"><br /><b>Linux (in progress)</b></a></td>
-      <td align="center" width="14%"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" width="92px;" height="92px;"><br /><b>Kubernetes (in progress)</b></a></td>
-      <td align="center" width="14%"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" width="92px;" height="92px;"><br /><b>Helm (in progress)</b></a></td>
-      <td align="center" width="14%"><a href=""><img src="https://www.vectorlogo.zone/logos/istioio/istioio-icon.svg" width="92px;" height="92px;"><br /><b>Istio (in progress)</b></a></td>
-      <td align="center" width="14%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" width="92px;" height="92px;"><br /><b>Vault</b></a></td>
-      <td align="center" width="14%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" width="92px;" height="92px;"><br /><b>Terraform (in progress)</b></a></td>
-      <td align="center" width="14%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" width="92px;" height="92px;"><br /><b>Git (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/linux/linux-icon.svg" width="80px;" height="80px;"><br /><b>Linux (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" width="80px;" height="80px;"><br /><b>Kubernetes (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" width="80px;" height="80px;"><br /><b>Helm (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/istioio/istioio-icon.svg" width="80px;" height="80px;"><br /><b>Istio (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href=""><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" width="80px;" height="80px;"><br /><b>Git (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" width="80px;" height="80px;"><br /><b>Docker (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" width="80px;" height="80px;"><br /><b>Terraform (in progress)</b></a></td>
+      <td align="center" width="12,5%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" width="80px;" height="80px;"><br /><b>Git (in progress)</b></a></td>
     </tr>
   </tbody>
 </table>
 </p>
 
 <!-- TODO: Center first row of table. Check on h2 background color. -->
-<!-- https://www.vectorlogo.zone/logos/docker/docker-icon.svg -->
+<!-- -->
 
 # Table of contents
 
