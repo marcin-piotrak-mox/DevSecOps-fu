@@ -12,10 +12,12 @@
   </a>
 </p>
 
+<p align="center">Collection of notes from my journey to becoming (mighty) DevSecOps Engineer!</p>
+
 <p align="center">
-<table>
+<table style="width:100%">
     <tr>
-      <th colspan="5">Languages</th>
+      <th colspan="8">Languages</th>
     </tr>
   <tbody>
     <tr>
@@ -29,7 +31,7 @@
       <td></td>
     </tr>
     <tr>
-      <th colspan="5">Tools</th>
+      <th colspan="8">Tools</th>
     </tr>
     <tr>
       <td></td>
