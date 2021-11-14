@@ -34,7 +34,6 @@
       <th colspan="8">Tools</th>
     </tr>
     <tr>
-      <td></td>
       <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/linux/linux-icon.svg" alt="Linux" width="90px;" height="90px;"><br /><b>Linux</b></a></td>
       <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" width="90px;" height="90px;"><br /><b>Kubernetes</b></a></td>
       <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" alt="Helm" width="90px;" height="90px;"><br /><b>Helm</b></a></td>
@@ -42,8 +41,6 @@
       <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" alt="Vault" width="90px;" height="90px;"><br /><b>Vault</b></a></td>
       <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="Terraform" width="90px;" height="90px;"><br /><b>Terraform</b></a></td>
       <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" width="90px;" height="90px;"><br /><b>Git</b></a></td>
-      <td></td>
-      <td></td>
     </tr>
   </tbody>
 </table>
