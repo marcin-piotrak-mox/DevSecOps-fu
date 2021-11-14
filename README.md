@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300px" src="https://github.com/mpiotrak/DevSecOps-fu/blob/main/_screenshots/devsecops.png" align="center" alt="devsecops-fu">
+  <img src="https://github.com/mpiotrak/DevSecOps-fu/blob/main/_screenshots/devsecops.png" align="center" width="300px" alt="devsecops-fu">
   <h2 align="center">DevSecOps-fu</h2>
 </p>
 
@@ -63,15 +63,14 @@ If only the information gathered here will help someone gain some useful knowled
 Any suggestions or insights are more than welcome!
 
 
-## cheatsheets
+## cheatsheets <a name="paragraph1.1"> </a>
 
 Handy templates on how to use some of languages - mainly yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
 
-## vault
+## vault <a name="paragraph1.2"> </a>
 
 Combined official Hashicorp documentation, course content from Pluralsight's certification path for Hashicorp Vault and my observations/insights (i.e "How-to" or "Commands" sections).
-
 
 
 [^1]: Books I really enjoyed reading:

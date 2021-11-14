@@ -2,6 +2,8 @@ Source:
 - https://daringfireball.net/
 - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 - https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0
+- https://github.github.com/gfm/#introduction :octocat:
+- https://www.w3schools.com/tags/
 
 ## Headers
 
@@ -106,6 +108,13 @@ No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
+To display triple backticks in a fenced code block, wrap them inside quadruple backticks. :octocat:
+````
+```
+Look! You can see my backticks.
+```
+````
+
 
 ## Blackquotes
 
@@ -173,8 +182,6 @@ Second Term
 
 [Numbered reference-styled link][1]
 
-[Relative reference to a repository file](../LICENSE)
-
 Link referenced [elswhere].
 
 URLs (http://www.google.com) and URLs in angle brackets <http://www.google.com> (`<>`) will automatically get turned into links.
@@ -183,29 +190,44 @@ URLs (http://www.google.com) and URLs in angle brackets <http://www.google.com> 
 [1]: https://pl.wikipedia.org/wiki/Markdown "Markdown"
 [elswhere]: https://pl.wikipedia.org/wiki/Linux
 
+### Relative links
+
+[Link to a file on the same branch][/assets/images/electrocat.png]
+
+[Link to a file on another branch][/../main/assets/images/electrocat.png]
+
+[Link to a file in issues, pull requests and comments of the repository][../blob/main/assets/images/electrocat.png]
+
+[Link to a file in another repository][/../../../../github/docs/blob/main/assets/images/electrocat.png]
+
+[Link to a file in issues, pull requests and comments of another repository][../../../github/docs/blob/main/assets/images/electrocat.png?raw=true]
+
 
 ## Images
 
 Inline-styled image:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Image title text 1")
 
 Reference-styled image:
-![alt text][logo]
+![alt text][image]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[image]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Image title text 2"
 
 HTML-styled image:
-<a name="Logo Title Text 3"> <img align="center" width="25px" border="3" alt="Logo Title Text 3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"> </a>
+<a name="Image title text 3"><img align="center" width="25px" border="3" alt="Image title text 3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"></a>
 <!-- border tag not working in GitHub! -->
 
 HTML-styled image with reference:
-<a href="https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0"> <img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" alt="Logo Title Text 4" ></a>
+<a href="https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0"><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" alt="Image title text 4"></a>
 <!-- alt tex tag not working! -->
 
 HTML-styled image with markdown reference:
-[<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="right" alt="bash" width="25px" alt="Logo Title Text 5">][markdown]
+[<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="right" alt="bash" width="25px" alt="Image title text 5">][markdown]
 <!-- alt tex tag not working! -->
 [markdown]: https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0
+
+HTML-styled image with relative reference:
+[<img src="../_screenshots/devsecops.png" align="left" alt="devsecops" width="25px" alt="Image title text 6">]
 
 HTML options for image inserting:
 - href="link"
@@ -227,7 +249,7 @@ Text alignment:
 <h5 align="center">Centered text.</h5>
 
 
-### Tables
+## Tables
 
 Markdown-styled tables with headers and different pipes/dashes alignment
 
@@ -254,7 +276,7 @@ Markdown-styled table rules:
 - outer pipes `|` are optional
 - lines don't need to be fixed up prettily, inline-styled lines are also accepted
 - markdown formattin is acceptable - links, code (words or phrases in backticks (`) only, not code blocks), and emphasis
-- HTML character code (&#124;) to display a pipe character in a table
+- HTML character code (&#124;) to display a pipe character in a table or escapi it using `\`
 
 HTML-styled table with no headers
 <table>
@@ -291,7 +313,7 @@ HTML-styled tables side by side with headers
 |--|--|--|
 | 1 | 2 | 3 |
 
-</td></tr> </table>
+</td></tr></table>
 
 HTML-styled multiline table
 
@@ -307,11 +329,11 @@ Here's a simple footnote,[^1] and here's a longer one.[^multiline_footnote]
 [^1]: First footnote.
 [^multiline_footnote]: Footnote with multiple paragraphs and code.
 
-    Paragraphs need to be indented to be included in multiline footnote.
+  Paragraphs need to be indented (**4 spaces** in Markdown and **2 spaces** in GitHub :octocat:) to be included in multiline footnote.
 
-    `{ my code }`
+  `{ my code }`
 
-    Another **paragraph**.
+  Another **paragraph**.
 
 
 ## Horizontal Rules
