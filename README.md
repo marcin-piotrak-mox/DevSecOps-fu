@@ -23,7 +23,7 @@
     <tr>
       <td></td>
       <td></td>
-      <td colspan="7"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Bash/Zsh" width="90px;" height="90px;"><br /><b>Bash/Zsh</b></a></td>
+      <td><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Bash/Zsh" width="90px;" height="90px;"><br /><b>Bash/Zsh</b></a></td>
       <td><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" alt="Go" width="90px;" height="90px;"><br /><b>Go</b></a></td>
       <td><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" alt="YAML" width="90px;" height="90px;"><br /><b>YAML</b></a></td>
       <td><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" alt="Markdown" width="90px;" height="90px;"><br /><b>Markdown</b></a></td>
