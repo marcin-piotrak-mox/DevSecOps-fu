@@ -38,9 +38,9 @@
       <td align="center" width="13%"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" width="80px;" height="80px;"><br /><b>Kubernetes (in progress)</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" width="80px;" height="80px;"><br /><b>Helm (in progress)</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/istioio/istioio-icon.svg" width="80px;" height="80px;"><br /><b>Istio (in progress)</b></a></td>
-      <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" width="80px;" height="80px;"><br /><b>Vault (in progress)</b></a></td>
-      <td align="center" width="12%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" width="80px;" height="80px;"><br /><b>Docker (in progress)</b></a></td>
-      <td align="center" width="13%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" width="80px;" height="80px;"><br /><b>Terraform (in progress)</b></a></td>
+      <td align="center" width="12%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" width="80px;" height="80px;"><br /><b>Vault</b></a></td>
+      <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" width="80px;" height="80px;"><br /><b>Docker (in progress)</b></a></td>
+      <td align="center" width="13%"><a href=""><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" width="80px;" height="80px;"><br /><b>Terraform (in progress)</b></a></td>
       <td align="center" width="13%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" width="80px;" height="80px;"><br /><b>Git (in progress)</b></a></td>
     </tr>
   </tbody>
