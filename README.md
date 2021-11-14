@@ -21,8 +21,8 @@
     </tr>
   <tbody>
     <tr>
-      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Bash/Zsh" width="90px;" height="90px;"><br /><b>Bash/Zsh</b></a></td>
-      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" alt="Go" width="90px;" height="90px;"><br /><b>Go</b></a></td>
+      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="Bash/Zsh" width="90px;" height="90px;"><br /><b>Bash/Zsh (in progress)</b></a></td>
+      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" alt="Go" width="90px;" height="90px;"><br /><b>Go (in progress)</b></a></td>
       <td align="center"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" alt="YAML" width="90px;" height="90px;"><br /><b>YAML</b></a></td>
       <td align="center"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" alt="Markdown" width="90px;" height="90px;"><br /><b>Markdown</b></a></td>
     </tr>
@@ -30,13 +30,13 @@
       <th colspan="7">Tools</th>
     </tr>
     <tr>
-      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/linux/linux-icon.svg" alt="Linux" width="92px;" height="92px;"><br /><b>Linux</b></a></td>
-      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" width="92px;" height="92px;"><br /><b>Kubernetes</b></a></td>
-      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" alt="Helm" width="92px;" height="92px;"><br /><b>Helm</b></a></td>
-      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/istioio/istioio-icon.svg" alt="Istio" width="92px;" height="92px;"><br /><b>Istio</b></a></td>
+      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/linux/linux-icon.svg" alt="Linux" width="92px;" height="92px;"><br /><b>Linux (in progress)</b></a></td>
+      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="Kubernetes" width="92px;" height="92px;"><br /><b>Kubernetes (in progress)</b></a></td>
+      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" alt="Helm" width="92px;" height="92px;"><br /><b>Helm (in progress)</b></a></td>
+      <td align="center"><a href=""><img src="https://www.vectorlogo.zone/logos/istioio/istioio-icon.svg" alt="Istio" width="92px;" height="92px;"><br /><b>Istio (in progress)</b></a></td>
       <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" alt="Vault" width="92px;" height="92px;"><br /><b>Vault</b></a></td>
-      <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="Terraform" width="92px;" height="92px;"><br /><b>Terraform</b></a></td>
-      <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" width="92px;" height="92px;"><br /><b>Git</b></a></td>
+      <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="Terraform" width="92px;" height="92px;"><br /><b>Terraform (in progress)</b></a></td>
+      <td align="center"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" width="92px;" height="92px;"><br /><b>Git (in progress)</b></a></td>
     </tr>
   </tbody>
 </table>
