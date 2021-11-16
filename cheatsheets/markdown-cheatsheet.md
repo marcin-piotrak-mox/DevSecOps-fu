@@ -47,6 +47,7 @@ This line is separated from the one above by **two newlines**, so it will be a *
 
 This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
+To have a line break without a paragraph, **previous line** needs to use **two trailing spaces**.
 
 `&nbsp;` - 1 space<br>
 `&ensp;` - 2 spaces<br>
@@ -214,20 +215,20 @@ Reference-styled image:
 [image]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Image title text 2"
 
 HTML-styled image:
-<a name="Image title text 3"><img align="center" width="25px" border="3" alt="Image title text 3" src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png"></a>
+<a name="Image title text 3"><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" border="3" alt="Image title text 3"></a>
 <!-- border tag not working in GitHub! -->
 
 HTML-styled image with reference:
 <a href="https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0"><img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="center" width="25px" alt="Image title text 4"></a>
 <!-- alt tex tag not working! -->
 
+HTML-styled image with relative reference:
+<img src="../_screenshots/devsecops.png" align="left" width="50px" alt="Image title text 5">
+
 HTML-styled image with markdown reference:
-[<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="right" alt="bash" width="25px" alt="Image title text 5">][markdown]
+[<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" align="right" width="25px" alt="Image title text 6">][markdown]
 <!-- alt tex tag not working! -->
 [markdown]: https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0
-
-HTML-styled image with relative reference:
-[<img src="../_screenshots/devsecops.png" align="left" alt="devsecops" width="25px" alt="Image title text 6">]
 
 HTML options for image inserting:
 - href="link"
