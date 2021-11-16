@@ -599,6 +599,8 @@ As an alternative a cubbyhole can be created which stores a copy of a secret, th
 `vault kv get -wrap-ttl=30m kv/[secret]` - creates single-use wrapped token for specific secret with explicit max TTL (impossible to renew)<br>
 `vault unwrap [options] [TOKEN] `- unwrapps issued token with data from specific secret (no need to authenticate to Vault, however unwrapping is done by connecting to it)
 
+:books: [Response wrapping - additional documentation](https://www.vaultproject.io/docs/concepts/response-wrapping "Response wrapping")
+
 
 ## Dynamic secret lifecycle <a name="paragraph4.6"></a>
 
