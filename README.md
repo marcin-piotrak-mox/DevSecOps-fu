@@ -14,6 +14,7 @@
 
 <p align="center">Collection of notes from my journey to becoming (mighty) DevSecOps Engineer!</p>
 
+<p align="center">
 <table>
   <tbody>
     <tr>
@@ -44,6 +45,7 @@
     </tr>
   </tbody>
 </table>
+<p>
 
 <!-- TODO: Center first row of table. Check on h2 background color. -->
 
