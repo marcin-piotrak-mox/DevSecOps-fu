@@ -51,7 +51,8 @@
 
 - [Overview](#paragraph1)
   - [cheatsheets](#paragraph1.1)
-  - [vault](#paragraph1.2)
+  - [Helm](#paragraph1.2)
+  - [Vault](#paragraph1.3)
 
 
 # Overview <a name="paragraph1"> </a>
@@ -70,7 +71,11 @@ Any suggestions or insights are more than welcome!
 Handy templates on how to use some of languages - mainly yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
 
-## vault <a name="paragraph1.2"> </a>
+## Helm <a name="paragraph1.2"> </a>
+
+Combined official documentation, course content from Pluralsight and my observations/insights.
+
+## Vault <a name="paragraph1.3"> </a>
 
 Combined official Hashicorp documentation, course content from Pluralsight's certification path for Hashicorp Vault and my observations/insights (i.e "How-to" or "Commands" sections).
 

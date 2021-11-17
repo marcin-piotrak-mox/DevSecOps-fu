@@ -1,14 +1,25 @@
-#----- COMMANDS -----#
+# Table of contents
 
-[chart_name] - refers to either [repo/chart_name] or ./[local_chart_directory]
-[name] - refers to the release_name. Release is a running instance of a chart
+- [Overview](#paragraph1)
+  - [](#paragraph1.1)
+
+
+# Overview
+
+Helm is an open source package manager for Kubernetes graduated from CNCF. It provides the ability to provide, share, and use software built for Kubernetes.
+For the use of this documentation below naming convention will be used:
+- `[chart_name]` - refers to either [repo/chart_name] or ./[local_chart_directory]
+- `[name]` - refers to the release name; release is a running instance of a chart
+
+
+# Commands
 
 helm create [name]
 
 helm fetch [repo/chart_name] - downloads helm-chart files for revision
 helm fetch --untar [repo/chart_name] - downloads and decompresses
 
-helm install [name] [chart_name]
+helm install [name] [chart_name] - installs a chart archive
 
 
 helm install [name] [chart_name] --dry-run --debug ----disable-openapi-validation - [--dry-run] simulates installation. [--debug] enables verbose output; [--disable-openapi-validation] installation process will not validate rendered templates against the Kubernetes API
@@ -70,7 +81,7 @@ helm env - lists all the environment variables used by Helm
 * File in which all the repositories are listed.
 
 
-#----- TEMPLATES -----#
+# Templates
 
 ---Template structure
 Helm templates are based on Go templates.
@@ -86,7 +97,7 @@ static - using helm template [chart_name] - works offline without contacting Kub
 dynamic - using helm install [name] [chart_name] --dry-run --debug 2>&1 | less - contacts Kubernetes API but does not commit actual changes. [--debug] flag redirects to stderr therefore 2>&1 redirection has been used.
 
 
-#----- FUNCTIONS&PIPELINES -----#
+# Functions and pipelines
 
 
 
@@ -152,7 +163,7 @@ tpl function evaluates its first argument as a template in the context of its se
 * Example of template rendered without use of whitespace manipulator and with it. Rendering engine removes the contents inside brackets - {{ }} - but the preceding whitespace and the subsequent newline remains, therefore the empty space in the first example was present. Make sure there is a space between the - and the rest of the directive. {{- 3 }} translates to “remove a whitespace to the left and print ‘3’”, while {{-3}} means “print ‘-3’”.
 
 
-#----- LOGICAL OPERATORS/CONDITIONS/VARIABLES/HELPERS -----#
+# Logical operators/Conditions/Variables/Helpers
 
 
 ---logical operators
@@ -186,7 +197,7 @@ NOTE: Files prefixed with underscore [_] are not rendered by helm engine.
 NOTE: Chart of type type: library can be used as storage of helpers for the others chelm_charts. It will not render any template files even if it contains any (usually doesn’t).
 
 
-#----- PASSING VALUES -----#
+# Passing values
 
 The default values file must be named values.yaml to replace their placeholders in the template files. If placed in templates directory it will be rendered automatically otherwise it needs to be referred using the [-f /file/directory] flag.
 Template files can also get their values from the user via the --set flag on the install command. Passed value can be in form of array therefore it should be passed as follows - --set foo.subfoo[0].id=bar
@@ -213,7 +224,7 @@ annotation: data.{{ Template.Name }}/{{ Template.BasePath }} - passing values ab
 annotation: data.{{ Chart.Name }} - in this situation “Name” starts with uppercase even though file Chart.yaml has a parameter “name”.
 
 
-#----- WORKING WITH REPOSITORY -----#
+# Working with repository
 
 Helm repository is a web server representing the content of index.yaml file.
 helm repo list
@@ -239,7 +250,7 @@ Once this is done we need to publish it to the remote storage and then update lo
 helm repo index update
 
 
-#----- SUBCHARTS -----#
+# Subcharts
 
 
 Parent chart can explicitly override the values of the subchart by defining the value on its values file.
@@ -248,7 +259,7 @@ Global values on the other hand can be accessed by both the parent and any subch
 
 
 
-#----- HOOKS -----#
+# Hooks
 
 
 Chart hooks provide a mechanism to exert control over chart processing.
@@ -278,7 +289,7 @@ post-rollback
 
 
 
-#----- RANDOM -----#
+# random shit
 
 
 Helm functions are used to generate random data, such as passwords, keys, and certificates. Random generation creates new arbitrary values and updates the resources in the cluster with each deployment and upgrade. For example, it can replace your database password in the cluster with every version upgrade. This causes the clients to be unable to connect to the database after the password change.
