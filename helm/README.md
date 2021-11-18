@@ -7,12 +7,44 @@
 # Overview
 
 Helm is an open source package manager for Kubernetes graduated from CNCF. It provides the ability to provide, share, and use software built for Kubernetes.
+
 For the use of this documentation below naming convention will be used:
-- `[chart_name]` - refers to either [repo/chart_name] or ./[local_chart_directory]
-- `[name]` - refers to the release name; release is a running instance of a chart
+- `[chart_name]` - refers to either `[repo/chart_name]` or `./[local_chart_directory]`
+- `[name]` - refers to the release name (running instance of a chart)
+
+# Repository
+
+Helm repository is a web server representing the content of index.yaml file.
+
+`helm repo list`
+`helm repo add/remove [repo_name] [repo_url]`
+`helm repo update` - gets the latest information about charts from the respective chart repositories
+
+helm search <command> - searches for charts
+&emsp;&emsp;helm search repo [keyword] - searches repositories for a keyword in charts
+&emsp;&emsp;helm search hub [keyword] - searches for charts in the Artifact Hub or own hub instance
+
+
+Once files are locally tested and complete to be released it would be firstly packed using:
+helm package ./[local_chart_directory]
+&emsp;&emsp;helm package ./[local_chart_directory] --sign --key [key_name] --keyring [keyring_location} ./[local_chart_directory] - allows to sign chart package with GPG key and save sha256 sum to [local_package_name.tgz.prov] file
+
+helm verify [local_package_name.tgz] - verifies package against information saved in [local_package_name.tgz.prov] file
+
+Then we would need to create index file
+helm repo index [helm_repo_directory] - creates index.yaml file based on packed helms in specified directory. if index.yaml already exists it will be updated
+
+Once this is done we need to publish it to the remote storage and then update local repository information using:
+helm repo index update
 
 
 # Commands
+
+helm <command> - examplary command syntax
+&emsp;&emsp;helm <command> --kube-context [context-name]
+&emsp;&emsp;helm <command> --kubeconfig
+
+
 
 helm create [name]
 
@@ -20,8 +52,6 @@ helm fetch [repo/chart_name] - downloads helm-chart files for revision
 helm fetch --untar [repo/chart_name] - downloads and decompresses
 
 helm install [name] [chart_name] - installs a chart archive
-
-
 helm install [name] [chart_name] --dry-run --debug ----disable-openapi-validation - [--dry-run] simulates installation. [--debug] enables verbose output; [--disable-openapi-validation] installation process will not validate rendered templates against the Kubernetes API
 helm install [name] [chart_name] --version=[specific_version]
 helm install [name] [chart_name] --values=[custom_values.yaml] - install chart with custom values file (overriding default values.yaml file)
@@ -49,9 +79,6 @@ helm get values [name] - downloads a values file for a given release
 
 helm ls
 helm ls --short
-
-helm [command] --kube-context [context-name]
-helm [command] --kubeconfig
 
 helm upgrade [name] [chart_name] --recreate-pods
 helm upgrade [name] [chart_name] --install --atomic - [--install] will install chart if not present; [--atomic]  will automatically run a helm rollback if upgrade fails
@@ -222,32 +249,6 @@ annotation: data.{{ File.Get file_name.txt }} - it is possible to render file co
 annotation: data.{{ Template.Name }}/{{ Template.BasePath }} - passing values about template itself
 
 annotation: data.{{ Chart.Name }} - in this situation “Name” starts with uppercase even though file Chart.yaml has a parameter “name”.
-
-
-# Working with repository
-
-Helm repository is a web server representing the content of index.yaml file.
-helm repo list
-helm repo add/remove [repo_name] [repo_url]
-
-
-helm repo update [helm_repo_directory]
-helm search repo [repo/chart_name] - searches for specific chart in already added locally repos
-
-* different locations searching came in with Helm3
-
-
-Once our files are tested and complete to be released we would firstly pack them using:
-helm package ./[local_chart_directory]
-
-helm package ./[local_chart_directory] --sign --key [key_name] --keyring [keyring_location} ./[local_chart_directory] - allows to sign chart package with GPG key and save sha256 sum to [local_package_name.tgz.prov] file
-helm verify [local_package_name.tgz] - verifies package against information saved in [local_package_name.tgz.prov] file
-
-Then we would need to create index file
-helm repo index [helm_repo_directory] - creates index.yaml file based on packed helms in specified directory. if index.yaml already exists it will be updated
-
-Once this is done we need to publish it to the remote storage and then update local repository information using:
-helm repo index update
 
 
 # Subcharts

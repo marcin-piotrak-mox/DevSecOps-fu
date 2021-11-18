@@ -14,7 +14,6 @@
 
 <p align="center">Collection of notes from my journey to becoming (mighty) DevSecOps Engineer!</p>
 
-<p align="center">
 <table>
   <tbody>
     <tr>
@@ -36,7 +35,7 @@
     <tr>
       <td align="center" width="13%"><a href=""><img src="https://www.vectorlogo.zone/logos/linux/linux-icon.svg" width="80px;" height="80px;"><br /><b>Linux (in progress)</b></a></td>
       <td align="center" width="13%"><a href=""><img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" width="80px;" height="80px;"><br /><b>k8s (in progress)</b></a></td>
-      <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" width="80px;" height="80px;"><br /><b>Helm (in progress)</b></a></td>
+      <td align="center" width="12%"><a href="helm/README.md"><img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" width="80px;" height="80px;"><br /><b>Helm (in progress)</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/istioio/istioio-icon.svg" width="80px;" height="80px;"><br /><b>Istio (in progress)</b></a></td>
       <td align="center" width="12%"><a href="vault/README.md"><img src="https://www.vectorlogo.zone/logos/vaultproject/vaultproject-icon.svg" width="80px;" height="80px;"><br /><b>Vault</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" width="80px;" height="80px;"><br /><b>Docker (in progress)</b></a></td>
@@ -45,9 +44,11 @@
     </tr>
   </tbody>
 </table>
-<p>
 
-<!-- TODO: Center first row of table. Check on h2 background color. -->
+<!-- TODO: Center first row of table. Check on h2 background color.
+https://stackoverflow.com/questions/36121672/set-table-column-width-via-markdown/51701842
+https://pretagteam.com/question/table-align-center-not-working-in-github
+https://www.quackit.com/html/codes/tables/html_table_border.cfm -->
 
 # Table of contents
 
@@ -68,7 +69,7 @@ If only the information gathered here will help someone gain some useful knowled
 Any suggestions or insights are more than welcome!
 
 
-## cheatsheets <a name="paragraph1.1"> </a>
+## Cheatsheets <a name="paragraph1.1"> </a>
 
 Handy templates on how to use some of languages - mainly yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
@@ -76,6 +77,7 @@ Handy templates on how to use some of languages - mainly yaml and markup. No mat
 ## Helm <a name="paragraph1.2"> </a>
 
 Combined official documentation, course content from Pluralsight and my observations/insights.
+
 
 ## Vault <a name="paragraph1.3"> </a>
 

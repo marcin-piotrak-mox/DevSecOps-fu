@@ -637,7 +637,7 @@ Lease properties:
 
 # Commands <a name="paragraph6"></a>
 
-`vault <command><subcommand> [options] [ARGUMENTS]` - examplary command syntax
+`vault <command> <subcommand> [options] [ARGUMENTS]` - examplary command syntax
 
 
 ## Sealing/Unsealing related commands <a name="paragraph6.1"></a>
