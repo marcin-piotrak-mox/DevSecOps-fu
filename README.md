@@ -23,7 +23,7 @@
     <tr>
       <td></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="80px;"><br /><b>Shell (in progress)</b></a></td>
-      <td align="center" width="12%"><a href="cheatsheets/regex-cheatsheet.md"><img src="_screenshots/regex.png" width="80px;" height="80px;"><br /><b>RegEx</b></a></td>
+      <td align="center" width="12%"><a href="cheatsheets/regex-cheatsheet.md"><img src="_screenshots/regex.png" width="80px;" height="80px;"><br /><b>RegEx (in progress)</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" width="80px;" height="80px;"><br /><b>Go (in progress)</b></a></td>
       <td align="center" width="12%"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="80px;" height="80px;"><br /><b>YAML</b></a></td>
       <td align="center" width="12%"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="80px;"><br /><b>Markdown</b></a></td>
