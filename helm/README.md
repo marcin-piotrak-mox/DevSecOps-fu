@@ -1,3 +1,8 @@
+Source:
+- https://helm.sh/docs/
+- https://app.pluralsight.com/library/courses/kubernetes-packaging-applications-helm/
+---
+
 # Table of contents
 
 - [Overview](#paragraph1)
