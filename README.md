@@ -22,8 +22,8 @@
     </tr>
     <tr>
       <td></td>
-      <td></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="80px;"><br /><b>Shell (in progress)</b></a></td>
+      <td align="center" width="12%"><a href="cheatsheets/regex-cheatsheet.md"><img src="_screenshots/regex.png" width="80px;" height="80px;"><br /><b>RegEx</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" width="80px;" height="80px;"><br /><b>Go (in progress)</b></a></td>
       <td align="center" width="12%"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="80px;" height="80px;"><br /><b>YAML</b></a></td>
       <td align="center" width="12%"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="80px;"><br /><b>Markdown</b></a></td>
@@ -70,7 +70,7 @@ Any suggestions or insights are more than welcome!
 
 ## cheatsheets <a name="paragraph1.1"> </a>
 
-Handy templates on how to use some of languages - mainly yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
+Handy templates on how to use some of languages - mainly regex, yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
 
 ## vault <a name="paragraph1.2"> </a>
