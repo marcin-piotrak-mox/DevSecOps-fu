@@ -92,4 +92,6 @@ Combined official Hashicorp documentation, course content from Pluralsight's cer
     - https://itsfoss.com/
     - https://www.geeksforgeeks.org/
     - https://www.digitalocean.com/community/tutorials/
+    - https://overapi.com/
+    - https://devhints.io/
 [^3]: https://www.pluralsight.com/
