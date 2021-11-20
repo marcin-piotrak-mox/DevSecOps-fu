@@ -57,7 +57,7 @@
   - [vault](#paragraph1.2)
 
 
-# Overview <a name="paragraph1"> </a>
+# Overview <a name="paragraph1"></a>
 
 Following repository is the collection of notes I've been taking since the day I decided to first become DevOps and later on (mighty) DevSecOps engineer! :ninja: The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis, so here we are :wink:
 
@@ -68,12 +68,12 @@ If only the information gathered here will help someone gain some useful knowled
 Any suggestions or insights are more than welcome!
 
 
-## cheatsheets <a name="paragraph1.1"> </a>
+## cheatsheets <a name="paragraph1.1"></a>
 
 Handy templates on how to use some of languages - mainly regex, yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
 
-## vault <a name="paragraph1.2"> </a>
+## vault <a name="paragraph1.2"></a>
 
 Combined official Hashicorp documentation, course content from Pluralsight's certification path for Hashicorp Vault and my observations/insights (i.e "How-to" or "Commands" sections).
 
@@ -81,6 +81,7 @@ Combined official Hashicorp documentation, course content from Pluralsight's cer
 [^1]: Books I really enjoyed reading:
     - UNIX and Linux System Administration Handbook 5th Edition; Addison-Wesley Professional
     - Linux Shell Scripting Cookbook - Third Edition: Do amazing things with the shell and automate tedious tasks 3rd Revised edition; Packt Publishing
+    - Learning Regular Expressions 1st Edition; Addison-Wesley Professional
     - Site Reliability Engineering: How Google Runs Production Systems 1st Edition; O'Reilly Media
 [^2]: Sites that I subcribe to or browse for solution:
     - https://roadmap.sh/devops
@@ -92,4 +93,5 @@ Combined official Hashicorp documentation, course content from Pluralsight's cer
     - https://itsfoss.com/
     - https://www.geeksforgeeks.org/
     - https://www.digitalocean.com/community/tutorials/
+    - https://regex101.com/
 [^3]: https://www.pluralsight.com/
