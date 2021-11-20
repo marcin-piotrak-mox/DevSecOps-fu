@@ -1,4 +1,4 @@
-<p align="center"><img src="../screenshots/regex2.png" align="center" width="500px" alt="regex2.png"></p>
+<p align="center"><img src="../_screenshots/regex2.png" align="center" width="500px" alt="regex2.png"></p>
 
 
 # Overview
