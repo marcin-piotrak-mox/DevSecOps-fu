@@ -184,7 +184,9 @@ Second Term
 
 Link referenced [elswhere].
 
-URLs (http://www.google.com) and URLs in angle brackets <http://www.google.com> (`<>`) will automatically get turned into links.
+URLs (http://www.google.com) and URLs in angle brackets <http://www.google.com> `<>` will automatically get turned into links.
+
+URLs can be disabled by adding `<span>` HTML tag into it - www<span>.google.pl
 
 [arbitrary case-insensitive reference text]: https://www.mozilla.org
 [1]: https://pl.wikipedia.org/wiki/Markdown "Markdown"
@@ -242,7 +244,7 @@ Text or image alignments can be done using HTML tags.
 
 Image alignment:
 <p align="right">
-<img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3">
+  <img src="https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png" width="50" height="50" border="3">
 </p>
 
 Text alignment:

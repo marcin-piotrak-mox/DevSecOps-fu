@@ -6,7 +6,7 @@ Source:
 # Table of contents
 
 - [Overview](#paragraph1)
-- [Matching](#paragraph2)
+- [Matching mechanisms](#paragraph2)
   - [Literal match](#paragraph2.1)
 
 
@@ -17,40 +17,33 @@ Source:
 
 <br>
 
-Regular expression (RegEx for short) is a sequence of characters that define a search pattern, which is usually used by text searching algorithms for ***find*** or ***find and replace*** operations on texts, as well as in input validation.
+Regular expression (RegEx for short) is a sequence of characters that define a search pattern, which is usually used by text searching algorithms for ***find*** or ***find and replace*** operations on texts, as well as in input validation. The power of regular expressions comes from its use of metacharacters, which are special characters (or sequences of characters) used to represent something else.
 
+<br>
 <p align="center"><img src="../_screenshots/regex2.png" align="center" width="500px" alt="regex2.png"></p>
 
 
-# Matching
+# Matching mechanisms
 
-By default the first match in finding mode is returned. This can be overwritten using the "/pattern/g" (g stands for global) modifier to return all matches.
+By default the first match in finding mode is returned. This can be overwritten using the "/pattern/g" (g stands for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
+
 <!-- m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
 <!-- i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z]) -->
-<!-- /regex/ delimiters are conventional and can be replaced with ~ # @ ; % or `. -->
+
 
 ## Literal match <a name="paragraph2"></a>
 
-RegEx: /code/g
+RegEx: /code/<br>
 Text: "My original `code` was saved in the file code1.js and the updated version is in codeFinal.js."
 
-
-## dot `.`
-
-/code./ - this syntax will match any word **code** followed by **any single character** (except line breakers/newline sign)
-
-RegEx: /code./g<br>
-Text: "My original code was saved in the file `code1`.js and the updated version is in `codeF`inal.js."
-
-:warning: If `g` modifier (or regex flag) wouldn't be used only the first match - `code1` would have been returned.
+> :warning: Since `g` modifier (or regex flag) wasn't used only the first match - `code` has been returned.
 
 
 ## Metacharacters
 
-- [x] metacharacters are digits with special meaning not the sign itself (literal meaning)
-- [x] there are two types of metacharacters:
-    - ones finding text - "*"
-    - ones used as a part of RegEx syntax - `[` or `]`
+Metacharacters are digits with special meaning not the sign itself (literal meaning) - `\` `^` `$` `.` `*` `[`  and `]`. Two types of metacharacters can be distinguished:
+- ones finding text - i.e `*` or `.`
+- ones used as a part of RegEx syntax - i.e. `[pattern]` or `{pattern}`
 
 RegEx: /1 \+ 3 \* \(2 \+ 2\)/g<br>
 Text: "`1 + 3 * (2 + 2)`"
@@ -70,13 +63,19 @@ Text: "Line one.
 `Line two.`
 Line three."
 
-
-#### White signs metacharacters shorthands:
-
 `[\f\n\r\t\v]` - can be replaced as `\s` matching **any whitespace character**
-`[^\f\n\r\t\v]` can be eplaced as `\S` matching **any non-whitespace character**
+`[^\f\n\r\t\v]` can be replaced as `\S` matching **any non-whitespace character**
 
-:exclamation: `\b` is not included in `\s` nor `\S`.
+> :exclamation: `\b` is not included in `\s` nor `\S`.
+
+
+## dot `.`
+
+RegEx: /code./g<br>
+Text: "My original code was saved in the file `code1`.js and the updated version is in `codeF`inal.js."
+Explanation: This syntax will match any word **code** followed by **any single character** (except line breakers/newline sign)
+
+> :warning: Since `g` modifier (or regex flag) has beeen used all matches of - `code.` have been returned.
 
 
 ## Character classes
@@ -88,8 +87,8 @@ Line three."
 RegEx: /[XYZ]code\.js/g<br>
 Text: "I have few JS files named `Xcode.js`, `Ycode.js` and `Zcode.js` but I don’t have the file file named Wcode.js or g`Xcode.js`."
 
-:bulb: "... Wcode.js ..." part wasn’t matched because not all ("W" isn’t part of "[XYZ]") conditions of regex were met
-:bulb: "...g`Xcode.js`" is an example when RegEx pattern should be more specific
+> :bulb: "(...) Wcode.js (...)" part wasn’t matched because not all ("W" isn’t part of "[XYZ]") conditions of regex were met
+> :bulb: "(...) g`Xcode.js`" is an example when RegEx pattern should be more specific
 
 RegEx: /[Cc]ode\.js/g<br>
 Text: "There are two files, `Code.js` and `code.js`."
@@ -100,7 +99,7 @@ Text: "There are two files, `Code.js` and `code.js`."
 - [x] range of characters within a class can be defined using dash `-` between two values
 - [x] `[0123456789]` is equal to `[0-9]`, same rule applies to character sets defining non-numbers
 - [x] reverse ranges such as `[Z-A]` or `[5-1]` do not work
-- [ ] dash `-` becomes a metacharacter only when used in a class (`[x-z]`), otherwise it is interpreted as a literal
+- [x] dash `-` becomes a metacharacter only when used in a class (`[x-z]`), otherwise it is interpreted as a literal
 
 RegEx: /[A-Za-z0-9]\.js/g<br>
 Text: "There are three files, `a.js`, `B.js` and `5.js`."
@@ -174,11 +173,11 @@ Text: "abc123"
 The caret (^) is a start of string anchor, which specifies that a match must occur at the beginning of the line/stringext.
 
 RegEx: /^www/
-Text: "Check out those two websites - www.wp.pl and www.google.pl."
+Text: "Check out those two websites - www<span>.wp.pl and www<span>.google.pl."
 The dollar ($) is the end anchor, that indicates the end of the line/stringext.
 
 RegEx: /pl$/<br>
-Text: "Check out those two websites - www.wp.pl and www.google.pl."
+Text: "Check out those two websites - www<span>.wp.pl and www<span>.google.pl."
 
 
 
@@ -218,7 +217,7 @@ RegEx: /<[Bb]>.*<\/[Bb]>/<br>
 Text: "<b>First</b> and <b>Second</b> words bold"
 
 Lazy matching on the other hand tries to match the minimum it can.
-RegEx: /<[Bb}>.*?<\/[Bb]>/<br>
+RegEx: /<[Bb]>.*?<\/[Bb]>/<br>
 Text: "<b>First</b> and <b>Second</b> words bold"
 
 * (greedy) vs *? (lazy)
@@ -238,6 +237,14 @@ Text: "This is a valid IP address: 127.0.0.1"
 
 to escape metacharacters precede them with a backslash.
 to escape backslash precede it with another backslash.
+
+\\ 	Literal backslash 	\\ 	\
+\^ 	Literal caret 	\^\{5\} 	^^^^^
+\$ 	Literal dollar sign 	\$5 	$5
+\. 	Literal period 	Yes\. 	Yes.
+\* 	Literal asterisk 	typo\* 	typo*
+\[ 	Literal open bracket 	[3\[] 	3, [
+\]
 
 
 /((?<=\/).*){2}/
