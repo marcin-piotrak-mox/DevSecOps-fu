@@ -28,7 +28,7 @@ Regular expression (RegEx for short) is a sequence of characters that define a s
 
 # Matching mechanisms <a name="paragraph2"></a>
 
-By default the first match in finding mode is returned. This can be overwritten using the "/pattern/g" (g stands for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
+By default the first match in finding mode is returned. This can be overwritten using the <samp>/pattern/g</samp> (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
 
 <!-- m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
 <!-- i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z]) -->
@@ -58,19 +58,19 @@ Text: "`1 + 3 * (2 + 2)`"
 ### White signs metacharacters
 
 `\b` - backspace<br>
-`\f` - form feed<br>
-`\n` - line feed<br>
+`\f` - form feed when encountered in code, causes printers to automatically advance one full page or the start of the next page<br>
+`\n` - newline feed represents the end of a line of text and the beginning of a new line<br>
 `\r` - carriage return<br>
-`\t` - tabulator<br>
+`\t` - tabulator is usually the equivalent number of five or eight spaces, depending on the program<br>
 `\v` - vertical tab
 
-RegEx: <samp>/\n\n/</samp><br>
+RegEx: <samp>**/\n\n/**</samp><br>
 Text: "Line one.<br>
 `Line two.`<br>
 Line three."
 
-`[\f\n\r\t\v]` - can be replaced as `\s` matching **any whitespace character**<br>
-`[^\f\n\r\t\v]` can be replaced as `\S` matching **any non-whitespace character**
+`[\f\n\r\t\v]` - can be replaced with `\s` matching **any whitespace character**<br>
+`[^\f\n\r\t\v]` can be replaced with `\S` matching **any non-whitespace character**
 
 > :exclamation: `\b` is not included in `\s` nor `\S`.
 
@@ -83,12 +83,12 @@ RegEx: <samp>/code./g</samp><br>
 Text: "My original code was saved in the file `code1`.js and the updated version is in `codeF`inal.js."<br>
 Explanation: This syntax will match any word **code** followed by **any single character**.
 
-> :warning: Since `g` modifier (or regex flag) has beeen used all matches of - `code.` have been returned.
+> :warning: Since `g` modifier (alternatively called regex flag) has beeen used all matches of `code.` were returned.
 
 
-## Character set (class)
+## Character class
 
-A character set is an explicit list of the characters that may qualify for a match in a search. A character set is indicated by enclosing a set of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
+A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
 
 RegEx: <samp>/[XYZ]code\.js/g</samp><br>
 Text: "I have few JS files named `Xcode.js`, `Ycode.js` and `Zcode.js` but I don’t have the file file named Wcode.js or g`Xcode.js`."<br>
@@ -117,9 +117,9 @@ RegEx: <samp>/[\D]\.js/g</samp><br>
 Text: "There are three files, `a.js`, `B.js` and 5.js."
 
 
-## Negated character set/range
+## Negated character class/range
 
-Placing caret (`^`) metacharacter after the opening square bracket of a character set can be used to deny all multiple character sets/ranges.
+Placing caret (`^`) metacharacter after the opening square bracket of a character class can be used to deny all multiple character classes/ranges.
 
 RegEx: <samp>/[^0-9]/g</samp><br>
 Text: "`Today is `2018`, I am `20` years old.`"
@@ -132,7 +132,7 @@ Text: "T`oday is `2018`, `I` am `20` years old.`"
 
 Quantifiers allow to declare quantities of data as part of pattern. For instance, ability to match exactly six spaces, or locate every numeric string that is between four and eight digits in length.
 
-`?` - matches `0` or `1` of the preceding character or set
+`?` - matches `0` or `1` of the preceding character or class
 
 RegEx: <samp>/br?eak/g</samp><br>
 Text: "`break` and `beak`"
@@ -143,14 +143,14 @@ Text: "`Jan` and `January`"
 RegEx: <samp>/Jan(uary)? 5(th)?/g</samp><br>
 Text: "`Jan 5th` and `Jan 5` and `January 5th` and `January 5`"
 
-`+` - matches `1` or more instances of the preceding character or set
+`+` - matches `1` or more instances of the preceding character or class
 
 RegEx: <samp>/[0-9]+/g</samp><br>
 Text: "`123`abc`456`"
 Text: "aa`1234`bb"
 Text: "+`1001234`"
 
-`*` - matches `0` or more instances of the preceding character or set
+`*` - matches `0` or more instances of the preceding character or class
 
 RegEx: <samp>/abc[0-9]*/g</samp><br>
 Text: "`abc`"<br>
@@ -180,15 +180,23 @@ Text: "`<b>First</b>` and `<b>Second</b>` words bold"
 
 Anchors and boundaries allow to describe text in terms of where it's located. Anchors specify **an exact position and this position only**, in the string or text where an occurence of a match is necessary.
 
-Caret (`^`) is a start of string anchor which specifies that a match must occur at the beginning of the line/string.
+Caret (`^`) is a start of string or start of line in multi-line pattern anchor which specifies that a match must occur at the beginning of the line/string.
 
 RegEx: <samp>/^www/g</samp><br>
 Text: "Check out those two websites - `www`<span>.wp.pl and `www`<span>.google.pl."
 
-Dollar (`$`) is the end of string anchor, that indicates that a match must occur at the end of the line/string.
+\A
+Start of string
+
+Dollar (`$`) is the end of string or end of line in multi-line patternanchor, that indicates that a match must occur at the end of the line/string.
 
 RegEx: <samp>/pl$/g</samp><br>
 Text: "Check out those two websites - www<span>.wp.`pl` and www<span>.google.`pl`."
+
+\Z
+end of string
+
+\z 	Absolute end of string
 
 A single character before the caret or after the dollar sign causes the match to fail:
 - /^Begin/ will not match " Begin"<br>
