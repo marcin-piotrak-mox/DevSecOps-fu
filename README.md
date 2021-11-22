@@ -48,7 +48,6 @@
 </p>
 
 <!-- TODO: Center first row of table. Check on h2 background color. -->
-<!-- -->
 
 # Table of contents
 

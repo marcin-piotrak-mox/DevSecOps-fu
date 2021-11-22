@@ -29,9 +29,12 @@ By default the first match in finding mode is returned. This can be overwritten 
 
 <!-- m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
 <!-- i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z]) -->
+<!-- x modifier: Allow comments and white space in pattern -->
 
 
 ## Literal match <a name="paragraph2"></a>
+
+Literal match is the simplest form of regular expression.
 
 RegEx: /code/<br>
 Text: "My original `code` was saved in the file code1.js and the updated version is in codeFinal.js."
@@ -71,46 +74,38 @@ Line three."
 
 ## dot `.`
 
+`.` is one of the most commonly used metacharacters respresenting any single character (:exclamation:except line breakers/newline sign).
+
 RegEx: /code./g<br>
 Text: "My original code was saved in the file `code1`.js and the updated version is in `codeF`inal.js."
-Explanation: This syntax will match any word **code** followed by **any single character** (except line breakers/newline sign)
+Explanation: This syntax will match any word **code** followed by **any single character**.
 
 > :warning: Since `g` modifier (or regex flag) has beeen used all matches of - `code.` have been returned.
 
 
-## Character classes
+## Character set (class)
 
-- [x] allow matching a number of characters
-- [x] defined using `[` and `]` metacharacters
-- [x] anything enclosed with `[` and `]` is a part of the class, meaning any of the class characters must match (but not all)
+A character set is an explicit list of the characters that may qualify for a match in a search. A character set is indicated by enclosing a set of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
 
 RegEx: /[XYZ]code\.js/g<br>
 Text: "I have few JS files named `Xcode.js`, `Ycode.js` and `Zcode.js` but I don’t have the file file named Wcode.js or g`Xcode.js`."
-
-> :bulb: "(...) Wcode.js (...)" part wasn’t matched because not all ("W" isn’t part of "[XYZ]") conditions of regex were met
-> :bulb: "(...) g`Xcode.js`" is an example when RegEx pattern should be more specific
+Explanation: "(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t part of "[XYZ]". "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.
 
 RegEx: /[Cc]ode\.js/g<br>
 Text: "There are two files, `Code.js` and `code.js`."
 
 
-## Range of characters (set of characters)
+## Character range
 
-- [x] range of characters within a class can be defined using dash `-` between two values
-- [x] `[0123456789]` is equal to `[0-9]`, same rule applies to character sets defining non-numbers
-- [x] reverse ranges such as `[Z-A]` or `[5-1]` do not work
-- [x] dash `-` becomes a metacharacter only when used in a class (`[x-z]`), otherwise it is interpreted as a literal
+Range of characters within a class can be defined using dash (`-`) between two values. In other words `[0123456789]` is equal to `[0-9]`, same rule applies to character sets defining non-numbers, i.e. `[ABCDEFGHIJKLMNOPQRSTUVWXYZ]` can be simplified to `[A-Z]`. Same applies to lower case letters. Reverse ranges such as `[Z-A]` or `[5-1]` are not accepted. Dash (`-`) becomes a metacharacter only when used in a class (i.e. `[x-z]`), otherwise it is interpreted as a literal.
 
 RegEx: /[A-Za-z0-9]\.js/g<br>
 Text: "There are three files, `a.js`, `B.js` and `5.js`."
 
-
-### Set of characters shorthands:
-
-- [x] [0-9] can be replaced as [\d] matching any number
-- [x] [^0-9] or [a-zA-z] can be replaced as [\D] matching any sign different from numbers
-- [x] [0-9a-zA-Z] can be replaced as [\w] matching any alphanumeric sign
-- [x] [^0-9a-zA-Z] can be replaced as [\W] matching any non-alphanumeric sign
+`[0-9]` can be replaced as [\d] matching **any number**
+`[^0-9]` or `[a-zA-z]` can be replaced as [\D] matching **any sign different from numbers**
+`[0-9a-zA-Z]` can be replaced as [\w] matching **any alphanumeric sign**
+`[^0-9a-zA-Z]` can be replaced as [\W] matching **any non-alphanumeric sign**
 
 RegEx: /[d]\.js/g<br>
 Text: "There are three files, a.js, B.js and `5.js`."
@@ -119,11 +114,9 @@ RegEx: /[\D]\.js/g<br>
 Text: "There are three files, `a.js`, `B.js` and 5.js."
 
 
-## Negated character classes/sets
+## Negated character set/range
 
-- [x] caret (^) metacharacter can be used to deny a character class/set; this can be achieved by placing it after the opening square bracket of a character set
-- [x] multiple character sets can be negated at once
-- [x] it negates all characters defined in the set
+Placing caret (`^`) metacharacter after the opening square bracket of a character set can be used to deny all multiple character sets/ranges.
 
 RegEx: /[^0-9]/g<br>
 Text: "`Today is `2018`, I am `20` years old.`"
@@ -134,118 +127,127 @@ Text: "T`oday is `2018`, `I` am `20` years old.`"
 
 ## Quantifiers
 
-`?` - matches zero or one of the preceding character or set
+Quantifiers allow to declare quantities of data as part of pattern. For instance, ability to match exactly six spaces, or locate every numeric string that is between four and eight digits in length.
 
-RegEx: /br?eak/<br>
-Text: "break and beak"
+`?` - matches `0` or `1` of the preceding character or set
 
-RegEx: /Jan(uary)?/<br> will match both Jan and January
-Text: "Jan and January"
+RegEx: /br?eak/g<br>
+Text: "`break` and `beak`"
 
-RegEx: /Jan(uary)? 5(th)?/ will match January 5th, January 5, Jan 5th and Jan 5
-Text: "Jan 5th and Jan 5 and January 5th and January 5"
+RegEx: /Jan(uary)?/g<br>
+Text: "`Jan` and `January`"
 
-`+` - matches one or more instances of the preceding character or set
+RegEx: /Jan(uary)? 5(th)?/g<br>
+Text: "`Jan 5th` and `Jan 5` and `January 5th` and `January 5`"
 
-RegEx: /[0-9]+/<br>
-Text: "123abc456"
-Text: "aa1234bb"
-Text: "+1001234"
+`+` - matches `1` or more instances of the preceding character or set
 
-`*` - matches zero or more instances of the preceding character or set
+RegEx: /[0-9]+/g<br>
+Text: "`123`abc`456`"
+Text: "aa`1234`bb"
+Text: "+`1001234`"
 
-RegEx: /abc[0-9]*/<br>
-Text: "abc"
-Text: "abc0"
-Text: "abc123"
+`*` - matches `0` or more instances of the preceding character or set
+
+RegEx: /abc[0-9]*/g<br>
+Text: "`abc`"
+Text: "`abc0`"
+Text: "`abc123`"
+
+
+### Overmatching
+
+`+` and `*` metacharacters are **greedy** and by default will try to match maximum they can
+
+RegEx: /<[Bb]>.*<\/[Bb]>/<br>
+Text: "`<b>First</b> and <b>Second</b>` words bold"
+
+Lazy matching on the other hand tries to match the minimum it can.
+RegEx: /<[Bb]>.*?<\/[Bb]>/<br>
+Text: "`<b>First</b>` and `<b>Second</b>` words bold"
+
+`*` (greedy) vs `*?` (lazy)
+`+` (greedy) vs `+?` (lazy)
+`?` (greedy) vs `??` (lazy)
+`{x,}` (greedy) vs `{x,}?` (lazy)
 
 
 ## Anchors
 
-- [x] anchors specify an exact position in the string or text where an occurence of a match is necessary.
-- [x] it looks for a match in that specified position only.
-- [x] a single character before the caret or after the dollar sign causes the match to fail.
+Anchors and boundaries allow to describe text in terms of where it's located. Anchors specify **an exact position and this position only**, in the string or text where an occurence of a match is necessary.
 
-/^Begin/ will not match " Begin"
-/end$/ will not match "end."
-/^A$/ will not match "AA"
+Caret (`^`) is a start of string anchor which specifies that a match must occur at the beginning of the line/string.
 
-The caret (^) is a start of string anchor, which specifies that a match must occur at the beginning of the line/stringext.
+RegEx: /^www/g
+Text: "Check out those two websites - `www`<span>.wp.pl and `www`<span>.google.pl."
 
-RegEx: /^www/
-Text: "Check out those two websites - www<span>.wp.pl and www<span>.google.pl."
-The dollar ($) is the end anchor, that indicates the end of the line/stringext.
+Dollar (`$`) is the end of string anchor, that indicates that a match must occur at the end of the line/string.
 
-RegEx: /pl$/<br>
-Text: "Check out those two websites - www<span>.wp.pl and www<span>.google.pl."
+RegEx: /pl$/g<br>
+Text: "Check out those two websites - www<span>.wp.`pl` and www<span>.google.`pl`."
 
-
+A single character before the caret or after the dollar sign causes the match to fail:
+- /^Begin/ will not match " Begin"
+- /end$/ will not match "end."
+- /^A$/ will not match "AA"
 
 
-TODO: Stopped working on it here.
+## Boundaries
+
+`\b` - word boundary matches pattern if it is at the beggining or the end of a word
+`\B` - non-word boundary matches pattern if it is not at the beginning or end of the word
+
+RegEx: /\bnumber\b/<br>
+Text: "I declared a `number` variable named my_number_var."
+
+RegEx: /\Bnumber\B/<br>
+Text: "I declared a number variable named my_`number`_var."
+Explanation: It is important to use the \b on both sides of the pattern. E.g. if used only at the beginning (\bnumber) it would match both occurences - "I declared a `number` variable named my_`number`_var." ,because regex only validates the starting word. Meanwhile, the ending one (number\b) will match anything ending with the word number.
+
+`<\` - matches pattern only if it is at the beginning of a word
+`>\` - matches pattern only if it is at the end of a word
+
+RegEx: /<\var/<br>
+Text: "I declared a number `var`iable named my_number_var."
+
+RegEx: />\var/<br>
+Text: "I declared a number variable named my_number_`var`."
+
+
 ## Intervals
-Intervals are specified between { and } metacharacters. They can take either one argument for exact interval matching {X}, two arguments for range interval matching {min, max}. If the comma is present but max is omitted, the maximum number of matches is infinite and the minimum number of matches is at least min.
-? metacharacter is equivalent to {0,1}
-+ metacharacter is equivalent to {1,}
 
+Intervals are specified between `{` and `}` metacharacters. They can take either one argument for exact interval matching `{X}`, or two arguments for range interval matching `{min, max}`. If the comma is present but max is omitted, the maximum number of matches is **infinite** and the minimum number of matches is **at least min**.
 
+`?` metacharacter is equivalent to `{0,1}`
+`+` metacharacter is equivalent to `{1,}`
 
-
-## Word boundaries
-
-`\b` - word boundary
-`\B` - non-word boundary
-
-RegEx: /\bnumber\b\/<br>
-Text: "I declared a number variable named my_number_var."
-
-RegEx: /\Bnumber\/<br>
-Text: "I declared a number variable named my_number_var."
-
-NOTE: It is important to use the \b on both sides of the pattern. For example, if you use it only at the beginning (\bnumber) then it will match both
-
-Text: "I declared a number variable named my_number_var."<br>
-because regex only validates is the starting word. Meanwhile, the ending one (number\b) will match anything ending with the word number.
-
-
-
-## Overmatching
-
-+ and * metacharacters are greedy and by default will try to match maximum they can
-
-RegEx: /<[Bb]>.*<\/[Bb]>/<br>
-Text: "<b>First</b> and <b>Second</b> words bold"
-
-Lazy matching on the other hand tries to match the minimum it can.
-RegEx: /<[Bb]>.*?<\/[Bb]>/<br>
-Text: "<b>First</b> and <b>Second</b> words bold"
-
-* (greedy) vs *? (lazy)
-+ (greedy) vs +? (lazy)
-? (greedy) vs ?? (lazy)
-{x,} (greedy) vs {x,}? (lazy)
 
 # Grouping
-To group expressions following metacharacters should be used ( and ).
+
+Grouping allows treating another expression as a single unit. To group expressions following metacharacters should be used - `(` and `)`.
+
 RegEx: /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
-Text: "This is a valid IP address: 127.0.0.1"
-This can be simplified using grouping metacharacters.
+Text: "This is a valid IP address: `127.0.0.1`"
+
+Above example can be simplified using grouping metacharacters.
+
 RegEx: /(\d{1,3}\.){3}\d{1,3}/
-Text: "This is a valid IP address: 127.0.0.1"
+Text: "This is a valid IP address: `127.0.0.1`"
+
 
 # Escaping
 
-to escape metacharacters precede them with a backslash.
-to escape backslash precede it with another backslash.
+To escape metacharacters they must be preceded with a backslash. Backslash itself must be preceded with another backslash.
 
-\\ 	Literal backslash 	\\ 	\
-\^ 	Literal caret 	\^\{5\} 	^^^^^
-\$ 	Literal dollar sign 	\$5 	$5
-\. 	Literal period 	Yes\. 	Yes.
-\* 	Literal asterisk 	typo\* 	typo*
-\[ 	Literal open bracket 	[3\[] 	3, [
-\]
+`\` -> `\\`
+`^` -> `\^`
+`$` -> `\$`
+`.` -> `\.`
+`*` -> `\*`
+`[` -> `\[`
+`]` -> `\]`
 
 
-/((?<=\/).*){2}/
-#This will match whatever is written after second occurance of "/" (without the sign itself) sign till the end of the string.
+## Examples
+
+`/((?<=\/).*){2}/` - This will match whatever is written after second occurance of `/` (without the sign itself) sign till the end of the string
