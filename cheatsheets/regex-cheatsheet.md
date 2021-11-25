@@ -8,6 +8,18 @@ Source:
 - [Overview](#paragraph1)
 - [Matching mechanisms](#paragraph2)
   - [Literal match](#paragraph2.1)
+  - [Metacharacters](#paragraph2.2)
+    - [White signs metacharacters](#paragraph2.2.1)
+  - [dot .](#paragraph2.3)
+  - [Character class](#paragraph2.4)
+  - [Character range](#paragraph2.5)
+  - [Negated character class/range](#paragraph2.6)
+  - [POSIX standard](#paragraph2.7)
+  - [Quantifiers](#paragraph2.8)
+  - [Intervals](#paragraph2.9)
+    - [Overmatching](#paragraph2.9.1)
+  - [Anchors](#paragraph2.10)
+  - [Boundaries](#paragraph2.11)
 - [Grouping](#paragraph3)
 - [Escaping](#paragraph4)
 - [Examples](#paragraph5)
@@ -30,7 +42,7 @@ Regular expression (RegEx for short) is a sequence of characters that define a s
 
 By default the first match in finding mode is returned. This can be overwritten using the <samp>/pattern/g</samp> (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
 
-<!-- m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
+<!-- TODO: m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
 <!-- i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z]) -->
 <!-- x modifier: Allow comments and white space in pattern -->
 
@@ -53,7 +65,7 @@ Literal match is the simplest form of regular expression.
 > :warning: Since `g` modifier (or regex flag) wasn't used only the first match - `code` has been returned.
 
 
-## Metacharacters
+## Metacharacters <a name="paragraph2.2"></a>
 
 Metacharacters are digits with special meaning not the sign itself (literal meaning) - `\` `^` `$` `.` `*` `[`  and `]`. Two types of metacharacters can be distinguished:
 - ones finding text - i.e `*` or `.`
@@ -66,12 +78,12 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
   </tr>
   <tr>
     <td>Text:</td>
-    <td><code><u>1 + 3 * (2 + 2)</u></code></td>
+    <td>Please see this math exercise: <code><u>1 + 3 * (2 + 2)</u></code></td>
   </tr>
 </table>
 
 
-### White signs metacharacters
+### White signs metacharacters <a name="paragraph2.2.1"></a>
 
 `\b` - backspace<br>
 `\f` - form feed when encountered in code, causes printers to automatically advance one full page or the start of the next page<br>
@@ -89,8 +101,8 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
     <td>Text:</td>
     <td>Line one.<br>
         <code><u> </u></code><br>
-        Line two.<br>
-        Line three.</td>
+        Line three.<br>
+        Line four.</td>
   </tr>
 </table>
 
@@ -102,7 +114,7 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 > :exclamation: `\b` is not included in `\s` nor `\S`.
 
 
-## dot `.`
+## dot `.` <a name="paragraph2.3"></a>
 
 `.` is one of the most commonly used metacharacters respresenting any single character (except line breakers/newline sign).
 
@@ -124,7 +136,7 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 > :warning: Since `g` modifier (alternatively called regex flag) has beeen used all matches of `code.` were returned.
 
 
-## Character class
+## Character class <a name="paragraph2.4"></a>
 
 A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
 
@@ -162,7 +174,7 @@ A character class is an explicit list of the characters that may qualify for a m
 > - control class like `\cZ` equal to `Ctrl+Z` can be searched using - `\c`
 
 
-## Character range
+## Character range <a name="paragraph2.5"></a>
 
 Range of characters **within a class** can be defined using dash (`-`) between two values. Following class `[0123456789]` can be simplified to `[0-9]`. Similarly defining non-numbers, i.e. `[ABCDEFGHIJKLMNOPQRSTUVWXYZ]` can be simplified to `[A-Z]` improving class visibility significantly. Same applies to lower case letters. Reverse ranges such as `[Z-A]` or `[5-1]` are not accepted. Dash (`-`) becomes a metacharacter only when used in a class (i.e. `[x-z]`), otherwise it is interpreted as a literal.
 
@@ -213,14 +225,14 @@ Range of characters **within a class** can be defined using dash (`-`) between t
 </table>
 
 
-## Negated character class/range
+## Negated character class/range <a name="paragraph2.6"></a>
 
 Placing caret (`^`) metacharacter after the opening square bracket of a character class can be used to deny all multiple character classes/ranges at once.
 
 <table>
   <tr>
     <td>RegEx:</td>
-    <td>/[^0-9]/g</td>
+    <td>/[^0-9]/g or /\d/g</td>
   </tr>
   <tr>
     <td>Text:</td>
@@ -240,13 +252,13 @@ Placing caret (`^`) metacharacter after the opening square bracket of a characte
 </table>
 
 
-## POSIX standard <a name="paragraph4"></a>
+## POSIX standard <a name="paragraph4"></a> <a name="paragraph2.7"></a>
 
-POSIX standard provides simplification in defining character classes or categories of characters for variety of platform supporting regex implementation.
+POSIX standard provides simplification in defining character classes or categories of characters for variety of platform supporting RegEx implementation.
 
 | POSIX        | ASCII           | Shorthand | Description
 | :---         | :---            | :---:     | :---
-| `[:alnum:]`  | `[A-Za-z0-9]`   |           | digits, upper and lowercase letters
+| `[:alnum:]`  | `[A-Za-z0-9]`   |           | digits, upper and lowercase letters (alphanumeric)
 | `[:alpha:]`  | `[A-Za-z]`      |           | upper and lowercase letters
 | `[:blank:]`  | `[ \t]` 	       | `\h`      | space and tab characters only
 | `[:cntrl:]`  |	               |           | control characters
@@ -258,10 +270,10 @@ POSIX standard provides simplification in defining character classes or categori
 | `[:space:]`  | `[ \t\n\r\f\v]` | `\s`      | whitespace characters
 | `[:upper:]`  | `[A-Z]`	       | `\u`      | uppercase letters
 | `[:xdigit:]` | `[0-9A-Fa-f]`   |           | hexadecimal digits
-| `[:word:] `  | `[[:alnum:]_]`  | `\w`      | alphanumeric characters with underscore character _, meaning alnum + _. It is a bash specific character class
+| `[:word:] `  | `[A-Za-z0-9_]`  | `\w`      | alphanumeric characters with underscore character
 
 
-## Quantifiers
+## Quantifiers <a name="paragraph2.8"></a>
 
 Quantifiers allow to declare quantities of data as part of pattern. For instance, ability to match exactly six spaces, or locate every numeric string that is between four and eight digits in length.
 
@@ -334,22 +346,23 @@ Quantifiers allow to declare quantities of data as part of pattern. For instance
   </tr>
 </table>
 
-## Intervals
+
+## Intervals <a name="paragraph2.9"></a>
 
 Intervals are specified between `{` and `}` metacharacters. They can take either one argument for exact interval matching `{X}`, or two arguments for range interval matching `{min, max}`. If the comma is present but max is omitted, the maximum number of matches is **infinite** and the minimum number of matches is **at least min**.
 
-`?` metacharacter is equivalent to `{0,1}`<br>
-`+` metacharacter is equivalent to `{1,}`
+`?` quantifier metacharacter is equivalent to `{0,1}`<br>
+`+` quantifier metacharacter is equivalent to `{1,}`
 
 
-<!-- ## Lookahead & Lookbehind
+<!-- TODO: ## Lookahead & Lookbehind
 `a(?=b)` 	Match a in baby but not in bay
 `a(?!b)` 	Match a in Stan but not in Stab
 `(?<=a)b` 	Match b in crabs but not in cribs
 `(?<!a)b` 	Match b in fib but not in fab -->
 
 
-### Overmatching
+### Overmatching <a name="paragraph2.9.1"></a>
 
 `+` and `*` metacharacters are **greedy** and by default will try to match maximum they can.
 
@@ -387,7 +400,7 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
 | `{x,}` | `{x,}?` |
 
 
-## Anchors
+## Anchors <a name="paragraph2.10"></a>
 
 Anchors and boundaries allow to describe text in terms of where it's located. Anchors specify **an exact position and this position only**, in the string or text where an occurence of a match is necessary.
 
@@ -400,7 +413,7 @@ Caret (`^`) is a start of line/string anchor in multi-line pattern which specifi
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Check out those two websites: <code><u>www</u></code>.wp<span>.pl and <code><u>www</u></code>.google.pl.</u></code></td>
+    <td>Check out those two websites: <code><u>www</u></code>.wp<span>.pl and <code><u>www</u></code>.google<span>.pl.</u></code></td>
   </tr>
 </table>
 
@@ -429,7 +442,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 > - /^A$/ will not match "AA"
 
 
-## Boundaries
+## Boundaries <a name="paragraph2.11"></a>
 
 `\b` - word boundary matches pattern if it is at the beggining or the end of a word
 
@@ -516,7 +529,7 @@ Above example can be simplified using grouping metacharacters.
   </tr>
 </table>
 
-<!-- (abc) 	Capture group
+<!-- TODO:(abc) 	Capture group
 (a|b) 	Match a or b
 (?:abc) 	Match abc, but don’t capture -->
 
