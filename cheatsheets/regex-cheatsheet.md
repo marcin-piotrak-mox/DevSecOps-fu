@@ -128,9 +128,20 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 
 A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
 
-RegEx: <samp>/[XYZ]code\.js/g</samp><br>
-Text: "I have few JS files named `Xcode.js`, `Ycode.js` and `Zcode.js` but I don’t have the file file named Wcode.js or g`Xcode.js`."<br>
-Explanation: "(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t part of "[XYZ]". "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[XYZ]code\.js/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I have few JS files named <code><u>Xcode.js</u></code>, <code><u>Ycode.js</u></code> and <code><u>Zcode.js</u></code> but I don’t have the file file named Wcode.js or g<code><u>Xcode.js</u></code>.</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]". "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -143,7 +154,9 @@ Explanation: "(...) Wcode.js (...)" part wasn’t matched because not all condit
   </tr>
 </table>
 
-> Other very rarely used character class can match the following:
+<br>
+
+> Other very rarely used character classes can match the following:
 > - hexadecimal digit like `\xOA` can be searched using - `\O`
 > - octal digit like `\011` can be searched using - `\z`
 > - control class like `\cZ` equal to `Ctrl+Z` can be searched using - `\c`
@@ -164,12 +177,18 @@ Range of characters **within a class** can be defined using dash (`-`) between t
   </tr>
 </table>
 
-`[0-9]` can be replaced as `[\d]` matching **any number**<br>
-`[^0-9]` or `[a-zA-z]` can be replaced as `[\D]` matching **any sign different from numbers**<br>
-`[0-9a-zA-Z_]` can be replaced as `[\w]` matching **any alphanumeric sign** and **underscore**<br>
-`[^0-9a-zA-Z_]` can be replaced as `[\W]` matching **any non-alphanumeric sign** and **underscore**
+<br>
+
+| Character range        | Shorthand | Description
+| :-                     | :-:       | :-
+| `[0-9]`                | `[\d]`    | matches <b>any number
+| `[^0-9]` or `[a-zA-z]` | `[\D]`    | matches <b>any sign different from numbers
+| `[a-zA-z]`             | `[\w]`    | matches <b>any alphanumeric sign</b> and <b>underscore</b>
+| `[^0-9a-zA-Z_]`        | `[\W]`    | matches <b>any non-alphanumeric sign</b> and <b>underscore</b>
 
 > :warning: `[A-z]` would match all signes from `A` to `z`, but it is tricky to use this range since it also icludes signs like `^` or `[` that happen to be located between in ASCII table.
+
+<br>
 
 <table>
   <tr>
@@ -350,7 +369,7 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
 <table>
   <tr>
     <td>RegEx:</td>
-    <td>/-[Bb]-.*-[Bb]-/g</td>
+    <td>/-[Bb]-.*?-[Bb]-/g</td>
   </tr>
   <tr>
     <td>Text:</td>
@@ -358,10 +377,14 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
   </tr>
 </table>
 
-`*` (greedy) vs `*?` (lazy)<br>
-`+` (greedy) vs `+?` (lazy)<br>
-`?` (greedy) vs `??` (lazy)<br>
-`{x,}` (greedy) vs `{x,}?` (lazy)
+<br>
+
+| Greedy | Lazy    |
+|  :-:   | :-:     |
+| `*`    | `*?`    |
+| `+`    | `+?`    |
+| `?`    | `??`    |
+| `{x,}` | `{x,}?` |
 
 
 ## Anchors
@@ -377,7 +400,7 @@ Caret (`^`) is a start of line/string anchor in multi-line pattern which specifi
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Check out those two websites: <code><u>www</u></code>.wp.pl and <code><u>www</u></code>.google.pl.</u></code></td>
+    <td>Check out those two websites: <code><u>www</u></code>.wp<span>.pl and <code><u>www</u></code>.google.pl.</u></code></td>
   </tr>
 </table>
 
@@ -392,7 +415,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Check out those two websites: www.wp.<code><u>pl</u></code> and www.google.<code><u>pl</u></code>.</u></code></td>
+    <td>Check out those two websites: www<span>.wp.<code><u>pl</u></code> and www.google.<code><u>pl</u></code>.</u></code></td>
   </tr>
 </table>
 
@@ -400,7 +423,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 
 `\z` is an absolute end of string anchor which specifies that a match must occur at the **absolute end of the string**.
 
-> :warning: A single character before the caret or after the dollar sign causes the match to fail:
+> :warning: A single character before or after the anchor sign causes the match to fail:
 > - /^Begin/ will not match " Begin"<br>
 > - /end$/ will not match "end."<br>
 > - /^A$/ will not match "AA"
@@ -409,7 +432,6 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 ## Boundaries
 
 `\b` - word boundary matches pattern if it is at the beggining or the end of a word
-`\B` - non-word boundary matches pattern if it is not at the beginning or end of the word
 
 <table>
   <tr>
@@ -421,6 +443,8 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
     <td>I declared a <code><u>number</u></code> variable named my-number-var.</td>
   </tr>
 </table>
+
+`\B` - non-word boundary matches pattern if it is not at the beginning or end of the word
 
 <table>
   <tr>
@@ -438,7 +462,6 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 </table>
 
 `<\` - matches pattern only if it is at the beginning of a word<br>
-`>\` - matches pattern only if it is at the end of a word
 
 <table>
   <tr>
@@ -450,6 +473,8 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
     <td>I declared a number <code><u>var</u></code>iable named my-number-var.</td>
   </tr>
 </table>
+
+`>\` - matches pattern only if it is at the end of a word
 
 <table>
   <tr>
