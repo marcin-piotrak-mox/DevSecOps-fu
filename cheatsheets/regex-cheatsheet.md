@@ -39,8 +39,16 @@ By default the first match in finding mode is returned. This can be overwritten 
 
 Literal match is the simplest form of regular expression.
 
-RegEx: <samp>/code/</samp><br>
-Text: "My original `code` was saved in the file code1.js and the updated version is in codeFinal.js."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/code/</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>My original <code><u>code</u></code> was saved in the file code1.js and the updated version is in codeFinal.js.</td>
+  </tr>
+</table>
 
 > :warning: Since `g` modifier (or regex flag) wasn't used only the first match - `code` has been returned.
 
@@ -51,8 +59,16 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 - ones finding text - i.e `*` or `.`
 - ones used as a part of RegEx syntax - i.e. `[pattern]` or `{pattern}`
 
-RegEx: <samp>/1 \+ 3 \* \(2 \+ 2\)/g</samp><br>
-Text: "`1 + 3 * (2 + 2)`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/1 \+ 3 \* \(2 \+ 2\)/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>1 + 3 * (2 + 2)</u></code></td>
+  </tr>
+</table>
 
 
 ### White signs metacharacters
@@ -64,11 +80,19 @@ Text: "`1 + 3 * (2 + 2)`"
 `\t` - tabulator is usually the equivalent number of five or eight spaces, depending on the program<br>
 `\v` - vertical tab
 
-RegEx: <samp>/\n\n/</samp><br>
-Text: "Line one.<br>
-` `<br>
-Line two.<br>
-Line three."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\n\n/</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>Line one.<br>
+        <code><u> </u></code><br>
+        Line two.<br>
+        Line three.</td>
+  </tr>
+</table>
 
 > :bulb: In Windows environment it would be best to use - RegEx:/\r\n\r\n/g since carriage return (`\r`) is used to mark end of line.
 
@@ -85,21 +109,17 @@ Line three."
 <table>
   <tr>
     <td>RegEx:</td>
-    <td><samp>/code./g</samp></td>
+    <td>/code./g</td>
   </tr>
   <tr>
     <td>Text:</td>
-    <td>"My original code was saved in the file <code>code1</code>.js and the updated version is in <code>codeF</code>inal.js."</td>
+    <td>My original code was saved in the file <code><u>code1</u></code>.js and the updated version is in <code><u>codeF</u></code>inal.js.</td>
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>This syntax will match any word <b>code</b> followed by <b>any single character.</td>
+    <td>This syntax will match any word <b>code</b> followed by <b>any single character</b>.</td>
   </tr>
 </table>
-
-RegEx: <samp>/code./g</samp><br>
-Text: "My original code was saved in the file `code1`.js and the updated version is in `codeF`inal.js."<br>
-Explanation: This syntax will match any word **code** followed by **any single character**.
 
 > :warning: Since `g` modifier (alternatively called regex flag) has beeen used all matches of `code.` were returned.
 
@@ -112,8 +132,16 @@ RegEx: <samp>/[XYZ]code\.js/g</samp><br>
 Text: "I have few JS files named `Xcode.js`, `Ycode.js` and `Zcode.js` but I don’t have the file file named Wcode.js or g`Xcode.js`."<br>
 Explanation: "(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t part of "[XYZ]". "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.
 
-RegEx: <samp>/[Cc]ode\.js/g</samp><br>
-Text: "There are two files, `Code.js` and `code.js`."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[Cc]ode\.js/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>There are two files, <code><u>Code.js</u></code> and <code><u>code.js</u></code>.</td>
+  </tr>
+</table>
 
 > Other very rarely used character class can match the following:
 > - hexadecimal digit like `\xOA` can be searched using - `\O`
@@ -125,8 +153,16 @@ Text: "There are two files, `Code.js` and `code.js`."
 
 Range of characters **within a class** can be defined using dash (`-`) between two values. Following class `[0123456789]` can be simplified to `[0-9]`. Similarly defining non-numbers, i.e. `[ABCDEFGHIJKLMNOPQRSTUVWXYZ]` can be simplified to `[A-Z]` improving class visibility significantly. Same applies to lower case letters. Reverse ranges such as `[Z-A]` or `[5-1]` are not accepted. Dash (`-`) becomes a metacharacter only when used in a class (i.e. `[x-z]`), otherwise it is interpreted as a literal.
 
-RegEx: <samp>/[A-Za-z0-9]\.js/g</samp><br>
-Text: "There are three files, `a.js`, `B.js` and `5.js`."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>[A-Za-z0-9]\.js/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>There are three files, <code><u>a.js</u></code>, <code><u>B.js</u></code> and <code><u>5.js</u></code>.</td>
+  </tr>
+</table>
 
 `[0-9]` can be replaced as `[\d]` matching **any number**<br>
 `[^0-9]` or `[a-zA-z]` can be replaced as `[\D]` matching **any sign different from numbers**<br>
@@ -135,22 +171,54 @@ Text: "There are three files, `a.js`, `B.js` and `5.js`."
 
 > :warning: `[A-z]` would match all signes from `A` to `z`, but it is tricky to use this range since it also icludes signs like `^` or `[` that happen to be located between in ASCII table.
 
-RegEx: <samp>/[\d]\.js/g</samp><br>
-Text: "There are three files, a.js, B.js and `5.js`."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[\d]\.js/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>There are three files, a.js, B.js and <code><u>5.js</u></code>.</td>
+  </tr>
+</table>
 
-RegEx: <samp>/[\D]\.js/g</samp><br>
-Text: "There are three files, `a.js`, `B.js` and 5.js."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[\D]\.js/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>There are three files, <code><u>a.js</u></code>, <code><u>B.js</u></code> and 5.js.</td>
+  </tr>
+</table>
 
 
 ## Negated character class/range
 
 Placing caret (`^`) metacharacter after the opening square bracket of a character class can be used to deny all multiple character classes/ranges at once.
 
-RegEx: <samp>/[^0-9]/g</samp><br>
-Text: "`Today is `2018`, I am `20` years old.`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[^0-9]/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>Today is </u></code>2018<code><u>, I am </u></code>20<u><code> years old.</u></code></td>
+  </tr>
+</table>
 
-RegEx: <samp>/[^0-9^A-Z]/g</samp><br>
-Text: "T`oday is `2018`, `I` am `20` years old.`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[^0-9^A-Z]/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>T<code><u>oday is </u></code>2018<code><u>, </u></code>I<code><u> am </u></code>20<u><code> years old.</u></code></td>
+  </tr>
+</table>
 
 
 ## POSIX standard <a name="paragraph4"></a>
@@ -180,28 +248,72 @@ Quantifiers allow to declare quantities of data as part of pattern. For instance
 
 `?` - matches `0` or `1` of the preceding character or class
 
-RegEx: <samp>/br?eak/g</samp><br>
-Text: "`break` and `beak`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/br?eak/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>break</u></code> and <code><u>beak</u></code></td>
+  </tr>
+</table>
 
-RegEx: <samp>/Jan(uary)?/g</samp><br>
-Text: "`Jan` and `January`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/Jan(uary)?/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>Jan</u></code> and <code><u>January</u></code><td>
+  </tr>
+</table>
 
-RegEx: <samp>/Jan(uary)? 5(th)?/g</samp><br>
-Text: "`Jan 5th` and `Jan 5` and `January 5th` and `January 5`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/Jan(uary)? 5(th)?/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>Jan 5th</u></code> and <code><u>Jan 5</u></code> and <code><u>January 5th</u></code> and <code><u>January 5</u></code></td>
+  </tr>
+</table>
 
 `+` - matches `1` or more instances of the preceding character or class
 
-RegEx: <samp>/[0-9]+/g</samp><br>
-Text: "`123`abc`456`"<br>
-Text: "aa`1234`bb"<br>
-Text: "+`1001234`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[0-9]+/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>123</u></code>abc<code><u>456</u></code></td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>aa<code><u>1234</u></code>bb</td>
+  </tr>
+</table>
 
 `*` - matches `0` or more instances of the preceding character or class
 
-RegEx: <samp>/abc[0-9]*/g</samp><br>
-Text: "`abc`"<br>
-Text: "`abc0`"<br>
-Text: "`abc123`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/abc[0-9]*/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>abc</u></code></td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>abc123</u></code></td>
+  </tr>
+</table>
 
 ## Intervals
 
@@ -222,13 +334,29 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
 
 `+` and `*` metacharacters are **greedy** and by default will try to match maximum they can.
 
-RegEx: <samp>/<[Bb]>.*<\/[Bb]>/g</samp><br>
-Text: "`<b>First</b> and <b>Second</b>` words bold"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/-[Bb]-.*-[Bb]-/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>-First- and -Second-</u></code></td>
+  </tr>
+</table>
 
 **Lazy** matching on the other hand tries to match the minimum it can.
 
-RegEx: <samp>/<[Bb]>.*?<\/[Bb]>/g</samp><br>
-Text: "`<b>First</b>` and `<b>Second</b>` words bold"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/-[Bb]-.*-[Bb]-/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>-First-</u></code> and <code><u>-Second-</u></code></td>
+  </tr>
+</table>
 
 `*` (greedy) vs `*?` (lazy)<br>
 `+` (greedy) vs `+?` (lazy)<br>
@@ -242,24 +370,40 @@ Anchors and boundaries allow to describe text in terms of where it's located. An
 
 Caret (`^`) is a start of line/string anchor in multi-line pattern which specifies that a match must occur at the **beginning of the line/string**.
 
-RegEx: <samp>/^www/g</samp><br>
-Text: "Check out those two websites - `www`<span>.wp.pl and `www`<span>.google.pl."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/^www/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>Check out those two websites: <code><u>www</u></code>.wp.pl and <code><u>www</u></code>.google.pl.</u></code></td>
+  </tr>
+</table>
 
 `\A` is a start of string anchor which specifies that a match must occur at the **beginning of the string**.
 
 Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicates that a match must occur at the **end of the line/string**.
 
-RegEx: <samp>/pl$/g</samp><br>
-Text: "Check out those two websites - www<span>.wp.`pl` and www<span>.google.`pl`."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/^www/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>Check out those two websites: www.wp.<code><u>pl</u></code> and www.google.<code><u>pl</u></code>.</u></code></td>
+  </tr>
+</table>
 
 `\Z` is a end of string anchor which specifies that a match must occur at the **end of the string**.
 
 `\z` is an absolute end of string anchor which specifies that a match must occur at the **absolute end of the string**.
 
-A single character before the caret or after the dollar sign causes the match to fail:
-- /^Begin/ will not match " Begin"<br>
-- /end$/ will not match "end."<br>
-- /^A$/ will not match "AA"
+> :warning: A single character before the caret or after the dollar sign causes the match to fail:
+> - /^Begin/ will not match " Begin"<br>
+> - /end$/ will not match "end."<br>
+> - /^A$/ will not match "AA"
 
 
 ## Boundaries
@@ -267,34 +411,85 @@ A single character before the caret or after the dollar sign causes the match to
 `\b` - word boundary matches pattern if it is at the beggining or the end of a word
 `\B` - non-word boundary matches pattern if it is not at the beginning or end of the word
 
-RegEx: <samp>/\bnumber\b/g</samp><br>
-Text: "I declared a `number` variable named my-number-var."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\bnumber\b/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I declared a <code><u>number</u></code> variable named my-number-var.</td>
+  </tr>
+</table>
 
-RegEx: <samp>/\Bnumber\B/g</samp><br>
-Text: "I declared a number variable named my-`number`-var." <br>
-Explanation: It is important to use the \b on both sides of the pattern. E.g. if used only at the beginning (\bnumber) it would match both occurences - "I declared a `number` variable named my-`number`-var." ,because regex only validates the starting word. Meanwhile, the ending one (number\b) will match anything ending with the word number.
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\Bnumber\B/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I declared a number variable named my-<code><u>number</u></code>-var.</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>It is important to use the <code>\b</code> on both sides of the pattern. E.g. if used only at the beginning (\bnumber) it would match both occurences - "I declared a <code>number</code> variable named my-<code>number</code>-var." ,because regex only validates the starting word. Meanwhile, the ending one (<code>number\b</code>) will match anything ending with the word number.</td>
+  </tr>
+</table>
 
 `<\` - matches pattern only if it is at the beginning of a word<br>
 `>\` - matches pattern only if it is at the end of a word
 
-RegEx: <samp>/<\var/g</samp><br>
-Text: "I declared a number `var`iable named my-number-var."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/<\var/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I declared a number <code><u>var</u></code>iable named my-number-var.</td>
+  </tr>
+</table>
 
-RegEx: <samp>/>\var/g</samp><br>
-Text: "I declared a number variable named my-number-`var`."
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/<\var/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I declared a number variable named my-number-<code><u>var</u></code>.</td>
+  </tr>
+</table>
 
 
 # Grouping <a name="paragraph3"></a>
 
 Grouping allows treating another expression as a single unit. To group expressions following metacharacters should be used - `(` and `)`.
 
-RegEx: <samp>/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g</samp><br>
-Text: "This is a valid IP address: `127.0.0.1`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>This is a valid IP address: <code><u>127.0.0.1</u></code>.</td>
+  </tr>
+</table>
 
 Above example can be simplified using grouping metacharacters.
 
-RegEx: <samp>/(\d{1,3}\.){3}\d{1,3}/g</samp><br>
-Text: "This is a valid IP address: `127.0.0.1`"
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(\d{1,3}\.){3}\d{1,3}/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>This is a valid IP address: <code><u>127.0.0.1</u></code>.</td>
+  </tr>
+</table>
 
 <!-- (abc) 	Capture group
 (a|b) 	Match a or b
@@ -305,15 +500,17 @@ Text: "This is a valid IP address: `127.0.0.1`"
 
 To escape metacharacters they must be preceded with a backslash. Backslash itself must be preceded with another backslash.
 
-`\` -> `\\`<br>
-`^` -> `\^`<br>
-`$` -> `\$`<br>
-`.` -> `\.`<br>
-`*` -> `\*`<br>
-`[` -> `\[`<br>
-`]` -> `\]`
+| Metacharacter | Escaped Metacharacter |
+| :-: | :-:  |
+| `\` | `\\` |
+| `^` | `\^` |
+| `$` | `\$` |
+| `.` | `\.` |
+| `*` | `\*` |
+| `[` | `\[` |
+| `]` | `\]` |
 
 
-## Examples <a name="paragraph5"></a>
+# Examples <a name="paragraph5"></a>
 
 `/((?<=\/).*){2}/` - This will match whatever is written after second occurance of `/` (without the sign itself) sign till the end of the string
