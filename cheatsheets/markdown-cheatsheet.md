@@ -281,29 +281,30 @@ Markdown-styled table rules:
 - HTML character code (&#124;) to display a pipe character in a table or escapi it using `\`
 
 HTML-styled table with no headers
+
 <table>
-<tr>
-<td width="25%">
-Cell with fixed width of 25%
-</td>
-<td width="50%">
-Cell with fixed width of 50%
-</td>
-<td width="25%">
-Cell with fixed width of 25%
-</td>
-</tr>
+  <tr>
+    <td width="25%">
+      Cell with fixed width of 25%
+    </td>
+    <td width="50%">
+      Cell with fixed width of 50%
+    </td>
+    <td width="25%">
+      Cell with fixed width of 25%
+    </td>
+  </tr>
 </table>
 
 HTML-styled tables side by side with headers
-<table>
-<tr>
-<th>Heading 1</th>
-<th>Heading 2</th>
-</tr>
-<tr>
 
-<td>
+<table>
+  <tr>
+    <th>Heading 1</th>
+    <th>Heading 2</th>
+  </tr>
+  <tr>
+    <td>
 
 | A | B | C |
 |--|--|--|
