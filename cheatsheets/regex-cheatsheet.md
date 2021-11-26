@@ -41,7 +41,7 @@ Regular expression (RegEx for short) is a sequence of characters that define a s
 
 # Pattern matching mechanisms <a name="paragraph2"></a>
 
-By default the first match in finding mode is returned. This can be overwritten using the <samp>/pattern/g</samp> (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
+By default the first match in finding mode is returned. This can be overwritten using the `/pattern/g` (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
 
 <!-- TODO: m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
 <!-- i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z]) -->
@@ -65,12 +65,25 @@ Literal match is the simplest form of regular expression.
 
 > :warning: Since `g` modifier (or regex flag) wasn't used only the first match - `code` has been returned.
 
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/code/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>My original <code><u>code</u></code> was saved in the file  <code><u>code</u></code>1.js and the updated version is in  <code><u>code</u></code>Final.js.</td>
+  </tr>
+</table>
+
+> :warning: With `g` modifier all matches of `code` have been returned.
+
 
 ## Metacharacters <a name="paragraph2.2"></a>
 
 Metacharacters are digits with special meaning not the sign itself (literal meaning) - `\` `^` `$` `.` `*` `[`  and `]`. Two types of metacharacters can be distinguished:
-- ones finding text - i.e `*` or `.`
-- ones used as a part of RegEx syntax - i.e. `[pattern]` or `{pattern}`
+- ones matching text - i.e  `.` or `*`
+- ones used as a part of RegEx syntax - i.e. `[ ]` or `{ }`
 
 <table>
   <tr>
@@ -108,6 +121,8 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 </table>
 
 > :bulb: In Windows environment it would be best to use - RegEx:/\r\n\r\n/g since carriage return (`\r`) is used to mark end of line.
+
+<br>
 
 `[\f\n\r\t\v]` - can be replaced with `\s` matching **any whitespace character**<br>
 `[^\f\n\r\t\v]` can be replaced with `\S` matching **any non-whitespace character**
@@ -169,7 +184,7 @@ A character class is an explicit list of the characters that may qualify for a m
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]".<br> "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
+    <td>(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]".<br> (...) gXcode.js." is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
   </tr>
 </table>
 
@@ -274,21 +289,21 @@ Placing caret (`^`) metacharacter after the opening square bracket of a characte
 
 POSIX standard provides simplification in defining character classes or categories of characters for variety of platform supporting RegEx implementation.
 
-| POSIX        | ASCII                                     | Shorthand | Description
-| :---         | :---                                      | :---:     | :---
-| `[:alnum:]`  | `[A-Za-z0-9]`                             |           | digits, upper and lowercase letters (alphanumeric)
-| `[:alpha:]`  | `[A-Za-z]`                                |           | upper and lowercase letters
-| `[:blank:]`  | `[ \t]` 	                                 | `\h`      | space and tab characters only
-| `[:cntrl:]`  |  `[\x00-\x1F\x7F]`                        |           | control characters
-| `[:digit:]`  | `[0-9]` 	                                 | `\d`      | digits
-| `[:graph:]`  | `[\x21-\x7E]`                             |           | visible characters (anything except spaces and control characters)
-| `[:lower:]`  | `[a-z]`	                                 | `\l`      | lowercase letters
-| `[:print:]`  | `[\x20-\x7E]`                             |           | graphic characters and space
-| `[:punct:]`  | `[!"\#$%&'()*+,\-./:;<=>?@\[\\\]^_‘{|}~]` |           | punctuation (all graphic characters except letters and digits)
-| `[:space:]`  | `[ \t\n\r\f\v]`                           | `\s`      | whitespace characters (including space)
-| `[:upper:]`  | `[A-Z]`	                                 | `\u`      | uppercase letters
-| `[:xdigit:]` | `[0-9A-Fa-f]`                             |           | hexadecimal digits
-| `[:word:] `  | `[A-Za-z0-9_]`                            | `\w`      | alphanumeric characters with underscore character
+| POSIX        | ASCII                                      | Shorthand | Description
+| :---         | :---                                       | :---:     | :---
+| `[:alnum:]`  | `[A-Za-z0-9]`                              |           | digits, upper and lowercase letters (alphanumeric)
+| `[:alpha:]`  | `[A-Za-z]`                                 |           | upper and lowercase letters
+| `[:blank:]`  | `[ \t]` 	                                  | `\h`      | space and tab characters only
+| `[:cntrl:]`  |  `[\x00-\x1F\x7F]`                         |           | control characters
+| `[:digit:]`  | `[0-9]` 	                                  | `\d`      | digits
+| `[:graph:]`  | `[\x21-\x7E]`                              |           | visible characters (anything except spaces and control characters)
+| `[:lower:]`  | `[a-z]`	                                  | `\l`      | lowercase letters
+| `[:print:]`  | `[\x20-\x7E]`                              |           | graphic characters and space
+| `[:punct:]`  | `[!"\#$%&'()*+,\-./:;<=>?@\[\\\]^_‘{\|}~]` |           | punctuation (all graphic characters except letters and digits)
+| `[:space:]`  | `[ \t\n\r\f\v]`                            | `\s`      | whitespace characters (including space)
+| `[:upper:]`  | `[A-Z]`	                                  | `\u`      | uppercase letters
+| `[:xdigit:]` | `[0-9A-Fa-f]`                              |           | hexadecimal digits
+| `[:word:] `  | `[A-Za-z0-9_]`                             | `\w`      | alphanumeric characters with underscore character
 
 
 # Quantifiers <a name="paragraph3"></a>
@@ -315,7 +330,7 @@ Quantifiers allow to declare quantities of data as part of pattern. For instance
   </tr>
   <tr>
     <td>Text:</td>
-    <td><code><u>Jan</u></code> and <code><u>January</u></code><td>
+    <td><code><u>Jan</u></code> and <code><u>January</u></code></td>
   </tr>
 </table>
 
@@ -446,6 +461,8 @@ Caret (`^`) is a start of line/string anchor in multi-line pattern which specifi
 
 `\A` is a start of string anchor which specifies that a match must occur at the **beginning of the string**.
 
+<br>
+
 Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicates that a match must occur at the **end of the line/string**.
 
 <table>
@@ -500,6 +517,8 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
     <td>It is important to use the <code>\b</code> on both sides of the pattern. E.g. if used only at the beginning (\bnumber) it would match both occurences - "I declared a <code>number</code> variable named <code>number</code>_var.", because regex only validates the starting word. Meanwhile, the ending one (<code>number\b</code>) will match anything ending with the word number.</td>
   </tr>
 </table>
+
+<br>
 
 `<\` - matches pattern only if it is at the **beginning of a word**
 
