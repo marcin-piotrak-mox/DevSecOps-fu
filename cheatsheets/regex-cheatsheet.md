@@ -6,23 +6,24 @@ Source:
 # Table of contents
 
 - [Overview](#paragraph1)
-- [Matching mechanisms](#paragraph2)
+- [Pattern matching mechanisms](#paragraph2)
   - [Literal match](#paragraph2.1)
   - [Metacharacters](#paragraph2.2)
     - [White signs metacharacters](#paragraph2.2.1)
-  - [dot .](#paragraph2.3)
+    - [Metacharacter escaping](#paragraph2.2.2)
+  - [Dot](#paragraph2.3)
   - [Character class](#paragraph2.4)
   - [Character range](#paragraph2.5)
   - [Negated character class/range](#paragraph2.6)
   - [POSIX standard](#paragraph2.7)
-  - [Quantifiers](#paragraph2.8)
-  - [Intervals](#paragraph2.9)
-    - [Overmatching](#paragraph2.9.1)
-  - [Anchors](#paragraph2.10)
-  - [Boundaries](#paragraph2.11)
+- [Quantifiers](#paragraph3)
+  - [Intervals](#paragraph3.1)
+  - [Overmatching](#paragraph3.2)
+- [Location matching mechanisms](#paragraph4)
+  - [Anchors](#paragraph4.1)
+  - [Boundaries](#paragraph4.2)
 - [Grouping](#paragraph3)
-- [Escaping](#paragraph4)
-- [Examples](#paragraph5)
+- [Examples](#paragraph4)
 
 
 # Overview <a name="paragraph1"></a>
@@ -38,7 +39,7 @@ Regular expression (RegEx for short) is a sequence of characters that define a s
 <p align="center"><img src="../_screenshots/regex2.png" align="center" width="500px" alt="regex2.png"></p>
 
 
-# Matching mechanisms <a name="paragraph2"></a>
+# Pattern matching mechanisms <a name="paragraph2"></a>
 
 By default the first match in finding mode is returned. This can be overwritten using the <samp>/pattern/g</samp> (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
 
@@ -114,7 +115,22 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 > :exclamation: `\b` is not included in `\s` nor `\S`.
 
 
-## dot `.` <a name="paragraph2.3"></a>
+### Metacharacter escaping <a name="paragraph2.2.2"></a>
+
+To escape metacharacters they must be preceded with a backslash. Backslash itself must be preceded with another backslash.
+
+| Metacharacter | Escaped Metacharacter |
+| :-: | :-:  |
+| `\` | `\\` |
+| `^` | `\^` |
+| `$` | `\$` |
+| `.` | `\.` |
+| `*` | `\*` |
+| `[` | `\[` |
+| `]` | `\]` |
+
+
+## Dot `.` <a name="paragraph2.3"></a>
 
 `.` is one of the most commonly used metacharacters respresenting any single character (except line breakers/newline sign).
 
@@ -140,6 +156,8 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
 
 A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
 
+> :bulb: Metacharacters placed in character class are treated as literals therefore don't need to be escaped, however doing so is acceptable, e.g. /[XYZ\.\*]/.
+
 <table>
   <tr>
     <td>RegEx:</td>
@@ -151,7 +169,7 @@ A character class is an explicit list of the characters that may qualify for a m
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]". "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
+    <td>(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]".<br> "(...) gXcode.js" is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
   </tr>
 </table>
 
@@ -168,10 +186,10 @@ A character class is an explicit list of the characters that may qualify for a m
 
 <br>
 
-> Other very rarely used character classes can match the following:
-> - hexadecimal digit like `\xOA` can be searched using - `\O`
-> - octal digit like `\011` can be searched using - `\z`
-> - control class like `\cZ` equal to `Ctrl+Z` can be searched using - `\c`
+Other very rarely used character classes can match the following:
+- hexadecimal digit like `\xOA` can be searched using - `\O`
+- octal digit like `\011` can be searched using - `\z`
+- control class like `\cZ` equal to `Ctrl+Z` can be searched using - `\c`
 
 
 ## Character range <a name="paragraph2.5"></a>
@@ -256,24 +274,24 @@ Placing caret (`^`) metacharacter after the opening square bracket of a characte
 
 POSIX standard provides simplification in defining character classes or categories of characters for variety of platform supporting RegEx implementation.
 
-| POSIX        | ASCII           | Shorthand | Description
-| :---         | :---            | :---:     | :---
-| `[:alnum:]`  | `[A-Za-z0-9]`   |           | digits, upper and lowercase letters (alphanumeric)
-| `[:alpha:]`  | `[A-Za-z]`      |           | upper and lowercase letters
-| `[:blank:]`  | `[ \t]` 	       | `\h`      | space and tab characters only
-| `[:cntrl:]`  |	               |           | control characters
-| `[:digit:]`  | `[0-9]` 	       | `\d`      | digits
-| `[:graph:]`  | `[^ [:cntrl:]]` |           | graphic characters (all characters wwith graphic representation)
-| `[:lower:]`  | `[a-z]`	       | `\l`      | lowercase letters
-| `[:print:]`  | `[[:graph:] ]`  |           | graphic characters and space
-| `[:punct:]`  |              	 |           | punctuation (all graphic characters except letters and digits)
-| `[:space:]`  | `[ \t\n\r\f\v]` | `\s`      | whitespace characters
-| `[:upper:]`  | `[A-Z]`	       | `\u`      | uppercase letters
-| `[:xdigit:]` | `[0-9A-Fa-f]`   |           | hexadecimal digits
-| `[:word:] `  | `[A-Za-z0-9_]`  | `\w`      | alphanumeric characters with underscore character
+| POSIX        | ASCII                                     | Shorthand | Description
+| :---         | :---                                      | :---:     | :---
+| `[:alnum:]`  | `[A-Za-z0-9]`                             |           | digits, upper and lowercase letters (alphanumeric)
+| `[:alpha:]`  | `[A-Za-z]`                                |           | upper and lowercase letters
+| `[:blank:]`  | `[ \t]` 	                                 | `\h`      | space and tab characters only
+| `[:cntrl:]`  |  `[\x00-\x1F\x7F]`                        |           | control characters
+| `[:digit:]`  | `[0-9]` 	                                 | `\d`      | digits
+| `[:graph:]`  | `[\x21-\x7E]`                             |           | visible characters (anything except spaces and control characters)
+| `[:lower:]`  | `[a-z]`	                                 | `\l`      | lowercase letters
+| `[:print:]`  | `[\x20-\x7E]`                             |           | graphic characters and space
+| `[:punct:]`  | `[!"\#$%&'()*+,\-./:;<=>?@\[\\\]^_‘{|}~]` |           | punctuation (all graphic characters except letters and digits)
+| `[:space:]`  | `[ \t\n\r\f\v]`                           | `\s`      | whitespace characters (including space)
+| `[:upper:]`  | `[A-Z]`	                                 | `\u`      | uppercase letters
+| `[:xdigit:]` | `[0-9A-Fa-f]`                             |           | hexadecimal digits
+| `[:word:] `  | `[A-Za-z0-9_]`                            | `\w`      | alphanumeric characters with underscore character
 
 
-## Quantifiers <a name="paragraph2.8"></a>
+# Quantifiers <a name="paragraph3"></a>
 
 Quantifiers allow to declare quantities of data as part of pattern. For instance, ability to match exactly six spaces, or locate every numeric string that is between four and eight digits in length.
 
@@ -312,22 +330,7 @@ Quantifiers allow to declare quantities of data as part of pattern. For instance
   </tr>
 </table>
 
-`+` - matches `1` or more instances of the preceding character or class
-
-<table>
-  <tr>
-    <td>RegEx:</td>
-    <td>/[0-9]+/g</td>
-  </tr>
-  <tr>
-    <td>Text:</td>
-    <td><code><u>123</u></code>abc<code><u>456</u></code></td>
-  </tr>
-  <tr>
-    <td>Text:</td>
-    <td>aa<code><u>1234</u></code>bb</td>
-  </tr>
-</table>
+<br>
 
 `*` - matches `0` or more instances of the preceding character or class
 
@@ -346,10 +349,29 @@ Quantifiers allow to declare quantities of data as part of pattern. For instance
   </tr>
 </table>
 
+<br>
 
-## Intervals <a name="paragraph2.9"></a>
+`+` - matches `1` or more instances of the preceding character or class
 
-Intervals are specified between `{` and `}` metacharacters. They can take either one argument for exact interval matching `{X}`, or two arguments for range interval matching `{min, max}`. If the comma is present but max is omitted, the maximum number of matches is **infinite** and the minimum number of matches is **at least min**.
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[0-9]+/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>123</u></code>abc<code><u>456</u></code></td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>aa<code><u>1234</u></code>bb</td>
+  </tr>
+</table>
+
+
+## Intervals <a name="paragraph3.1"></a>
+
+Intervals are specified between `{` and `}` metacharacters. They can take either one argument for exact interval matching `{X}`, or two arguments for range interval matching `{min, max}` for multiplying search pattern that preceds them. If the comma is present but max is omitted, the maximum number of matches is **infinite** and the minimum number of matches is **at least min**.
 
 `?` quantifier metacharacter is equivalent to `{0,1}`<br>
 `+` quantifier metacharacter is equivalent to `{1,}`
@@ -362,7 +384,7 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
 `(?<!a)b` 	Match b in fib but not in fab -->
 
 
-### Overmatching <a name="paragraph2.9.1"></a>
+## Overmatching <a name="paragraph3.2"></a>
 
 `+` and `*` metacharacters are **greedy** and by default will try to match maximum they can.
 
@@ -400,7 +422,12 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
 | `{x,}` | `{x,}?` |
 
 
-## Anchors <a name="paragraph2.10"></a>
+## Location matching mechanisms <a name="paragraph4"></a>
+
+Anchors and boundaries allow to describe text in terms of where it's located. They do not match any character at all. Instead, they match a position before, after, or between characters.
+
+
+## Anchors <a name="paragraph4.1"></a>
 
 Anchors and boundaries allow to describe text in terms of where it's located. Anchors specify **an exact position and this position only**, in the string or text where an occurence of a match is necessary.
 
@@ -428,7 +455,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Check out those two websites: www<span>.wp.<code><u>pl</u></code> and www.google.<code><u>pl</u></code>.</u></code></td>
+    <td>Check out those two websites: www<span>.wp.<code><u>pl</u></code> and www<span>.google.<code><u>pl</u></code>.</u></code></td>
   </tr>
 </table>
 
@@ -442,9 +469,9 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 > - /^A$/ will not match "AA"
 
 
-## Boundaries <a name="paragraph2.11"></a>
+## Boundaries <a name="paragraph4.2"></a>
 
-`\b` - word boundary matches pattern if it is at the beggining or the end of a word
+`\b` - word boundary matches pattern if it is at the **beggining or the end of a word**
 
 <table>
   <tr>
@@ -453,11 +480,11 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
   <tr>
     <td>Text:</td>
-    <td>I declared a <code><u>number</u></code> variable named my-number-var.</td>
+    <td>I declared a <code><u>number</u></code> variable named number_var.</td>
   </tr>
 </table>
 
-`\B` - non-word boundary matches pattern if it is not at the beginning or end of the word
+`\B` - non-word boundary matches pattern if it is **not at the beginning or end of the word**
 
 <table>
   <tr>
@@ -466,15 +493,15 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
   <tr>
     <td>Text:</td>
-    <td>I declared a number variable named my-<code><u>number</u></code>-var.</td>
+    <td>I declared a number variable named <code><u>number</u></code>_var.</td>
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>It is important to use the <code>\b</code> on both sides of the pattern. E.g. if used only at the beginning (\bnumber) it would match both occurences - "I declared a <code>number</code> variable named my-<code>number</code>-var." ,because regex only validates the starting word. Meanwhile, the ending one (<code>number\b</code>) will match anything ending with the word number.</td>
+    <td>It is important to use the <code>\b</code> on both sides of the pattern. E.g. if used only at the beginning (\bnumber) it would match both occurences - "I declared a <code>number</code> variable named <code>number</code>_var.", because regex only validates the starting word. Meanwhile, the ending one (<code>number\b</code>) will match anything ending with the word number.</td>
   </tr>
 </table>
 
-`<\` - matches pattern only if it is at the beginning of a word<br>
+`<\` - matches pattern only if it is at the **beginning of a word**
 
 <table>
   <tr>
@@ -487,7 +514,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
 </table>
 
-`>\` - matches pattern only if it is at the end of a word
+`>\` - matches pattern only if it is at the **end of a word**
 
 <table>
   <tr>
@@ -532,21 +559,6 @@ Above example can be simplified using grouping metacharacters.
 <!-- TODO:(abc) 	Capture group
 (a|b) 	Match a or b
 (?:abc) 	Match abc, but don’t capture -->
-
-
-# Escaping <a name="paragraph4"></a>
-
-To escape metacharacters they must be preceded with a backslash. Backslash itself must be preceded with another backslash.
-
-| Metacharacter | Escaped Metacharacter |
-| :-: | :-:  |
-| `\` | `\\` |
-| `^` | `\^` |
-| `$` | `\$` |
-| `.` | `\.` |
-| `*` | `\*` |
-| `[` | `\[` |
-| `]` | `\]` |
 
 
 # Examples <a name="paragraph5"></a>
