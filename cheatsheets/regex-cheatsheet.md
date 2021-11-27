@@ -21,7 +21,7 @@ Source:
   - [Overmatching](#paragraph3.2)
 - [Location matching mechanisms](#paragraph4)
   - [Anchors](#paragraph4.1)
-  - [Boundaries](#paragraph4.2)
+  - [Word boundaries](#paragraph4.2)
 - [Grouping](#paragraph3)
 - [Examples](#paragraph4)
 
@@ -41,7 +41,7 @@ Regular expression (RegEx for short) is a sequence of characters that define a s
 
 # Pattern matching mechanisms <a name="paragraph2"></a>
 
-By default the first match in finding mode is returned. This can be overwritten using the `/pattern/g` (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``.
+By default the first match in finding mode is returned. This can be overwritten using the `/pattern/g` (**g** for global) modifier to return all matches. Most commonly used delimiters (`[` and `]`) are conventional and can be replaced with `~`, `#`, `@`, `;`, `%` or `` ` ``. If many used **all specified matching patterns must be met** for complete pattern return.
 
 <!-- TODO: m modifier: multi line. Causes ^ and $ to match the begin/end of each -->
 <!-- i modifier: insensitive. Case insensitive match (ignores case of [a-zA-Z]) -->
@@ -63,7 +63,9 @@ Literal match is the simplest form of regular expression.
   </tr>
 </table>
 
-> :warning: Since `g` modifier (or regex flag) wasn't used only the first match - `code` has been returned.
+> :warning: Since `g` modifier (or regex flag) wasn't used only the first match of search pattern has been returned.
+
+<br>
 
 <table>
   <tr>
@@ -76,7 +78,7 @@ Literal match is the simplest form of regular expression.
   </tr>
 </table>
 
-> :warning: With `g` modifier all matches of `code` have been returned.
+> :warning: With `g` modifier all matches of search pattern have been returned.
 
 
 ## Metacharacters <a name="paragraph2.2"></a>
@@ -171,7 +173,7 @@ To escape metacharacters they must be preceded with a backslash. Backslash itsel
 
 A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
 
-> :bulb: Metacharacters placed in character class are treated as literals therefore don't need to be escaped, however doing so is acceptable, e.g. /[XYZ\.\*]/.
+> :bulb: Metacharacters placed in character class are treated as literals therefore don't need to be escaped, however doing so is considered a good habit, e.g. /[XYZ\.\*]/.
 
 <table>
   <tr>
@@ -184,7 +186,7 @@ A character class is an explicit list of the characters that may qualify for a m
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]".<br> (...) gXcode.js." is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
+    <td>"(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]".<br> "(...) gXcode.js." is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
   </tr>
 </table>
 
@@ -238,7 +240,7 @@ Range of characters **within a class** can be defined using dash (`-`) between t
 <table>
   <tr>
     <td>RegEx:</td>
-    <td>/[\d]\.js/g</td>
+    <td>/\d\.js/g</td>
   </tr>
   <tr>
     <td>Text:</td>
@@ -249,7 +251,7 @@ Range of characters **within a class** can be defined using dash (`-`) between t
 <table>
   <tr>
     <td>RegEx:</td>
-    <td>/[\D]\.js/g</td>
+    <td>/\D\.js/g</td>
   </tr>
   <tr>
     <td>Text:</td>
@@ -386,17 +388,27 @@ Quantifiers allow to declare quantities of data as part of pattern. For instance
 
 ## Intervals <a name="paragraph3.1"></a>
 
-Intervals are specified between `{` and `}` metacharacters. They can take either one argument for exact interval matching `{X}`, or two arguments for range interval matching `{min, max}` for multiplying search pattern that preceds them. If the comma is present but max is omitted, the maximum number of matches is **infinite** and the minimum number of matches is **at least min**.
+Intervals are specified between `{` and `}` metacharacters. They can take either one argument for **exact interval matching** `{n}`, or two arguments for **range interval matching** `{min, max}` for multiplying search pattern that preceds them. If the comma is present but max is omitted, the maximum number of matches is **infinite** and the minimum number of matches is **at least min**.
 
 `?` quantifier metacharacter is equivalent to `{0,1}`<br>
 `+` quantifier metacharacter is equivalent to `{1,}`
 
-
-<!-- TODO: ## Lookahead & Lookbehind
-`a(?=b)` 	Match a in baby but not in bay
-`a(?!b)` 	Match a in Stan but not in Stab
-`(?<=a)b` 	Match b in crabs but not in cribs
-`(?<!a)b` 	Match b in fib but not in fab -->
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4}/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>4/8/17</u></code><br>
+        <code><u>10-6-2018</u></code><br>
+        2/2/2</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Third date hasn't been matched due to not all search patterns being met - year denotation mus have at least 2 digits. Additionaly this RegEx could be simplified using grouping combined with exact interval matching - <code>/(\d{1,2}[-\/]){2}\d{2,4}/g<code></td>
+  </tr>
+</table>
 
 
 ## Overmatching <a name="paragraph3.2"></a>
@@ -434,7 +446,7 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
 | `*`    | `*?`    |
 | `+`    | `+?`    |
 | `?`    | `??`    |
-| `{x,}` | `{x,}?` |
+| `{n,}` | `{n,}?` |
 
 
 ## Location matching mechanisms <a name="paragraph4"></a>
@@ -444,7 +456,7 @@ Anchors and boundaries allow to describe text in terms of where it's located. Th
 
 ## Anchors <a name="paragraph4.1"></a>
 
-Anchors and boundaries allow to describe text in terms of where it's located. Anchors specify **an exact position and this position only**, in the string or text where an occurence of a match is necessary.
+Anchors specify **an exact position and this position only**, in the string or text where an occurence of a match is necessary.
 
 Caret (`^`) is a start of line/string anchor in multi-line pattern which specifies that a match must occur at the **beginning of the line/string**.
 
@@ -486,7 +498,13 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 > - /^A$/ will not match "AA"
 
 
-## Boundaries <a name="paragraph4.2"></a>
+## Word boundaries <a name="paragraph4.2"></a>
+
+Three different positions qualify as word boundaries:
+- before the first character in the string, if the first character is a word character
+- after the last character in the string, if the last character is a word character
+- between two characters in the string, where one is a word character and the other is not a word character
+
 
 `\b` - word boundary matches pattern if it is at the **beggining or the end of a word**
 
@@ -497,7 +515,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
   <tr>
     <td>Text:</td>
-    <td>I declared a <code><u>number</u></code> variable named number_var.</td>
+    <td>I declared a <code><u>number</u></code> variable named my-number-var.</td>
   </tr>
 </table>
 
@@ -510,7 +528,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
   </tr>
   <tr>
     <td>Text:</td>
-    <td>I declared a number variable named <code><u>number</u></code>_var.</td>
+    <td>I declared a number variable named my-<code><u>number</u></code>-var.</td>
   </tr>
   <tr>
     <td>Explanation:</td>
@@ -545,6 +563,12 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
     <td>I declared a number variable named my-number-<code><u>var</u></code>.</td>
   </tr>
 </table>
+
+<!-- TODO: ## Lookahead & Lookbehind
+`a(?=b)` 	Match a in baby but not in bay
+`a(?!b)` 	Match a in Stan but not in Stab
+`(?<=a)b` 	Match b in crabs but not in cribs
+`(?<!a)b` 	Match b in fib but not in fab -->
 
 
 # Grouping <a name="paragraph3"></a>
