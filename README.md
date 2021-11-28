@@ -69,7 +69,7 @@ Any suggestions or insights are more than welcome!
 
 ## cheatsheets <a name="paragraph1.1"></a>
 
-Handy templates on how to use some of languages - mainly regex, yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
+Handy templates on how to use some of languages - mainly RegEx, yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
 
 ## vault <a name="paragraph1.2"></a>
