@@ -1,5 +1,5 @@
 Source:
-- https://www.computerhope.com/unix/regex-quickref.html
+- https://www.regular-expressions.info/
 - Learning Regular Expressions 1st Edition; Addison-Wesley Professional
 ---
 
@@ -22,8 +22,9 @@ Source:
 - [Location matching mechanisms](#paragraph4)
   - [Anchors](#paragraph4.1)
   - [Word boundaries](#paragraph4.2)
-- [Grouping](#paragraph3)
-- [Examples](#paragraph4)
+- [Grouping](#paragraph5)
+  - [Nested grouping](#paragraph5.1)
+- [Examples](#paragraph6)
 
 
 # Overview <a name="paragraph1"></a>
@@ -463,15 +464,18 @@ Caret (`^`) is a start of line/string anchor in multi-line pattern which specifi
 <table>
   <tr>
     <td>RegEx:</td>
-    <td>/^www/g</td>
+    <td>/^Unindented/g</td>
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Check out those two websites: <code><u>www</u></code>.wp<span>.pl and <code><u>www</u></code>.google<span>.pl.</u></code></td>
+    <td><code><u>Unindented</u></code> line of text.<br>
+          Indented line of text, starting with tabulator.<br>
+        Another unindented line of text.
+    </td>
   </tr>
 </table>
 
-`\A` is a start of string anchor which specifies that a match must occur at the **beginning of the string**.
+> :exclamation: To match beginning of the second line that starts with an indentation (resulted in using spaces or tabs) RegEx would need to be constructed in the following way: `/^\s*Second/g`.
 
 <br>
 
@@ -480,17 +484,25 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
 <table>
   <tr>
     <td>RegEx:</td>
-    <td>/^www/g</td>
+    <td>/text\.$/gm</td>
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Check out those two websites: www<span>.wp.<code><u>pl</u></code> and www<span>.google.<code><u>pl</u></code>.</u></code></td>
+    <td>Unindented line of <code><u>text.</u></code><br>
+          Indented line of text, starting with tabulator.<br>
+        Another unindented line of <code><u>text.</u></code>.
+    </td>
   </tr>
 </table>
 
-`\Z` is a end of string anchor which specifies that a match must occur at the **end of the string**.
+> :exclamation: Since this time additionial modifier for multiline (<code>/pattern/g<b>m</b></code>) has been used two matched have been returned, not only the first one, because each line end sign was treated as a line separator.
 
-`\z` is an absolute end of string anchor which specifies that a match must occur at the **absolute end of the string**.
+<br>
+
+Some of RegEx implementations support following anchors, however they are not allowed in multiline mode:
+- `\A` - start of string anchor which specifies that a match must occur at the **beginning of the string**
+- `\Z` - end of string anchor which specifies that a match must occur at the **end of the string**
+- `\z` - absolute end of string anchor which specifies that a match must occur at the **absolute end of the string**
 
 > :warning: A single character before or after the anchor sign causes the match to fail:
 > - /^Begin/ will not match " Begin"<br>
@@ -564,16 +576,10 @@ Three different positions qualify as word boundaries:
   </tr>
 </table>
 
-<!-- TODO: ## Lookahead & Lookbehind
-`a(?=b)` 	Match a in baby but not in bay
-`a(?!b)` 	Match a in Stan but not in Stab
-`(?<=a)b` 	Match b in crabs but not in cribs
-`(?<!a)b` 	Match b in fib but not in fab -->
 
+# Grouping <a name="paragraph5"></a>
 
-# Grouping <a name="paragraph3"></a>
-
-Grouping allows treating another expression as a single unit. To group expressions following metacharacters should be used - `(` and `)`.
+Grouping allows treating another expression as a single unit, i.e. to further apply a quantifier to the entire group or to restrict alternation to part of the RegEx. To group expressions following metacharacters should be used - `(` and `)`.
 
 <table>
   <tr>
@@ -599,11 +605,72 @@ Above example can be simplified using grouping metacharacters.
   </tr>
 </table>
 
+<br>
+
+`|` - OR operator.
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(19|20)\d{2}-\d){2}-\d){2}/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>1967-08-17</u></code><br>
+        1876-03-10<br>
+        <code><u>2005-12-30</u></code>
+    </td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>This syntax will firstly match digits <code><u>19</u></code> or <code><u>20</u></code> due to OR operator (<code><u>|</u></code>) used inside grouping.<br>
+    If following pattern <code><u>(19|20)</u></code> wouldn't be grouped, matching engine would attempt to match syntax on the left and right of the OR operator as follows - first <code><u>19</u></code> and then <code><u>20\d{2}-\d){2}-\d){2}</u></code> resulting effectively in none of dates starting with <code><u>19</u></code> being returned.
+    </td>
+  </tr>
+</table>
+
+> :exclamation: It would seem like a good idea to match next two parts of date (month and day) using another grouping like: `(-\d){2}`, however this would fail because search engine would expect following pattern - `--\d\d`. It is crucial to remember that intervals used for groupped patterns will quantify **all** of their parts.
+
+
+## Nested grouping <a name="paragraph5.1"></a>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(((25[0-5])|(2[0-4]\d)|(1\d{2})|(\d{1,2}))\.){3}((25[0-5])|(2[0-4]\d)|(1\d{2})|(\d{1,2}))/gm</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>127.0.0.1</u></code><br>
+        <code><u>10.10.10.10</u></code><br>
+        8<code><u>76.34.66.200</u></code><br>
+        <code><u>192.168.0.1</u></code>
+    </td>
+  </tr>
+    <tr>
+      <td>Explanation:</td>
+      <td>First part of this nested syntax determines how to recognise valid IP address - each octet can be either:<br>
+      - number <code><u>25</u></code> followed by the digit from a ranged class <code><u>[0-5]</u></code> effectively allowing it to be a three digit number from a range of <code><u>250-255</u></code> or (<code><u>|</u></code>)<br>
+      - number <code><u>2</u></code> followed by the digit from a ranged class <code><u>[0-4]</u></code> and a digit <code><u>\d</u></code> effectively allowing it to be a three digit number from a range of <code><u>200-249</u></code> or (<code><u>|</u></code>)<br>
+      - number <code><u>1</u></code> followed by two digits <code><u>\d{3}</u></code> effectively allowing it to be a three digit number from a range of <code><u>100-199</u></code> or (<code><u>|</u></code>)<br>
+      - number <code><u>1</u></code> followed by at least one to two digits <code><u>\d{1,2}</u></code> effectively allowing it to be a one or two digit number from a range of <code><u>1-99</u></code><br>
+      All of that grouped and expanded with escaped <code><u>\.</u></code> and repeated <code><u>{3}</u></code> times. Fourth octet is the repetiotion of previous grouping but without interval.
+    </tr>
+</table>
+
+> :exclamation: Witing a RegEx that will match expected syntax is usually only half success. Not matching unwanted parts is the more difficult part. Above example shows that the determined syntax will try to match also parts of invalid addresses - 8<code><u>76.34.66.200</u></code>. Moreover, if the order of matching patterns for fourth octec was altered, e.g. <code><u>(((\d{1,2})|(1\d{2})|(2[0-4]\d)|25[0-5]))</u></code> the actuall match would look as follows - 8<code><u>76.34.66.20</u></code>0 because the matching egine examins pattern conditions from left to right stopping and the first satisfied.
+
 <!-- TODO:(abc) 	Capture group
-(a|b) 	Match a or b
 (?:abc) 	Match abc, but don’t capture -->
 
 
-# Examples <a name="paragraph5"></a>
+# Lookahead & lookbehind
+<!-- `a(?=b)` 	Match a in baby but not in bay
+`a(?!b)` 	Match a in Stan but not in Stab
+`(?<=a)b` 	Match b in crabs but not in cribs
+`(?<!a)b` 	Match b in fib but not in fab -->
+
+
+# Examples <a name="paragraph6"></a>
 
 `/((?<=\/).*){2}/` - This will match whatever is written after second occurance of `/` (without the sign itself) sign till the end of the string
