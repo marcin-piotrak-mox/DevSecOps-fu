@@ -1,5 +1,6 @@
 Source:
 - https://www.regular-expressions.info/
+- https://daringfireball.net/projects/markdown/
 - Learning Regular Expressions 1st Edition; Addison-Wesley Professional
 ---
 
@@ -658,7 +659,7 @@ Above example can be simplified using grouping metacharacters.
     </tr>
 </table>
 
-> :exclamation: Witing a RegEx that will match expected syntax is usually only half success. Not matching unwanted parts is the more difficult part. Above example shows that the determined syntax will try to match also parts of invalid addresses - 8<code><u>76.34.66.200</u></code>. Moreover, if the order of matching patterns for fourth octec was altered, e.g. <code><u>(((\d{1,2})|(1\d{2})|(2[0-4]\d)|25[0-5]))</u></code> the actuall match would look as follows - 8<code><u>76.34.66.20</u></code>0 because the matching egine examins pattern conditions from left to right stopping and the first satisfied.
+> :exclamation: Witing a RegEx that will match expected syntax is usually only half success. Not matching unwanted parts is the more difficult part. Above example shows that the determined syntax will try to match also parts of invalid addresses - 8<code><u>76.34.66.200</u></code>. Moreover, if the order of matching patterns for fourth octet was altered, e.g. <code><u>(((\d{1,2})|(1\d{2})|(2[0-4]\d)|25[0-5]))</u></code> the actual match would look as follows - 8<code><u>76.34.66.20</u></code>0, because the matching egine examines matching pattern conditions from left to right stopping at the first satisfied.
 
 <!-- TODO:(abc) 	Capture group
 (?:abc) 	Match abc, but don’t capture -->
