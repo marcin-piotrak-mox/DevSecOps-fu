@@ -25,7 +25,9 @@ Source:
   - [Word boundaries](#paragraph4.2)
 - [Grouping](#paragraph5)
   - [Nested grouping](#paragraph5.1)
-- [Examples](#paragraph6)
+- [Lookahead & lookbehind](#paragraph6)
+  - [Negated lookahead & lookbehind](#paragraph6.1)
+- [Examples](#paragraph7)
 
 
 # Overview <a name="paragraph1"></a>
@@ -96,7 +98,7 @@ Metacharacters are digits with special meaning not the sign itself (literal mean
   </tr>
   <tr>
     <td>Text:</td>
-    <td>Please see this math exercise: <code><u>1 + 3 * (2 + 2)</u></code></td>
+    <td>Please see this math exercise: <code><u>1 + 3 * (2 + 2)</u></code>.</td>
   </tr>
 </table>
 
@@ -210,6 +212,8 @@ Other very rarely used character classes can match the following:
 - octal digit like `\011` can be searched using - `\z`
 - control class like `\cZ` equal to `Ctrl+Z` can be searched using - `\c`
 
+
+> :bulb: Order of characters within class has no meaning, therefore following syntax - <code><u>/[\w\\.]@com/</u></code> will match <code><u>x.y.z@com</u></code>, <code><u>123@com</u></code> or <code><u>a@com</u></code> and could be also written as <code><u>/[\\.\w]@com/</u></code>.
 
 ## Character range <a name="paragraph2.5"></a>
 
@@ -408,7 +412,7 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>Third date hasn't been matched due to not all search patterns being met - year denotation mus have at least 2 digits. Additionaly this RegEx could be simplified using grouping combined with exact interval matching - <code>/(\d{1,2}[-\/]){2}\d{2,4}/g<code></td>
+    <td>Third date hasn't been matched due to not all search patterns being met - year denotation mus have at least 2 digits. Additionaly this RegEx could be simplified using grouping combined with exact interval matching - <code>/(\d{1,2}[-\/]){2}\d{2,4}/g.<code></td>
   </tr>
 </table>
 
@@ -471,8 +475,7 @@ Caret (`^`) is a start of line/string anchor in multi-line pattern which specifi
     <td>Text:</td>
     <td><code><u>Unindented</u></code> line of text.<br>
           Indented line of text, starting with tabulator.<br>
-        Another unindented line of text.
-    </td>
+        Another unindented line of text.</td>
   </tr>
 </table>
 
@@ -491,8 +494,7 @@ Dollar (`$`) is a end of line/string anchor in multi-line pattern, that indicate
     <td>Text:</td>
     <td>Unindented line of <code><u>text.</u></code><br>
           Indented line of text, starting with tabulator.<br>
-        Another unindented line of <code><u>text.</u></code>.
-    </td>
+        Another unindented line of <code><u>text.</u></code>.</td>
   </tr>
 </table>
 
@@ -625,8 +627,7 @@ Above example can be simplified using grouping metacharacters.
   <tr>
     <td>Explanation:</td>
     <td>This syntax will firstly match digits <code><u>19</u></code> or <code><u>20</u></code> due to OR operator (<code><u>|</u></code>) used inside grouping.<br>
-    If following pattern <code><u>(19|20)</u></code> wouldn't be grouped, matching engine would attempt to match syntax on the left and right of the OR operator as follows - first <code><u>19</u></code> and then <code><u>20\d{2}-\d){2}-\d){2}</u></code> resulting effectively in none of dates starting with <code><u>19</u></code> being returned.
-    </td>
+    If following pattern <code><u>(19|20)</u></code> wouldn't be grouped, matching engine would attempt to match syntax on the left and right of the OR operator as follows - first <code><u>19</u></code> and then <code><u>20\d{2}-\d){2}-\d){2}</u></code> resulting effectively in none of dates starting with <code><u>19</u></code> being returned.</td>
   </tr>
 </table>
 
@@ -655,23 +656,187 @@ Above example can be simplified using grouping metacharacters.
       - number <code><u>2</u></code> followed by the digit from a ranged class <code><u>[0-4]</u></code> and a digit <code><u>\d</u></code> effectively allowing it to be a three digit number from a range of <code><u>200-249</u></code> or (<code><u>|</u></code>)<br>
       - number <code><u>1</u></code> followed by two digits <code><u>\d{3}</u></code> effectively allowing it to be a three digit number from a range of <code><u>100-199</u></code> or (<code><u>|</u></code>)<br>
       - number <code><u>1</u></code> followed by at least one to two digits <code><u>\d{1,2}</u></code> effectively allowing it to be a one or two digit number from a range of <code><u>1-99</u></code><br>
-      All of that grouped and expanded with escaped <code><u>\.</u></code> and repeated <code><u>{3}</u></code> times. Fourth octet is the repetiotion of previous grouping but without interval.
+      All of that grouped and expanded with escaped <code><u>\.</u></code> and repeated <code><u>{3}</u></code> times. Fourth octet is the repetiotion of previous grouping but without interval.</td>
     </tr>
 </table>
 
-> :exclamation: Witing a RegEx that will match expected syntax is usually only half success. Not matching unwanted parts is the more difficult part. Above example shows that the determined syntax will try to match also parts of invalid addresses - 8<code><u>76.34.66.200</u></code>. Moreover, if the order of matching patterns for fourth octet was altered, e.g. <code><u>(((\d{1,2})|(1\d{2})|(2[0-4]\d)|25[0-5]))</u></code> the actual match would look as follows - 8<code><u>76.34.66.20</u></code>0, because the matching egine examines matching pattern conditions from left to right stopping at the first satisfied.
-
-<!-- TODO:(abc) 	Capture group
-(?:abc) 	Match abc, but don’t capture -->
+> :exclamation: Writing a RegEx that will match expected syntax is usually only half the success. Not matching unwanted parts is the more difficult part. Above example shows that the determined syntax will try to match also parts of invalid addresses - 8<code><u>76.34.66.200</u></code>. Moreover, if the order of matching patterns for fourth octet was altered, e.g. <code><u>(((\d{1,2})|(1\d{2})|(2[0-4]\d)|25[0-5]))</u></code> the actual match would look as follows - 8<code><u>76.34.66.20</u></code>0, because the matching egine examines matching pattern conditions from left to right stopping at the first satisfied.
 
 
-# Lookahead & lookbehind
-<!-- `a(?=b)` 	Match a in baby but not in bay
-`a(?!b)` 	Match a in Stan but not in Stab
-`(?<=a)b` 	Match b in crabs but not in cribs
-`(?<!a)b` 	Match b in fib but not in fab -->
+# Backreference
+
+Backreferences match the same text as previously matched by a capturing group.
+
+> :bulb: Most regex flavors support up to 99 capturing groups and double-digit backreferences, therefore `\99` is a valid backreference if exemplary regex has 99 capturing groups.
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/[ ]+(\w+)[ ]+\1/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>This<code><u> is is</u></code> an example text<code><u> with with</u></code> accidentally doubled<code><u> words words</u></code>.</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td><code><u>(\w+)</u></code> grouping part of RegEx is used not for repetition (intervals) rather as a <b>subexpression for backreference</b>. This way first (<code><u>\1</u></code>) matched text is matched once more as per backreference instruction. If there were more than one backreferences to be used they would be marked as following - <code><u>\2</u></code>, <code><u>\3</u></code>, etc.</td>
+  </tr>
+</table>
+
+<br>
+
+> :exclamation: Backreferences can only work in relation to subexpressions - matching patterns enclosed in `( )`.
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/<[hH]([1-6])>.*?<\/[hH]\1>/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>&lt;body&gt;<br>
+        <code><u>&lt;h1&gt;Welcome to my page!&lt;/h1&gt;</u></code><br>
+        Example h1 text.<br>
+        <code><u>&lt;h2&gt;Subpage 1&lt;/h2&gt;</u></code><br>
+        Example h2 text.<br>
+        <code><u>&lt;h2&gt;Subpage 2&lt;/h2&gt;</u></code><br>
+        Another example h2 text.<br>
+        &lt;h2&gt;Subpage 3&lt;/h3&gt;<br>
+        Example of incorrect tagging.<br>
+        &lt;/body&gt;</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Similarly to previous example following grouping - <code><u>([1-6])</u></code> has been used as a subexpression for backreference.</td>
+  </tr>
+</table>
 
 
-# Examples <a name="paragraph6"></a>
+# Lookahead & lookbehind <a name="paragraph6"></a>
+
+Lookahead and lookbehind, collectively called **lookaround**, are zero-length assertions just like the start and end of line, and start and end of word anchors explained earlier. The difference is that lookaround actually matches characters, but then gives up the match, returning only the result - match or no match. They do not consume characters in the string, but only assert whether a match is possible or not.
+
+> :bulb: Some documentation refer to matching and returning a pattern by RegEx as **consuming**. Non-consuming stops at matching but does not return match as a result.
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/.+(?=:)/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>http</u></code>://www.something.com<br>
+        <code><u>https</u></code>://mail.google.com<br>
+        <code><u>ftp</u></code>://ftp.anything.com</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Starting part of hyperlinks representing the protocol is matched however when getting to `:` character RegEx engine matches it, looksahead and does not capture the match (doesn't consume).</td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(?<=\$)[9-9.]+/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>ABC01: $<code><u>23.45</u></code><br>
+        HGG42: $<code><u>5.31</u></code><br>
+        CFMX1: $<code><u>899.00</u></code></td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>`$` sign is mathched but not returned allowing to separate prize value.</td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(?<=\<[tT][iI][tT][lL][eE]>).+(?=\<\/[tT][iI][tT][lL][eE]>)/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>&lt;body&gt;<br>
+        &lt;title&gt;<code><u>Welcome to my page!</u></code>&lt;/title&gt;<br>
+        &lt;/body&gt;</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Combining both lookahead and lookbehind enables precise matching.</td>
+  </tr>
+</table>
+
+
+## Negated lookahead & lookbehind <a name="paragraph6.1"></a>
+
+
+
+
+# Examples <a name="paragraph7"></a>
 
 `/((?<=\/).*){2}/` - This will match whatever is written after second occurance of `/` (without the sign itself) sign till the end of the string
+
+
+<!--
+`a(?!b)` 	Match a in Stan but not in Stab
+`(?<!a)b` 	Match b in fib but not in fab
+
+Assertions
+    ?=
+    Lookahead assertion
+    ?!
+    =Negative lookahead
+    ?<=
+    Lookbehind assertion
+    ?!= or ?<!
+    Negative lookbehind
+    ?>
+    Once-only Subexp-ression
+    ?()
+    Condition [if then]
+    ?()|
+    Condition [if then else]
+    ?#
+    Comment
+
+Replacement
+    $n
+    nth non-pa-ssive group
+    $2
+    "-xyz-" in /^(abc-(xy-z))$/
+    $1
+    "-xyz-" in /^(?:a-bc)-(xyz)$/
+    $`
+    Before matched string
+    $'
+    After matched string
+    $+
+    Last matched string
+    $&
+    Entire matched string
+
+Modifiers
+    g
+    Global match
+    i
+    Case-i-nse-nsitive
+    m
+    Multiple lines
+    s
+    Treat string as single line
+    x
+    Allow comments and white space in pattern
+    e
+    Evaluate replac-ement
+    U
+    Ungreedy pattern -->
