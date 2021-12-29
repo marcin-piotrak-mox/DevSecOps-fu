@@ -190,7 +190,7 @@ A character class is an explicit list of the characters that may qualify for a m
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>"(...) Wcode.js (...)" part wasn’t matched because not all conditions of regex were met - "W" isn’t a part of "[XYZ]".<br> "(...) gXcode.js." is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
+    <td><code>(...) Wcode.js (...)</code> part wasn’t matched because not all conditions of regex were met - <code>W</code> isn’t a part of <code>[XYZ]</code>.<br> <code>(...) gXcode.js.</code> is an example when RegEx pattern should be more specific so that it would match pattern only when it's not a part of a string.</td>
   </tr>
 </table>
 
@@ -412,7 +412,7 @@ Intervals are specified between `{` and `}` metacharacters. They can take either
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>Third date hasn't been matched due to not all search patterns being met - year denotation mus have at least 2 digits. Additionaly this RegEx could be simplified using grouping combined with exact interval matching - <code>/(\d{1,2}[-\/]){2}\d{2,4}/g.<code></td>
+    <td>Third date hasn't been matched due to not all search patterns being met - year denotation mus have at least 2 digits. Additionaly this RegEx could be simplified using grouping combined with exact interval matching - <code>/(\d{1,2}[-\/]){2}\d{2,4}/g.</code></td>
   </tr>
 </table>
 
@@ -626,8 +626,8 @@ Above example can be simplified using grouping metacharacters.
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>This syntax will firstly match digits <code><u>19</u></code> or <code><u>20</u></code> due to OR operator (<code><u>|</u></code>) used inside grouping.<br>
-    If following pattern <code><u>(19|20)</u></code> wouldn't be grouped, matching engine would attempt to match syntax on the left and right of the OR operator as follows - first <code><u>19</u></code> and then <code><u>20\d{2}-\d){2}-\d){2}</u></code> resulting effectively in none of dates starting with <code><u>19</u></code> being returned.</td>
+    <td>This syntax will firstly match digits <code>19</code> or <code>20</code> due to OR operator (<code>|</code>) used inside grouping.<br>
+    If following pattern <code>(19|20)</code> wouldn't be grouped, matching engine would attempt to match syntax on the left and right of the <code>OR</code> operator as follows - first <code>19</code> and then <code>20\d{2}-\d){2}-\d){2}</code> resulting effectively in none of dates starting with <code>19</code> being returned.</td>
   </tr>
 </table>
 
@@ -652,11 +652,11 @@ Above example can be simplified using grouping metacharacters.
     <tr>
       <td>Explanation:</td>
       <td>First part of this nested syntax determines how to recognise valid IP address - each octet can be either:<br>
-      - number <code><u>25</u></code> followed by the digit from a ranged class <code><u>[0-5]</u></code> effectively allowing it to be a three digit number from a range of <code><u>250-255</u></code> or (<code><u>|</u></code>)<br>
-      - number <code><u>2</u></code> followed by the digit from a ranged class <code><u>[0-4]</u></code> and a digit <code><u>\d</u></code> effectively allowing it to be a three digit number from a range of <code><u>200-249</u></code> or (<code><u>|</u></code>)<br>
-      - number <code><u>1</u></code> followed by two digits <code><u>\d{3}</u></code> effectively allowing it to be a three digit number from a range of <code><u>100-199</u></code> or (<code><u>|</u></code>)<br>
-      - number <code><u>1</u></code> followed by at least one to two digits <code><u>\d{1,2}</u></code> effectively allowing it to be a one or two digit number from a range of <code><u>1-99</u></code><br>
-      All of that grouped and expanded with escaped <code><u>\.</u></code> and repeated <code><u>{3}</u></code> times. Fourth octet is the repetiotion of previous grouping but without interval.</td>
+      - number <code>25</code> followed by the digit from a ranged class <code>[0-5]</code> effectively allowing it to be a three digit number from a range of <code>250-255</code> or (<code>|</code>)<br>
+      - number <code>2</code> followed by the digit from a ranged class <code>[0-4]</code> and a digit <code>\d</code> effectively allowing it to be a three digit number from a range of <code>200-249</code> or (<code>|</code>)<br>
+      - number <code>1</code> followed by two digits <code>\d{3}</code> effectively allowing it to be a three digit number from a range of <code>100-199</code> or (<code>|</code>)<br>
+      - number <code>1</code> followed by at least one to two digits <code>\d{1,2}</code> effectively allowing it to be a one or two digit number from a range of <code>1-99</code><br>
+      All of that grouped and expanded with escaped <code>\.</code> and repeated <code>{3}</code> times. Fourth octet is the repetiotion of previous grouping but without interval.</td>
     </tr>
 </table>
 
@@ -680,7 +680,7 @@ Backreferences match the same text as previously matched by a capturing group.
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td><code><u>(\w+)</u></code> grouping part of RegEx is used not for repetition (intervals) rather as a <b>subexpression for backreference</b>. This way first (<code><u>\1</u></code>) matched text is matched once more as per backreference instruction. If there were more than one backreferences to be used they would be marked as following - <code><u>\2</u></code>, <code><u>\3</u></code>, etc.</td>
+    <td><code>(\w+)</code> grouping part of RegEx is used not for repetition (intervals) rather as a <b>subexpression for backreference</b>. This way first (<code>\1</code>) matched text is matched once more as per backreference instruction. If there were more than one backreferences to be used they would be marked as following - <code>\2</code>, <code>\3</code>, etc.</td>
   </tr>
 </table>
 
@@ -710,7 +710,7 @@ Backreferences match the same text as previously matched by a capturing group.
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>Similarly to previous example following grouping - <code><u>([1-6])</u></code> has been used as a subexpression for backreference.</td>
+    <td>Similarly to previous example following grouping - <code>([1-6])</code> has been used as a subexpression for backreference.</td>
   </tr>
 </table>
 
@@ -734,7 +734,7 @@ Lookahead and lookbehind, collectively called **lookaround**, are zero-length as
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>Starting part of hyperlinks representing the protocol is matched however when getting to `:` character RegEx engine matches it, looksahead and does not capture the match (doesn't consume).</td>
+    <td>Starting part of hyperlinks representing the protocol is matched however when getting to <code>:</code> character RegEx engine matches it, looks ahead and does not capture the match (doesn't consume).</td>
   </tr>
 </table>
 
@@ -753,7 +753,7 @@ Lookahead and lookbehind, collectively called **lookaround**, are zero-length as
   </tr>
   <tr>
     <td>Explanation:</td>
-    <td>`$` sign is mathched but not returned allowing to separate prize value.</td>
+    <td><code>$</code> sign is mathched but not returned allowing to separate prize value.</td>
   </tr>
 </table>
 
@@ -779,7 +779,39 @@ Lookahead and lookbehind, collectively called **lookaround**, are zero-length as
 
 ## Negated lookahead & lookbehind <a name="paragraph6.1"></a>
 
+> :bulb: With negated lookahead & lookbehind the `=` sing in RegEx pattern is replaces with `!`.
 
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(?<=\$)\d+/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I paid $<code><u>30</u></code> for 100 apples, 50 oranges and 20 pears. I saved around $<code><u>5</u></code>.</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Following RegEx allows to match only the digits preceeded with <code>$</code> sign.</td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(?<span>!\$)\d+\b/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td>I paid $30 for <code><u>100</u></code> apples, <code><u>50</u></code> oranges and <code><u>20</u></code> pears. I saved around $5.</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Negated example of RegEx used above allows to match only the digits <b>NOT</b> preceeded with <code>$</code> sign. Without <code>\b</code> sign for matching borders $3<code>0</code> part would also be matched.</td>
+  </tr>
+</table>
 
 
 # Examples <a name="paragraph7"></a>
