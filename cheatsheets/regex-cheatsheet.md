@@ -27,7 +27,8 @@ Source:
   - [Nested grouping](#paragraph5.1)
 - [Lookahead & lookbehind](#paragraph6)
   - [Negated lookahead & lookbehind](#paragraph6.1)
-- [Examples](#paragraph7)
+- [Conditionals](#paragraph7)
+- [Examples](#paragraph8)
 
 
 # Overview <a name="paragraph1"></a>
@@ -175,7 +176,7 @@ To escape metacharacters they must be preceded with a backslash. Backslash itsel
 
 ## Character class <a name="paragraph2.4"></a>
 
-A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any of the class characters must match, but not necessarily all**.
+A character class is an explicit list of the characters that may qualify for a match in a search. A character class is indicated by enclosing a class of characters in brackets (`[` and `]`). Anything enclosed with `[` and `]` is a part of the class, meaning **any** (and only one at a time) **of the class characters must match**.
 
 > :bulb: Metacharacters placed in character class are treated as literals therefore don't need to be escaped, however doing so is considered a good habit, e.g. /[XYZ\.\*]/.
 
@@ -814,14 +815,135 @@ Lookahead and lookbehind, collectively called **lookaround**, are zero-length as
 </table>
 
 
-# Examples <a name="paragraph7"></a>
+# Conditionals <a name="paragraph7"></a>
+
+A special construct `(?ifthen|else)` allows to create conditional regular expressions. If the `if` part evaluates to `true`, then the regex engine will attempt to match the `then` part. Otherwise, the `else` part is attempted instead. The syntax consists of a pair of parenthesis - `(` and `)`. The opening bracket must be followed by a question mark, immediately followed by the if part, immediately followed by the then part. This part can be followed by a vertical bar (`|`) and the else part. Else part, and the vertical bar with it may be omitted.
+Since conditionals are based on backreferences and lookaround, therefore can also look like this `(?(backreference)true)` or `(?(backreference)true|false)`
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\(?\d{3}\)?-?\d{3}-\d{4}/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>123-456-7890</u></code><br>
+        <code><u>(123)456-7890</u></code><br>
+        <code><u>(123)-456-7890</u></code><br>
+        <code><u>(123-456-7890</u></code><br>
+        1234567890<br>
+        123 456 7890</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td><code>xxx-xxx-xxxx</code> and <code>(xxx)xxx-xxxx</code> are the valid phone formats in US. Above RegEx pattern matches proper format however accepts invalid numbers as well. Changing <code>\)?-?</code> to <code>[\)-]?</code> would not match third (invalid) example (since it would match either <code>)</code> or <code>-</code>, but not both at the same time), however fourth (also invalid) would still be returned. Correct RegEx should only match <code>)</code> if there is <code>(</code> preceding it and if there isn't <code>(</code> it should search for <code>-</code>. This sort of logic <b>can't be achevied without conditionals</b>.</td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(<[Aa]\s+[^>]+>\s*)?<[Ii][Mm][Gg]\s+[^>]+>(?(1)\s*<\/[Aa]>)/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><<span>!-- Nav bar --><br>
+        <<span>div><br>
+        <code><u><<span>a href="/home"><<span>img src="/images/home.gif"><<span>/a></u></code><br>
+        <code><u><<span>img src="/images/space.gif"></u></code><br>
+        <code><u><<span>a href="/search"><<span>img src="/images/search.gif"><<span>/a></u></code><br>
+        <code><u><<span>img src="/images/space.gif"></u></code><br>
+        <code><u><<span>a href="/help"><<span>img src="/images/help.gif"><<span>/a></u></code><br>
+        <<span>/div></td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Above RegEx syntax works in the following way:<br>
+     - <code>(<[Aa]\s+[^>]+>\s*)</code> matches opening <code><<span>a></code> or <code><<span>A></code> tag if it exists (<code>?</code> following this grouping makes it <b>conditional</b>)<br>
+     - <code><[Ii][Mm][Gg]\s+[^>]+></code> searchs for <code><<span>img></code> or <code><<span>IMG></code> with any optional attribute<br>
+     - <code>(?(1)\s*<\/[Aa]>)</code> starts with <code>?(1)</code> conditional meaning - <b>match only if there is a backreference number 1</b> (opening <code><<span>a></code> or <code><<span>A></code> tag)<br>
+     - if backreference <code>1</code> exists then <code>\s*<\/[Aa]></code> matches any empty space after closing tag (<code><<span>/a></code> or <code><<span>/A></code>).</td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/(\()?\d{3}(?(1)\)|-)\d{3}-\d{4}/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code><u>123-456-7890</u></code><br>
+        <code><u>(123)456-7890</u></code><br>
+        (123)-456-7890<br>
+        (<code><u>123-456-7890</u></code><br>
+        1234567890<br>
+        123 456 7890</td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Above RegEx syntax is the enchanced version of first attempt on matching valid phone formats in US in the following way:<br>
+    - <code>(\()?</code> matches opening <code>(</code>, but it has been enclosed in pair of <code>(</code> and <code>)</code> to create a subexpression<br>
+    - <code>\d{3}</code> matches 3 digits<br>
+    - <code>(?(1)\)|-)</code> matches <code>\)</code> or <code>-</code> depending on whether the conditional has been met or not - if <code>(1)</code> exists then match <code>\)</code>, otherwise match <code>-</code><br>
+    Thanks to this logic <code>(</code> and <code>)</code> are always paired and the <code>-</code> connector is only matched when parenthesis are not present.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\d{5}(-\d{4})/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code>11111</code><br>
+        <code>22222</code><br>
+        <code>33333-</code><br>
+        <code>44444-4444</code><br></td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td><code>xxxxx</code> and <code>xxxxx-xxxx</code> are the valid ZIP code formats in US. Used RegEx syntax matches firstly 5 digits <code>\d{5}</code> and then another 4 digits followed by hyphen <code>(-\d{4})?</code> if they are present. This of course can be more accurate so that third line wouldn't be consumed.</td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <td>RegEx:</td>
+    <td>/\d{5}(?(?=-)-\d{4})/g</td>
+  </tr>
+  <tr>
+    <td>Text:</td>
+    <td><code>11111</code><br>
+        <code>22222</code><br>
+        33333-<br>
+        <code>44444-4444</code><br></td>
+  </tr>
+  <tr>
+    <td>Explanation:</td>
+    <td>Above RegEx syntax is the enchanced version of first attempt on matching ZIP code formats in US in the following way:<br>
+    - <code>\d{5}</code> matches 5 digits<br>
+    - <code>(?(?=-)-\d{4})</code> conditional uses lookahead <code>?=-</code> to match but not consume the <code>-</code> and if it's there another 4 digits are matched <code>(-\d{4})</code>.</td>
+  </tr>
+</table>
+
+
+# Examples <a name="paragraph8"></a>
 
 `/((?<=\/).*){2}/` - This will match whatever is written after second occurance of `/` (without the sign itself) sign till the end of the string
 
 
 <!--
-`a(?!b)` 	Match a in Stan but not in Stab
-`(?<!a)b` 	Match b in fib but not in fab
 
 Assertions
     ?=
