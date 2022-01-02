@@ -940,9 +940,7 @@ Since conditionals are based on backreferences and lookaround, therefore can als
 
 `/((?<=\/).*){2}/` - This will match whatever is written after second occurance of `/` (without the sign itself) sign till the end of the string
 
-
 <!--
-
 Assertions
     ?=
     Lookahead assertion
