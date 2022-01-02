@@ -73,6 +73,7 @@ Handy templates on how to use some of languages - mainly RegEx, yaml and markup.
 
 ## Helm <a name="paragraph1.2"></a>
 
+Combined official Hashicorp documentation, course content from Pluralsight's certification path for Hashicorp Vault and my observations/insights (i.e "How-to" or "Commands" sections).
 
 ## Vault <a name="paragraph1.3"></a>
 

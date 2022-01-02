@@ -6,8 +6,14 @@ Source:
 # Table of contents
 
 - [Overview](#paragraph1)
-  - [](#paragraph1.1)
-
+  - [Repository](#paragraph1.1)
+- [Commands]
+- [Templates]
+- [Functions and pipelines]
+- [Logical operators/Conditions/Variables/Helpers]
+- [Passing values]
+- [Subcharts]
+- [Hooks]
 
 # Overview
 
@@ -295,7 +301,7 @@ post-rollback
 
 
 
-# random shit
+# random
 
 
 Helm functions are used to generate random data, such as passwords, keys, and certificates. Random generation creates new arbitrary values and updates the resources in the cluster with each deployment and upgrade. For example, it can replace your database password in the cluster with every version upgrade. This causes the clients to be unable to connect to the database after the password change.
