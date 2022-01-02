@@ -20,12 +20,12 @@
       <th colspan="8">Languages</th>
     </tr>
     <tr>
-      <td align="center" width="13%"></td>
-      <td align="center" width="13%"></td>
-      <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="80px;" height="80px;"><br /><b>Shell (in progress)</b></a></td>
+      <td align="center" width="13%"><a href=""><img src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" width="80px;"><br /><b>Shell (in progress)</b></a></td>
+      <td align="center" width="13%"><a href="cheatsheets/regex-cheatsheet.md"><img src="_screenshots/regex1.png" width="80px;" height="80px;"><br /><b>RegEx</b></a></td>
       <td align="center" width="12%"><a href=""><img src="https://www.vectorlogo.zone/logos/golang/golang-icon.svg" width="80px;" height="80px;"><br /><b>Go (in progress)</b></a></td>
       <td align="center" width="12%"><a href="cheatsheets/yaml-cheatsheet.yaml"><img src="https://www.vectorlogo.zone/logos/yaml/yaml-icon.svg" width="80px;" height="80px;"><br /><b>YAML</b></a></td>
       <td align="center" width="12%"><a href="cheatsheets/markdown-cheatsheet.md"><img src="https://www.vectorlogo.zone/logos/markdown-here/markdown-here-icon.svg" width="80px;" height="80px;"><br /><b>Markdown</b></a></td>
+      <td align="center" width="12%"></td>
       <td align="center" width="13%"></td>
       <td align="center" width="13%"></td>
     </tr>
@@ -45,10 +45,7 @@
   </tbody>
 </table>
 
-<!-- TODO: Center first row of table. Check on h2 background color.
-https://stackoverflow.com/questions/36121672/set-table-column-width-via-markdown/51701842
-https://pretagteam.com/question/table-align-center-not-working-in-github
-https://www.quackit.com/html/codes/tables/html_table_border.cfm -->
+<!-- TODO: Center first row of table. Check on h2 background color. -->
 
 # Table of contents
 
@@ -58,7 +55,7 @@ https://www.quackit.com/html/codes/tables/html_table_border.cfm -->
   - [Vault](#paragraph1.3)
 
 
-# Overview <a name="paragraph1"> </a>
+# Overview <a name="paragraph1"></a>
 
 Following repository is the collection of notes I've been taking since the day I decided to first become DevOps and later on (mighty) DevSecOps engineer! :ninja: The way I always tended to learn anything, no matter if in high school, then uni and now in so-called "adult life" was taking notes, even if it meant to re-write what I've read in books[^1], materials (mainly official documentation or Medium/Faun/Dev[^2] articles) or got from online courses (mainly Pluralsight[^3]). By far I was taking notes in Google Drive, but GitHub seems much more accessible, and it allows me practicing markdown almost on a daily basis, so here we are :wink:
 
@@ -69,17 +66,12 @@ If only the information gathered here will help someone gain some useful knowled
 Any suggestions or insights are more than welcome!
 
 
-## Cheatsheets <a name="paragraph1.1"> </a>
+## cheatsheets <a name="paragraph1.1"></a>
 
-Handy templates on how to use some of languages - mainly yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
-
-
-## Helm <a name="paragraph1.2"> </a>
-
-Combined official documentation, course content from Pluralsight and my observations/insights.
+Handy templates on how to use some of languages - mainly RegEx, yaml and markup. No matter how often I use them, there is always something I can't remember, therefore this easy way of refreshing memory :wink:
 
 
-## Vault <a name="paragraph1.3"> </a>
+## vault <a name="paragraph1.2"></a>
 
 Combined official Hashicorp documentation, course content from Pluralsight's certification path for Hashicorp Vault and my observations/insights (i.e "How-to" or "Commands" sections).
 
@@ -87,6 +79,7 @@ Combined official Hashicorp documentation, course content from Pluralsight's cer
 [^1]: Books I really enjoyed reading:
     - UNIX and Linux System Administration Handbook 5th Edition; Addison-Wesley Professional
     - Linux Shell Scripting Cookbook - Third Edition: Do amazing things with the shell and automate tedious tasks 3rd Revised edition; Packt Publishing
+    - Learning Regular Expressions 1st Edition; Addison-Wesley Professional
     - Site Reliability Engineering: How Google Runs Production Systems 1st Edition; O'Reilly Media
 [^2]: Sites that I subcribe to or browse for solution:
     - https://roadmap.sh/devops
@@ -98,4 +91,5 @@ Combined official Hashicorp documentation, course content from Pluralsight's cer
     - https://itsfoss.com/
     - https://www.geeksforgeeks.org/
     - https://www.digitalocean.com/community/tutorials/
+    - https://regex101.com/
 [^3]: https://www.pluralsight.com/

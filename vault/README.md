@@ -1,3 +1,8 @@
+Source:
+- https://www.vaultproject.io/docs
+- https://app.pluralsight.com/paths/certificate/hashicorp-certified-vault-associate
+---
+
 # Table of contents
 
 - [Overview](#paragraph1)
@@ -24,7 +29,7 @@
     - [Root and default policies](#paragraph3.3.1)
 - [Secrets engines](#paragraph4)
   - [Identity secrets engine](#paragraph4.1)
-  - [Cubbyhole secrets engine](#paragrap4.2)
+  - [Cubbyhole secrets engine](#paragraph4.2)
   - [KV secrets engine](#paragraph4.3)
   - [Transit secrets engine](#paragraph4.4)
   - [Response wrapping](#paragraph4.5)
