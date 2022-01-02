@@ -818,7 +818,7 @@ Lookahead and lookbehind, collectively called **lookaround**, are zero-length as
 # Conditionals <a name="paragraph7"></a>
 
 A special construct `(?ifthen|else)` allows to create conditional regular expressions. If the `if` part evaluates to `true`, then the regex engine will attempt to match the `then` part. Otherwise, the `else` part is attempted instead. The syntax consists of a pair of parenthesis - `(` and `)`. The opening bracket must be followed by a question mark, immediately followed by the if part, immediately followed by the then part. This part can be followed by a vertical bar (`|`) and the else part. Else part, and the vertical bar with it may be omitted.
-Since conditionals are based on backreferences and lookaround, therefore can also look like this `(?(backreference)true)` or `(?(backreference)true|false)`
+Since conditionals are based on backreferences and lookaround, therefore can also look like this `(?(backreference)true)` or `(?(backreference)true|false)`.
 
 <table>
   <tr>
@@ -889,7 +889,7 @@ Since conditionals are based on backreferences and lookaround, therefore can als
     <td>Above RegEx syntax is the enchanced version of first attempt on matching valid phone formats in US in the following way:<br>
     - <code>(\()?</code> matches opening <code>(</code>, but it has been enclosed in pair of <code>(</code> and <code>)</code> to create a subexpression<br>
     - <code>\d{3}</code> matches 3 digits<br>
-    - <code>(?(1)\)|-)</code> matches <code>\)</code> or <code>-</code> depending on whether the conditional has been met or not - if <code>(1)</code> exists then match <code>\)</code>, otherwise match <code>-</code><br>
+    - <code>(?(1)\)|-)</code> matches <code>\)</code> or <code>-</code> depending on whether the conditional has been met or not - if <code>(1)</code> exists then match <code>\)</code>, otherwise match <code>-</code>.<br>
     Thanks to this logic <code>(</code> and <code>)</code> are always paired and the <code>-</code> connector is only matched when parenthesis are not present.
     </td>
   </tr>
@@ -914,8 +914,6 @@ Since conditionals are based on backreferences and lookaround, therefore can als
     <td><code>xxxxx</code> and <code>xxxxx-xxxx</code> are the valid ZIP code formats in US. Used RegEx syntax matches firstly 5 digits <code>\d{5}</code> and then another 4 digits followed by hyphen <code>(-\d{4})?</code> if they are present. This of course can be more accurate so that third line wouldn't be consumed.</td>
   </tr>
 </table>
-
-<br>
 
 <table>
   <tr>
