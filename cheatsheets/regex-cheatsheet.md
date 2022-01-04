@@ -729,7 +729,7 @@ Lookahead and lookbehind, collectively called **lookaround**, are zero-length as
   </tr>
   <tr>
     <td>Text:</td>
-    <td><code><u>http</u></code>://www.something.com<br>
+    <td><code><u>http</u></code>://www.<span>something.com<br>
         <code><u>https</u></code>://mail.google.com<br>
         <code><u>ftp</u></code>://ftp.anything.com</td>
   </tr>
@@ -904,10 +904,10 @@ Since conditionals are based on backreferences and lookaround, therefore can als
   </tr>
   <tr>
     <td>Text:</td>
-    <td><code>11111</code><br>
-        <code>22222</code><br>
-        <code>33333-</code><br>
-        <code>44444-4444</code><br></td>
+    <td><code><u>11111</u></code><br>
+        <code><u>22222</u></code><br>
+        <code><u>33333-</u></code><br>
+        <code><u>44444-4444</u></code><br></td>
   </tr>
   <tr>
     <td>Explanation:</td>
@@ -922,10 +922,10 @@ Since conditionals are based on backreferences and lookaround, therefore can als
   </tr>
   <tr>
     <td>Text:</td>
-    <td><code>11111</code><br>
-        <code>22222</code><br>
+    <td><code><u>11111</u></code><br>
+        <code><u>22222</u></code><br>
         33333-<br>
-        <code>44444-4444</code><br></td>
+        <code><u>44444-4444</u></code><br></td>
   </tr>
   <tr>
     <td>Explanation:</td>
