@@ -601,7 +601,7 @@ In a scenario when a management server would need to pass a configuration stored
 As an alternative a cubbyhole can be created which stores a copy of a secret, then generate a single-use token that can retrieve it. This token would be then passed in wrapped form by management server directly to cluster of servers and then any workers server that would require this secret can access cubbyhole directly. In this scenario the management node has no knowledge of the secret therefore if compromised does not reveal the secret and each of the worker servers has its own token for accessing the secret. Once token is used cubbyhole gets deleted.
 
 `vault [command] -wrap-ttl=<duration> PATH `- requests response wrapping for any command<br>
-`vault kv get -wrap-ttl=30m kv/[secret]` - creates single-use wrapped token for specific secret with explicit max TTL (impossible to renew)<br>
+`vault kv get -wrap-ttl=<duration> kv/[secret]` - creates single-use wrapped token for specific secret with explicit max TTL (impossible to renew)<br>
 `vault unwrap [options] [TOKEN] `- unwrapps issued token with data from specific secret (no need to authenticate to Vault, however unwrapping is done by connecting to it)
 
 :books: [Response wrapping - additional documentation](https://www.vaultproject.io/docs/concepts/response-wrapping "Response wrapping")
