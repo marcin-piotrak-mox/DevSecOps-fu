@@ -21,9 +21,9 @@ Source:
 
 # Overview <a name="paragraph1"></a>
 
-Helm is an open source package manager for Kubernetes graduated from CNCF. It provides the ability to provide, share, and use software built for Kubernetes.
+Helm is an **open source package manager for Kubernetes** graduated from CNCF. It provides the ability to provide, share, and use software built for Kubernetes.
 
-Helm uses a packaging format called charts. A chart is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on. Charts are created as files laid out in a particular directory tree. They can be packaged into versioned archives to be deployed.
+Helm uses a packaging format called **charts**. A chart is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on. Charts are created as files laid out in a particular directory tree. They can be packaged into versioned archives to be deployed.
 
 A chart is organized as a collection of files inside of a directory. The directory name is the name of the chart (without versioning information). Thus, a chart describing WordPress would be stored in a `wordpress/` directory.<br>
 Inside of this directory, Helm will expect a structure that matches:
@@ -76,7 +76,11 @@ For the use of this documentation below naming convention will be used:
 
 <img src="../_screenshots/helmE.png" width="900px" alt="helmE.png">
 
-> :bulb: `--max-col-width 0` flag allows to print full size of columns
+> :bulb: `--max-col-width 0` flag allows to print full size of columns.
+
+<img src="../_screenshots/helmB.png" width="300px" alt="helmB.png">
+
+> :bulb: File containing list of all used repositories.
 
 
 ## Chart management related commands <a name="paragraph2.2"></a>
@@ -95,7 +99,7 @@ For the use of this documentation below naming convention will be used:
 &emsp;&emsp;`helm dep build` - rebuilds the charts/ directory based on the Chart.lock file<br>
 &emsp;&emsp;`helm dep update` - downloads required dependency if missing
 
-> :bulb: Dependencies charts are listed within requirements.yaml file and kept within /charts folder
+> :bulb: Dependencies charts are listed within requirements.yaml file and kept within /charts folder.
 
 `helm lint ./[local_chart_directory]` - checks chart files syntax
 
@@ -108,10 +112,9 @@ For the use of this documentation below naming convention will be used:
 &emsp;&emsp;`helm install [name] [chart_name] --values=<custom_values.yaml>` - installs chart with custom values file (overriding default `values.yaml` file)<br>
 &emsp;&emsp;`helm install [name] [chart_name] --set image.tag=latest` - installs chart with specific set of values; by default when using `helm create [chart_name]` Helm creates a nginx chart which has a default image tag value of the value inserted in the `Charts.yaml` file.
 
-`helm uninstall/un/delete/del [name]` - uninstall specific chart
-&emsp;&emsp;`helm uninstall $(helm ls -q[quiet])` - q flag will list only release names, without system column names
+`helm uninstall/un/delete/del [name]` - uninstalls specific chart<br>
 
-> :bulb: While running commands like `helm install` or `helm upgrade`, the Helm client connects to the cluster and stores the record as secrets, i.e release. e.g. sh.helm.release.v1.elastic-operator.v1
+> :bulb: While running commands like `helm install` or `helm upgrade`, the Helm client connects to the cluster and stores the record as secrets, i.e release. e.g. sh.helm.release.v1.elastic-operator.v1.
 
 `helm upgrade [name] [chart_name] --recreate-pods`<br>
 &emsp;&emsp;`helm upgrade [name] [chart_name] --install --atomic` - `[--install]` flag will install chart if not present; `[--atomic]` flag will automatically run a helm rollback if upgrade fails
@@ -154,8 +157,6 @@ dynamic - using helm install [name] [chart_name] --dry-run --debug 2>&1 | less -
 
 # Functions and pipelines
 
-
-
 * Syntax difference between functions and pipelines in applying logic in templates.
 
 
@@ -173,8 +174,6 @@ range function is a scope restricted function.
 {{- range $key, $value := .Values }}
   {{ $key }}: {{ $value | toString | quote | b64enc }}
 {{- end }}
-
-
 
 
 ---include
