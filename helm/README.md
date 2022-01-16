@@ -7,7 +7,10 @@ Source:
 
 - [Overview](#paragraph1)
 - [Commands](#paragraph2)
-  - [Repository](#paragraph2.1)
+  - [Repository related commands](#paragraph2.1)
+  - [Chart management related commands](#paragraph2.2)
+  - [Chart deployment related commands](#paragraph2.3)
+  - [Chart monitoring related commands](#paragraph2.4)
 - [Templates]
 - [Functions and pipelines]
 - [Logical operators/Conditions/Variables/Helpers]
@@ -25,7 +28,7 @@ Helm uses a packaging format called charts. A chart is a collection of files tha
 A chart is organized as a collection of files inside of a directory. The directory name is the name of the chart (without versioning information). Thus, a chart describing WordPress would be stored in a `wordpress/` directory.<br>
 Inside of this directory, Helm will expect a structure that matches:
 
-<img src="../_screenshots/helmD.png" width="700px" alt="helmD.png">
+<p align="center"><img src="../_screenshots/helmD.png" width="700px" alt="helmD.png"></p>
 
 <br>
 
@@ -42,7 +45,7 @@ For the use of this documentation below naming convention will be used:
 
 `helm env` - lists all the environment variables used by Helm
 
-`helm version`
+`helm version` - prints version of installed Helm binary
 
 <img src="../_screenshots/helmC.png" width="700px" alt="helmC.png">
 
@@ -51,50 +54,44 @@ For the use of this documentation below naming convention will be used:
 
 ## Repository related commands <a name="paragraph2.1"></a>
 
-`helm repo [command]` - can be used to add, remove, list and index chart repositories<br>
-
-`helm repo index [./repo_directory]` - creates `index.yaml` file based on packed helms in specified directory. If file already exists it will be updated
+`helm repo [command]` - consists of multiple subcommands to interact with chart repositories, i.e. adds, removes, lists and gnerates index chart repositories<br>
 
 > :bulb: Helm repository is a web server representing the content of `index.yaml` file.
 
-Once this is done we need to publish it to the remote storage and then update local repository information using:
-`helm repo index update`
+&emsp;&emsp;`helm repo index [./repo_directory]` - generates `index.yaml` (or updates if file already exists) file based on packed helms in specified directory
+`helm repo index update` - updates local repository information
 
-&emsp;&emsp;`helm repo list`<br>
-&emsp;&emsp;`helm repo add/remove [repo_name] [repo_url]`<br>
+`helm package [./local_chart_directory]` - allows to pack locally tested and complete to be released files<br>
+&emsp;&emsp;`helm package ./[local_char_directory] --sign --key [key_name] --keyring [keyring_location} [./local_chart_directory]` - allows to sign chart package with GPG key and save sha256 sum to `[./local_package_name.tgz.prov]` file
+
+`helm verify [./local_package_name.tgz]` - verifies package against information saved in `[local_package_name.tgz.prov]` file
+
+&emsp;&emsp;`helm repo list` - lists locally indexed chart repositories<br>
+&emsp;&emsp;`helm repo add/remove [repo_name] [repo_url]` - adds/removes chart repository<br>
 &emsp;&emsp;`helm repo update` - gets the latest information about charts from the respective chart repositories
 
 `helm search [command]` - searches for charts<br>
 &emsp;&emsp;`helm search repo [keyword]` - searches indexed repositories for a keyword in charts<br>
 &emsp;&emsp;`helm search hub [keyword]` - searches for charts in the Artifact Hub or own hub instance
 
-`helm package [./local_chart_directory]` - allows to pack locally tested and complete to be released files<br>
-&emsp;&emsp;`helm package ./[local_char_directory] --sign --key [key_name] --keyring [keyring_location} [./local_chart_directory]` - allows to sign chart package with GPG key and save sha256 sum to `[./local_package_name.tgz.prov]` file
-
-`helm verify [./local_package_name.tgz]` - verifies package against information saved in [local_package_name.tgz.prov] file
-
 
 ## Chart management related commands <a name="paragraph2.2"></a>
 
-`helm create [name]`
+`helm create [name]` - creates chart structure for selected chart name
 
-`helm show values [chart_name]`
-
-`helm pull [repo/chart_name]` - retrieves a package from a package repository, and download it locally. Helm v2 used `helm fetch` instead
-
-`helm fetch [repo/chart_name]` - downloads helm-chart files for revision<br>
-&emsp;&emsp;`helm fetch --untar <repo/chart_name>` - downloads and decompresses
+`helm pull [repo/chart_name]` - retrieves a package from a package repository, and downloads it locally (known as  `helm fetch` in Helm v2)<br>
+&emsp;&emsp;`helm pull --untar <repo/chart_name>` - downloads and decompresses
 
 `helm template [name] [chart_name] -f [values_file] --validate` - renders chart templates locally and displays the output
 
 > :bulb: `helm template` doesn't complete validation of the output therefore it's best to use it with `[--dry-run]` option for proper results.
 
-`helm dep list` - lists all the required dependencies for inspected helm-chart
-`helm dep update` - downloads required dependency if missing
+`helm dependency/dep [command]` - manages the dependencies of a chart<br>
+&emsp;&emsp;`helm dep list` - lists all the required dependencies for inspected chart<br>
+&emsp;&emsp;`helm dep build` - rebuilds the charts/ directory based on the Chart.lock file<br>
+&emsp;&emsp;`helm dep update` - downloads required dependency if missing
 
 <img src="../_screenshots/helmB.png" width="400px" alt="helmB.png">
-
-<br>
 
 > :bulb: dependencies are listed within requirements.yaml file and held within /charts folder
 
@@ -104,39 +101,36 @@ Once this is done we need to publish it to the remote storage and then update lo
 ## Chart deployment related commands <a name="paragraph2.2"></a>
 
 `helm install [name] [chart_name]` - installs a chart archive<br>
-&emsp;&emsp;`helm install [name] [chart_name] --dry-run --debug ----disable-openapi-validation` - `[--dry-run]` simulates installation; `[--debug]` enables verbose output; `[--disable-openapi-validation]` installation process will not validate rendered templates against the Kubernetes API<br>
-&emsp;&emsp;`helm install [name] [chart_name] --version=<specific_version>`<br>
-&emsp;&emsp;`helm install [name] [chart_name] --values=<custom_values.yaml>` - install chart with custom values file (overriding default values.yaml file)<br>
-&emsp;&emsp;`helm install [name] [chart_name] --set image.tag=latest` - installing helm with specific set of values. By default when using `helm create [chart_name]` Helm creates a nginx chart which has a default image tag value of the value inserted in the Charts.yaml file.
+&emsp;&emsp;`helm install [name] [chart_name] --dry-run --debug ----disable-openapi-validation` - `[--dry-run]` flag simulates installation; `[--debug]` flag enables verbose output; `[--disable-openapi-validation]` flag installation process will not validate rendered templates against the Kubernetes API<br>
+&emsp;&emsp;`helm install [name] [chart_name] --version=<specific_version>` - installs specific chart's version<br>
+&emsp;&emsp;`helm install [name] [chart_name] --values=<custom_values.yaml>` - installs chart with custom values file (overriding default `values.yaml` file)<br>
+&emsp;&emsp;`helm install [name] [chart_name] --set image.tag=latest` - installs chart with specific set of values; by default when using `helm create [chart_name]` Helm creates a nginx chart which has a default image tag value of the value inserted in the `Charts.yaml` file.
 
-`helm uninstall/un/delete/del [name]`
+`helm uninstall/un/delete/del [name]` - uninstall specific chart
 &emsp;&emsp;`helm uninstall $(helm ls -q[quiet])` - q flag will list only release names, without system column names
 
-While running commands like helm install or helm upgrade, the helm client connects to the cluster and stores the record as secrets, i.e release. e.g. sh.helm.release.v1.elastic-operator.v1
+> :bulb: While running commands like `helm install` or `helm upgrade`, the Helm client connects to the cluster and stores the record as secrets, i.e release. e.g. sh.helm.release.v1.elastic-operator.v1
 
 `helm upgrade [name] [chart_name] --recreate-pods`<br>
-&emsp;&emsp;`helm upgrade [name] [chart_name] --install --atomic` - `[--install]` will install chart if not present; `[--atomic]`  will automatically run a helm rollback if upgrade fails
+&emsp;&emsp;`helm upgrade [name] [chart_name] --install --atomic` - `[--install]` flag will install chart if not present; `[--atomic]` flag will automatically run a helm rollback if upgrade fails
 
-`helm history [name] [revision_number]`
+`helm history [name] [revision_number]` - shows history of updates for selected release
 
-`helm rollback [name] [revision_number]`
+`helm rollback [name] [revision_number]` - rolls back to specific `[revision_number]` for selected release
 
 
 ## Chart monitoring related commands <a name="paragraph2.2"></a>
 
-`helm ls`<br>
+`helm ls` - lists all installed releases<br>
 &emsp;&emsp;`helm ls --short`
 
 <p><img src="../_screenshots/helmA.png" width="900px" alt="helmA.png"></p>
 
-`helm status [name]`
+`helm status [name]` - prints status information of selected release
 
-`helm get all [name]` - prints a human readable collection of information about the notes, hooks, supplied values, and generated manifest file of the given release<br>
-`helm get manifest [name]` - takes a release name and prints out all of the Kubernetes resources that were uploaded to the server<br>
-`helm get values [name]` - downloads a values file for a given release
+`helm show/inspect  all/chart/crds/readme/values [chart_name]` - show selected information of the chart
 
-
-
+`helm get all/hooks/manifest/notes/values [name]` - prints and downloads a human readable collection of the extended information of a named releas
 
 * File in which all the repositories are listed.
 
