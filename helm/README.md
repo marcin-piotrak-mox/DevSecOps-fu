@@ -74,6 +74,10 @@ For the use of this documentation below naming convention will be used:
 &emsp;&emsp;`helm search repo [keyword]` - searches indexed repositories for a keyword in charts<br>
 &emsp;&emsp;`helm search hub [keyword]` - searches for charts in the Artifact Hub or own hub instance
 
+<img src="../_screenshots/helmE.png" width="900px" alt="helmE.png">
+
+> :bulb: `--max-col-width 0` flag allows to print full size of columns
+
 
 ## Chart management related commands <a name="paragraph2.2"></a>
 
@@ -91,9 +95,7 @@ For the use of this documentation below naming convention will be used:
 &emsp;&emsp;`helm dep build` - rebuilds the charts/ directory based on the Chart.lock file<br>
 &emsp;&emsp;`helm dep update` - downloads required dependency if missing
 
-<img src="../_screenshots/helmB.png" width="400px" alt="helmB.png">
-
-> :bulb: dependencies are listed within requirements.yaml file and held within /charts folder
+> :bulb: Dependencies charts are listed within requirements.yaml file and kept within /charts folder
 
 `helm lint ./[local_chart_directory]` - checks chart files syntax
 
@@ -121,14 +123,13 @@ For the use of this documentation below naming convention will be used:
 
 ## Chart monitoring related commands <a name="paragraph2.2"></a>
 
-`helm ls` - lists all installed releases<br>
-&emsp;&emsp;`helm ls --short`
+`helm ls` - lists all deployed or failed releases<br>
 
-<p><img src="../_screenshots/helmA.png" width="900px" alt="helmA.png"></p>
+<img src="../_screenshots/helmA.png" width="900px" alt="helmA.png">
 
 `helm status [name]` - prints status information of selected release
 
-`helm show/inspect  all/chart/crds/readme/values [chart_name]` - show selected information of the chart
+`helm show/inspect all/chart/crds/readme/values [chart_name]` - show selected information of the chart
 
 `helm get all/hooks/manifest/notes/values [name]` - prints and downloads a human readable collection of the extended information of a named releas
 
